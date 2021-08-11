@@ -21,7 +21,7 @@ final class vcAdhocLocation: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let titleButton = ToolbarIcon(self, nil)
-        saveButton = ToolbarIcon(title: "Save Location", self, #selector(save))
+        saveButton = ToolbarIcon("Save Location", self, #selector(save))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, saveButton, titleButton]).items
         objScrollStackView = ScrollStackView(self)
         scrollView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true

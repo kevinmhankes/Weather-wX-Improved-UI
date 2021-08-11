@@ -29,9 +29,9 @@ final class vcModels: UIwXViewController {
         super.viewDidLoad()
         let toolbarTop = ObjectToolbar()
         statusButton = ToolbarIcon(self, #selector(runClicked))
-        modelButton = ToolbarIcon(title: "Model", self, #selector(modelClicked))
-        sectorButton = ToolbarIcon(title: "Sector", self, #selector(sectorClicked))
-        runButton = ToolbarIcon(title: "Run", self, #selector(runClicked))
+        modelButton = ToolbarIcon("Model", self, #selector(modelClicked))
+        sectorButton = ToolbarIcon("Sector", self, #selector(sectorClicked))
+        runButton = ToolbarIcon("Run", self, #selector(runClicked))
         let animateButton = ToolbarIcon(self, .play, #selector(getAnimation))
         toolbarTop.items = ToolbarItems([
             statusButton,
@@ -45,9 +45,9 @@ final class vcModels: UIwXViewController {
             || modelActivitySelected.contains("SPCSREF")
             || modelActivitySelected.contains("SPCHREF")
             || modelActivitySelected.contains("WPCGEFS") {
-            productButton = ToolbarIcon(title: "Product", self, #selector(showProdMenu))
+            productButton = ToolbarIcon("Product", self, #selector(showProdMenu))
         } else {
-            productButton = ToolbarIcon(title: "Product", self, #selector(prodClicked))
+            productButton = ToolbarIcon("Product", self, #selector(prodClicked))
         }
         if modelActivitySelected.contains("SPCSREF") {
             subMenu = MenuData(
@@ -68,7 +68,7 @@ final class vcModels: UIwXViewController {
                 UtilityModelWpcGefsInterface.labels
             )
         }
-        timeButton = ToolbarIcon(title: "Time", self, #selector(timeClicked))
+        timeButton = ToolbarIcon("Time", self, #selector(timeClicked))
         let doneButton = ToolbarIcon(self, .done, #selector(doneClicked))
         GlobalVariables.fixedSpace.width = UIPreferences.toolbarIconSpacing
         toolbar.items = ToolbarItems([

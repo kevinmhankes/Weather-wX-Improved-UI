@@ -37,8 +37,8 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         locationManager.delegate = self
         toolbar = ObjectToolbar()
         toolbarBottom = ObjectToolbar()
-        let helpButton = ToolbarIcon(title: "Help", self, #selector(helpClicked))
-        let canadaButton = ToolbarIcon(title: "Canada", self, #selector(caClicked))
+        let helpButton = ToolbarIcon("Help", self, #selector(helpClicked))
+        let canadaButton = ToolbarIcon("Canada", self, #selector(caClicked))
         let doneButton = ToolbarIcon(self, .done, #selector(doneClicked))
         let doneButton2 = ToolbarIcon(self, .done, #selector(doneClicked))
         let saveButton = ToolbarIcon(self, .save, #selector(saveClicked))

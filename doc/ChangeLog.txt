@@ -7,6 +7,7 @@
 	 	 [ADD] NCEP GFS - add sector "CONUS"
 	 	 [ADD] SPC Soundings, add "TEXT" button to show raw text for sounding
 		 [ADD] SPC Convective outlook - disable screen timeout in case TTS is used
+		 [ADD] only show the program version in settings -> about, not all settings screens
 	 	 [ADD] Provide more data in Alert detail screen (vtec, storm motion, headline, max hail/wind, etc)
 	 	 [FIX] Settings -> C to F Table, use fixed width font
 	 	 [ADD] prelim support for NHC Storms supported out of HFO

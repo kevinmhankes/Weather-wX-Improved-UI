@@ -17,8 +17,8 @@ final class vcSpcSwo: UIwXViewControllerWithAudio {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
-        let statusButton = ToolbarIcon(title: "Day " + spcSwoDay, self, nil)
-        let stateButton = ToolbarIcon(title: "STATE", self, #selector(stateClicked))
+        let statusButton = ToolbarIcon("Day " + spcSwoDay, self, nil)
+        let stateButton = ToolbarIcon("STATE", self, #selector(stateClicked))
         toolbar.items = ToolbarItems([
             doneButton,
             statusButton,

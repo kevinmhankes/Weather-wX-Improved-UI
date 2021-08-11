@@ -21,9 +21,9 @@ final class vcSettingsColorPicker: UIwXViewController, HSBColorPickerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let labelButton = ToolbarIcon(title: colorObject.uiLabel, self, nil)
+        let labelButton = ToolbarIcon(colorObject.uiLabel, self, nil)
         toolbarTop.items = ToolbarItems([GlobalVariables.flexBarButton, labelButton]).items
-        let defaultButton = ToolbarIcon(title: "Set to default", self, #selector(saveDefaultColorClicked))
+        let defaultButton = ToolbarIcon("Set to default", self, #selector(saveDefaultColorClicked))
         colorButton = ToolbarIcon(self, nil)
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, colorButton, defaultButton]).items
         colPicker.delegate = self

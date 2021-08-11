@@ -16,9 +16,9 @@ final class vcSettingsHomescreen: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addButton = ToolbarIcon(self, .plus, #selector(addClicked))
-        let defaultButton = ToolbarIcon(title: "Set to default", self, #selector(setToDefault))
-        addImageButton = ToolbarIcon(title: "Image", self, #selector(addImageClicked))
-        addTextButton = ToolbarIcon(title: "Text", self, #selector(addTextClicked))
+        let defaultButton = ToolbarIcon("Set to default", self, #selector(setToDefault))
+        addImageButton = ToolbarIcon("Image", self, #selector(addImageClicked))
+        addTextButton = ToolbarIcon("Text", self, #selector(addTextClicked))
         toolbar.items = ToolbarItems([
             doneButton,
             GlobalVariables.flexBarButton,

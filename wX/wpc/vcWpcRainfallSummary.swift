@@ -12,7 +12,7 @@ final class vcWpcRainfallSummary: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let statusButton = ToolbarIcon(title: "WPC Excessive Rainfall Outlooks", self, nil)
+        let statusButton = ToolbarIcon("WPC Excessive Rainfall Outlooks", self, nil)
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ToolbarItems([doneButton, statusButton, GlobalVariables.flexBarButton, shareButton]).items
         objScrollStackView = ScrollStackView(self)

@@ -21,8 +21,8 @@ final class vcWebView: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        productButton = ToolbarIcon(title: "Product", self, #selector(productClicked))
-        browserButton = ToolbarIcon(title: "Launch Browser", self, #selector(browserClicked))
+        productButton = ToolbarIcon("Product", self, #selector(productClicked))
+        browserButton = ToolbarIcon("Launch Browser", self, #selector(browserClicked))
         if showProduct {
             toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, browserButton, productButton]).items
         } else {

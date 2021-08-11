@@ -20,9 +20,9 @@ final class vcNhc: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        textProductButton = ToolbarIcon(title: "Text Products", self, #selector(textProductClicked))
-        imageProductButton = ToolbarIcon(title: "Images", self, #selector(imageProductClicked))
-        glcfsButton = ToolbarIcon(title: "GLCFS", self, #selector(glcfsClicked))
+        textProductButton = ToolbarIcon("Text Products", self, #selector(textProductClicked))
+        imageProductButton = ToolbarIcon("Images", self, #selector(imageProductClicked))
+        glcfsButton = ToolbarIcon("GLCFS", self, #selector(glcfsClicked))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, glcfsButton, imageProductButton, textProductButton]).items
         objScrollStackView = ScrollStackView(self)
         stackView.addLayout(boxText)

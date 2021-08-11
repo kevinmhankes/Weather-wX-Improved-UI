@@ -15,7 +15,7 @@ final class vcCanadaWarnings: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        provinceButton = ToolbarIcon(title: province, self, #selector(provinceClicked))
+        provinceButton = ToolbarIcon(province, self, #selector(provinceClicked))
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, provinceButton, shareButton]).items
         objScrollStackView = ScrollStackView(self)

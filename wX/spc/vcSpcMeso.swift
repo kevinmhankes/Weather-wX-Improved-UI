@@ -30,7 +30,7 @@ final class vcSpcMeso: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let toolbarTop = ObjectToolbar()
-        layerButton = ToolbarIcon(title: "Layers", self, #selector(layerClicked))
+        layerButton = ToolbarIcon("Layers", self, #selector(layerClicked))
         animateButton = ToolbarIcon(self, .play, #selector(animateClicked))
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         paramButton = ToolbarIcon(self, #selector(showProductMenu))
@@ -44,12 +44,12 @@ final class vcSpcMeso: UIwXViewController {
             GlobalVariables.fixedSpace,
             shareButton
         ]).items
-        sectorButton = ToolbarIcon(title: "Sector", self, #selector(sectorClicked))
-        sfcButton = ToolbarIcon(title: "SFC", self, #selector(paramClicked))
-        uaButton = ToolbarIcon(title: "UA", self, #selector(paramClicked))
-        cpeButton = ToolbarIcon(title: "CPE", self, #selector(paramClicked))
-        cmpButton = ToolbarIcon(title: "CMP", self, #selector(paramClicked))
-        shrButton = ToolbarIcon(title: "SHR", self, #selector(paramClicked))
+        sectorButton = ToolbarIcon("Sector", self, #selector(sectorClicked))
+        sfcButton = ToolbarIcon("SFC", self, #selector(paramClicked))
+        uaButton = ToolbarIcon("UA", self, #selector(paramClicked))
+        cpeButton = ToolbarIcon("CPE", self, #selector(paramClicked))
+        cmpButton = ToolbarIcon("CMP", self, #selector(paramClicked))
+        shrButton = ToolbarIcon("SHR", self, #selector(paramClicked))
         toolbar.items = ToolbarItems([
             doneButton,
             GlobalVariables.flexBarButton,

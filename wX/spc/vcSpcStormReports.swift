@@ -27,8 +27,8 @@ final class vcSpcStormReports: UIwXViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
-        let lsrButton = ToolbarIcon(title: "LSR by WFO", self, #selector(lsrClicked))
-        filterButton = ToolbarIcon(title: "Filter: " + filter, self, #selector(filterClicked))
+        let lsrButton = ToolbarIcon("LSR by WFO", self, #selector(lsrClicked))
+        filterButton = ToolbarIcon("Filter: " + filter, self, #selector(filterClicked))
         toolbar.items = ToolbarItems([
             doneButton,
             GlobalVariables.flexBarButton,

@@ -38,7 +38,7 @@ final class vcNhcStorm: UIwXViewController {
         super.viewDidLoad()
         // product = "MIATCP" + stormData.binNumber
         product = stormData.stormPrefix + stormData.binNumber
-        productButton = ToolbarIcon(title: " Text Products", self, #selector(productClicked))
+        productButton = ToolbarIcon(" Text Products", self, #selector(productClicked))
         goesButton = ToolbarIcon(self, .cloud, #selector(goesClicked))
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, goesButton, productButton, shareButton]).items

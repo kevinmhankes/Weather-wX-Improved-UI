@@ -14,7 +14,7 @@ final class vcSpcCompMap: UIwXViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        productButton = ToolbarIcon(title: "Layers", self, #selector(productClicked))
+        productButton = ToolbarIcon("Layers", self, #selector(productClicked))
         let shareButton = ToolbarIcon(self, .share, #selector(share))
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, productButton, shareButton]).items
         image = TouchImage(self, toolbar)

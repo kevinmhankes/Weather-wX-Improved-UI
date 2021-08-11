@@ -151,11 +151,11 @@ final class ToolbarIcon: UIBarButtonItem {
     }
 
     // TODO remove named arg from two below constructors
-    convenience init(title: String, _ target: UIViewController, _ action: Selector?) {
+    convenience init(_ title: String, _ target: UIViewController, _ action: Selector?) {
         self.init(title: title, style: UIBarButtonItem.Style.plain, target: target, action: action)
     }
 
-    convenience init(title: String, _ target: UIViewController, _ action: Selector?, tag: Int) {
+    convenience init(_ title: String, _ target: UIViewController, _ action: Selector?, tag: Int) {
         self.init(title: title, style: UIBarButtonItem.Style.plain, target: target, action: action)
         self.tag = tag
     }

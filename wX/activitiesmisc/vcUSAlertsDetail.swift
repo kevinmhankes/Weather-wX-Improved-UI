@@ -15,7 +15,7 @@ final class vcUSAlertsDetail: UIwXViewControllerWithAudio {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        statusButton = ToolbarIcon(title: "", self, nil)
+        statusButton = ToolbarIcon("", self, nil)
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         let radarButton = ToolbarIcon(self, .radar, #selector(radarClicked))
         playButton = ToolbarIcon(self, .play, #selector(playClicked))

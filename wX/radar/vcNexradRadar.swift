@@ -134,7 +134,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             view.addSubview(toolbarTop)
             toolbarTop.setConfigWithUiv(uiv: self, toolbarType: .top)
             paneRange.forEach { index in
-                siteButton.append(ToolbarIcon(title: "L", self, #selector(radarSiteClicked(sender:)), tag: index))
+                siteButton.append(ToolbarIcon("L", self, #selector(radarSiteClicked(sender:)), tag: index))
             }
             var items = [UIBarButtonItem]()
             items.append(GlobalVariables.flexBarButton)
@@ -173,19 +173,19 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         )
         doneButton = ToolbarIcon(self, .done, #selector(doneClicked))
         paneRange.forEach { index in
-            productButton.append(ToolbarIcon(title: "", self, #selector(productClicked), tag: index))
+            productButton.append(ToolbarIcon("", self, #selector(productClicked), tag: index))
         }
-        radarSiteButton = ToolbarIcon(title: "", self, #selector(radarSiteClicked))
+        radarSiteButton = ToolbarIcon("", self, #selector(radarSiteClicked))
         animateButton = ToolbarIcon(self, .play, #selector(animateClicked))
         var toolbarButtons = [UIBarButtonItem]()
         toolbarButtons.append(doneButton)
         if numberOfPanes == 1 {
-            timeButton = ToolbarIcon(title: "", self, #selector(timeClicked))
-            warningButton = ToolbarIcon(title: "", self, #selector(warningClicked))
+            timeButton = ToolbarIcon("", self, #selector(timeClicked))
+            warningButton = ToolbarIcon("", self, #selector(warningClicked))
             toolbarButtons.append(timeButton)
             toolbarButtons.append(warningButton)
         } else {
-            warningButton = ToolbarIcon(title: "", self, #selector(warningClicked))
+            warningButton = ToolbarIcon("", self, #selector(warningClicked))
             toolbarButtons.append(timeButton)
             toolbarButtons.append(warningButton)
         }
