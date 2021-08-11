@@ -87,18 +87,18 @@ final class vcSpcMeso: UIwXViewController {
     }
 
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, title: "", sectorButton, UtilitySpcMeso.sectors, sectorChangedByIndex(_:))
+        _ = ObjectPopUp(self, title: "", sectorButton, UtilitySpcMeso.sectors, sectorChangedByIndex)
     }
 
     func sectorChangedByIndex(_ index: Int) {
         sector = UtilitySpcMeso.sectorCodes[index]
-        sectorButton.title = (UtilitySpcMeso.sectorMapForTitle[sector] ?? "")
+        sectorButton.title = UtilitySpcMeso.sectorMapForTitle[sector] ?? ""
         getContent()
     }
 
     func sectorChanged(_ sector: String) {
         self.sector = sector
-        sectorButton.title = (UtilitySpcMeso.sectorMapForTitle[sector] ?? "")
+        sectorButton.title = UtilitySpcMeso.sectorMapForTitle[sector] ?? ""
         getContent()
     }
 
@@ -122,7 +122,7 @@ final class vcSpcMeso: UIwXViewController {
             break
         }
         let labels = parameters.map { $0.split(":")[1] }
-        _ = ObjectPopUp(self, title: "", sender, labels, productChangedBySubmenu(_:))
+        _ = ObjectPopUp(self, title: "", sender, labels, productChangedBySubmenu)
     }
 
     @objc func layerClicked() {
