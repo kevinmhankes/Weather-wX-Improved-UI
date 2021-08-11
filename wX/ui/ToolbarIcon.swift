@@ -150,6 +150,7 @@ final class ToolbarIcon: UIBarButtonItem {
         self.init(title: "", style: UIBarButtonItem.Style.plain, target: target, action: action)
     }
 
+    // TODO remove named arg from two below constructors
     convenience init(title: String, _ target: UIViewController, _ action: Selector?) {
         self.init(title: title, style: UIBarButtonItem.Style.plain, target: target, action: action)
     }

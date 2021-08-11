@@ -32,6 +32,7 @@ final class vcSevereDashboard: UIwXViewController {
         getContent()
     }
 
+    // TODO needs to get called when returning from another child screen
     override func getContent() {
         for notice in [PolygonEnum.SPCWAT, PolygonEnum.SPCMCD, PolygonEnum.WPCMPD] {
             _ = FutureVoid(severeNotices[notice]!.download, display)
