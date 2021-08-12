@@ -6,17 +6,17 @@
 
 final class RadarGeometryFile {
     
-    let fileName: String
+    let fileID: String
     let count: Int
-    let relativeBuffer: MemoryBuffer
-    let showItem: Bool
-    let fileAdd: Bool
+    let bb: MemoryBuffer
+    let pref: Bool
+    let addData: Bool
 
-    init(_ fileName: String, _ count: Int, _ relativeBuffer: MemoryBuffer, _ showItem: Bool, _ fileAdd: Bool) {
-        self.relativeBuffer = relativeBuffer
-        self.fileName = fileName
+    init(_ fileID: String, _ count: Int, _ bb: MemoryBuffer, _ pref: Bool, _ addData: Bool) {
+        self.bb = bb
+        self.fileID = fileID
         self.count = count
-        self.showItem = showItem
-        self.fileAdd = fileAdd
+        self.pref = pref
+        self.addData = addData
     }
 }
