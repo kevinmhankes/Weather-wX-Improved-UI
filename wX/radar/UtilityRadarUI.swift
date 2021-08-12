@@ -65,7 +65,7 @@ final class UtilityRadarUI {
         wxMetal.forEach { $0?.demandRender() }
     }
 
-    static func showPolygonText(_ location: LatLon, _ uiv: UIViewController) {
+    static func showWarning(_ location: LatLon, _ uiv: UIViewController) {
         let warningText = UtilityWXOGL.showTextProducts(location)
         if warningText != "" {
             Route.alertDetail(uiv, warningText)

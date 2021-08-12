@@ -216,7 +216,7 @@ final class NexradTab {
             alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name) }))
         }
         if RadarPreferences.warnings || ObjectPolygonWarning.areAnyEnabled() {
-            alert.addAction(UIAlertAction("Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self.uiv) }))
+            alert.addAction(UIAlertAction("Show Warning text", { _ in UtilityRadarUI.showWarning(pointerLocation, self.uiv) }))
         }
         if RadarPreferences.watMcd {
             alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestWatch(.SPCWAT, pointerLocation, self.uiv) }))

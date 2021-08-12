@@ -808,7 +808,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             alert.addAction(UIAlertAction("Change Tilt", { _ in self.showTiltMenu() }))
         }
         if RadarPreferences.warnings || ObjectPolygonWarning.areAnyEnabled() { // took out && warningCount > 0
-            alert.addAction(UIAlertAction("Show Warning", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self) }))
+            alert.addAction(UIAlertAction("Show Warning", { _ in UtilityRadarUI.showWarning(pointerLocation, self) }))
         }
 //        if RadarPreferences.radarWatMcd && MyApplication.watNoList.value != "" {
 //            alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self) }))
