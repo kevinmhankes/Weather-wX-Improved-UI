@@ -97,7 +97,6 @@ final class RadarGeometry {
         }
         lakesRelativeBuffer = MemoryBuffer(countLakes * 4)
         countyRelativeBuffer = MemoryBuffer(countCounty * 4)
-        // TODO use class
         let dataFiles = [
             RadarGeometryFile(lakesFileResid, countLakes, lakesRelativeBuffer, GeographyType.lakes.display, false),
             RadarGeometryFile(hwFileResid, countHw, hwRelativeBuffer, true, false),
@@ -107,70 +106,89 @@ final class RadarGeometry {
             RadarGeometryFile(mxResid, countMexico, stateRelativeBuffer, RadarPreferences.camxBorders, true),
             RadarGeometryFile(hwExtFileResid, countHwExt, stateRelativeBuffer, RadarPreferences.hwEnhExt, false)
         ]
-        let fileidArr = [
-            lakesFileResid,
-            hwFileResid,
-            countyFileResid,
-            stateLinesFileResid,
-            caResid,
-            mxResid,
-            hwExtFileResid
-        ]
-        let countArr = [
-            countLakes,
-            countHw,
-            countCounty,
-            countStateUs,
-            countCanada,
-            countMexico,
-            countHwExt
-        ]
-        let bbArr = [
-            lakesRelativeBuffer,
-            hwRelativeBuffer,
-            countyRelativeBuffer,
-            stateRelativeBuffer,
-            stateRelativeBuffer,
-            stateRelativeBuffer,
-            hwExtRelativeBuffer
-        ]
-        let prefArr = [
-            GeographyType.lakes.display,
-            true,
-            true,
-            true,
-            RadarPreferences.camxBorders,
-            RadarPreferences.camxBorders,
-            RadarPreferences.hwEnhExt
-        ]
-        let fileAdd = [
-            false,
-            false,
-            false,
-            false,
-            true,
-            true,
-            false
-        ]
-        fileidArr.indices.forEach {
-            loadBuffer(fileidArr[$0], bbArr[$0], countArr[$0], prefArr[$0], fileAdd[$0])
+//        let fileidArr = [
+//            lakesFileResid,
+//            hwFileResid,
+//            countyFileResid,
+//            stateLinesFileResid,
+//            caResid,
+//            mxResid,
+//            hwExtFileResid
+//        ]
+//        let countArr = [
+//            countLakes,
+//            countHw,
+//            countCounty,
+//            countStateUs,
+//            countCanada,
+//            countMexico,
+//            countHwExt
+//        ]
+//        let bbArr = [
+//            lakesRelativeBuffer,
+//            hwRelativeBuffer,
+//            countyRelativeBuffer,
+//            stateRelativeBuffer,
+//            stateRelativeBuffer,
+//            stateRelativeBuffer,
+//            hwExtRelativeBuffer
+//        ]
+//        let prefArr = [
+//            GeographyType.lakes.display,
+//            true,
+//            true,
+//            true,
+//            RadarPreferences.camxBorders,
+//            RadarPreferences.camxBorders,
+//            RadarPreferences.hwEnhExt
+//        ]
+//        let fileAdd = [
+//            false,
+//            false,
+//            false,
+//            false,
+//            true,
+//            true,
+//            false
+//        ]
+//        fileidArr.indices.forEach {
+//            loadBuffer(fileidArr[$0], bbArr[$0], countArr[$0], prefArr[$0], fileAdd[$0])
+//        }
+        
+        dataFiles.forEach { dataFile in
+            loadBuffer(dataFile)
         }
     }
-
-    static func loadBuffer(_ fileID: String, _ bb: MemoryBuffer, _ count: Int, _ pref: Bool, _ addData: Bool) {
-        if pref {
+    
+    static func loadBuffer(_ dataFile: RadarGeometryFile) {
+        if dataFile.pref {
             let floatSize: Float = 0.0
-            var newArray = [UInt8](repeating: 0, count: count * 4)
-            let path = Bundle.main.path(forResource: fileID, ofType: "bin")
+            var newArray = [UInt8](repeating: 0, count: dataFile.count * 4)
+            let path = Bundle.main.path(forResource: dataFile.fileID, ofType: "bin")
             let data = NSData(contentsOfFile: path!)
-            data!.getBytes(&newArray, length: MemoryLayout.size(ofValue: floatSize) * count)
-            if addData {
-                bb.appendArray(newArray)
+            data!.getBytes(&newArray, length: MemoryLayout.size(ofValue: floatSize) * dataFile.count)
+            if dataFile.addData {
+                dataFile.bb.appendArray(newArray)
             } else {
-                bb.copy(newArray)
+                dataFile.bb.copy(newArray)
             }
         }
     }
+
+//    static func loadBuffer(_ fileID: String, _ bb: MemoryBuffer, _ count: Int, _ pref: Bool, _ addData: Bool) {
+//        if pref {
+//            let floatSize: Float = 0.0
+//            var newArray = [UInt8](repeating: 0, count: count * 4)
+//            let path = Bundle.main.path(forResource: fileID, ofType: "bin")
+//            let data = NSData(contentsOfFile: path!)
+//            data!.getBytes(&newArray, length: MemoryLayout.size(ofValue: floatSize) * count)
+//            if addData {
+//                bb.appendArray(newArray)
+//            } else {
+//                bb.copy(newArray)
+//            }
+//        }
+//    }
 
     // this is only called after leaving settings -> radar
     static func resetTimerOnRadarPolygons() {
