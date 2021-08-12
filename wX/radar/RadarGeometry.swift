@@ -97,6 +97,7 @@ final class RadarGeometry {
         }
         lakesRelativeBuffer = MemoryBuffer(countLakes * 4)
         countyRelativeBuffer = MemoryBuffer(countCounty * 4)
+        // TODO use class
         let fileidArr = [
             lakesFileResid,
             hwFileResid,
