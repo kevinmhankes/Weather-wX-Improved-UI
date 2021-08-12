@@ -7,6 +7,11 @@
 import UIKit
 
 final class vcSpcMcdWatchMpdViewer: UIwXViewControllerWithAudio {
+    
+    //
+    // View a single image/text for a given watch/mcd/mpd
+    // called from Route.spcMcdWatchItem
+    //
 
     private var bitmap = Bitmap()
     private var html = ""

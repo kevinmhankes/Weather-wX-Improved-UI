@@ -7,6 +7,11 @@
 import UIKit
 
 final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
+    
+    //
+    // Provides a group of images of multiple watch/mpd/mcd or if only one show image/text
+    // called from Route.spcMcdWatchSummary
+    //
 
     private var bitmaps = [Bitmap]()
     private var numbers = [String]()
