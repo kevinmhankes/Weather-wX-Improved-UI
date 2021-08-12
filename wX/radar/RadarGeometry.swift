@@ -98,6 +98,15 @@ final class RadarGeometry {
         lakesRelativeBuffer = MemoryBuffer(countLakes * 4)
         countyRelativeBuffer = MemoryBuffer(countCounty * 4)
         // TODO use class
+        let dataFiles = [
+            RadarGeometryFile(lakesFileResid, countLakes, lakesRelativeBuffer, GeographyType.lakes.display, false),
+            RadarGeometryFile(hwFileResid, countHw, hwRelativeBuffer, true, false),
+            RadarGeometryFile(countyFileResid, countCounty, countyRelativeBuffer, true, false),
+            RadarGeometryFile(stateLinesFileResid, countStateUs, stateRelativeBuffer, true, false),
+            RadarGeometryFile(caResid, countCanada, stateRelativeBuffer, RadarPreferences.camxBorders, true),
+            RadarGeometryFile(mxResid, countMexico, stateRelativeBuffer, RadarPreferences.camxBorders, true),
+            RadarGeometryFile(hwExtFileResid, countHwExt, stateRelativeBuffer, RadarPreferences.hwEnhExt, false)
+        ]
         let fileidArr = [
             lakesFileResid,
             hwFileResid,

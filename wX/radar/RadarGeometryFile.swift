@@ -6,10 +6,17 @@
 
 final class RadarGeometryFile {
     
-    let type: FrontTypeEnum
-    var coordinates = [LatLon]()
+    let fileName: String
+    let count: Int
+    let relativeBuffer: MemoryBuffer
+    let showItem: Bool
+    let fileAdd: Bool
 
-    init(_ type: FrontTypeEnum) {
-        self.type = type
+    init(_ fileName: String, _ count: Int, _ relativeBuffer: MemoryBuffer, _ showItem: Bool, _ fileAdd: Bool) {
+        self.relativeBuffer = relativeBuffer
+        self.fileName = fileName
+        self.count = count
+        self.showItem = showItem
+        self.fileAdd = fileAdd
     }
 }
