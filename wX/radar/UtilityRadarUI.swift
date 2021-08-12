@@ -66,9 +66,9 @@ final class UtilityRadarUI {
     }
 
     static func showWarning(_ location: LatLon, _ uiv: UIViewController) {
-        let warningText = UtilityWXOGL.showTextProducts(location)
-        if warningText != "" {
-            Route.alertDetail(uiv, warningText)
+        let url = UtilityWXOGL.showTextProducts(location)
+        if url != "" {
+            Route.alertDetail(uiv, url)
         }
     }
 
