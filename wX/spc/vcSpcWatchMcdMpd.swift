@@ -12,9 +12,9 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
     private var numbers = [String]()
     private var listOfText = [String]()
     private var urls = [String]()
-    private var productNumber = ""
+    // private var productNumber = ""
     private var objectWatchProduct: ObjectWatchProduct?
-    var watchMcdMpdNumber = ""
+    // var watchMcdMpdNumber = ""
     var watchMcdMpdType = PolygonEnum.SPCWAT
 
     override func viewDidLoad() {
@@ -22,10 +22,10 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
         UIApplication.shared.isIdleTimerDisabled = true
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         let radarButton = ToolbarIcon(self, .radar, #selector(radarClicked))
-        productNumber = watchMcdMpdNumber
-        if productNumber != "" {
-            watchMcdMpdNumber = ""
-        }
+//        productNumber = watchMcdMpdNumber
+//        if productNumber != "" {
+//            watchMcdMpdNumber = ""
+//        }
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton, radarButton]).items
         objScrollStackView = ScrollStackView(self)
         getContent()
@@ -44,11 +44,11 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
 
     private func download() {
         var productNumberList = [String]()
-        if productNumber == "" {
+        // if productNumber == "" {
             productNumberList = ObjectWatchProduct.getNumberList(watchMcdMpdType)
-        } else {
-            productNumberList = [productNumber]
-        }
+//        } else {
+//            productNumberList = [productNumber]
+//        }
         productNumberList.forEach {
             let number = String(format: "%04d", (Int($0.replace(" ", "")) ?? 0))
             objectWatchProduct = ObjectWatchProduct(watchMcdMpdType, number)
