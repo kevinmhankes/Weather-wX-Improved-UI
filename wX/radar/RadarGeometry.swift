@@ -98,34 +98,50 @@ final class RadarGeometry {
         lakesRelativeBuffer = MemoryBuffer(countLakes * 4)
         countyRelativeBuffer = MemoryBuffer(countCounty * 4)
         let fileidArr = [
-                lakesFileResid,
-                hwFileResid,
-                countyFileResid,
-                stateLinesFileResid,
-                caResid,
-                mxResid,
-                hwExtFileResid
+            lakesFileResid,
+            hwFileResid,
+            countyFileResid,
+            stateLinesFileResid,
+            caResid,
+            mxResid,
+            hwExtFileResid
         ]
-        let countArr = [countLakes, countHw, countCounty, countStateUs, countCanada, countMexico, countHwExt]
+        let countArr = [
+            countLakes,
+            countHw,
+            countCounty,
+            countStateUs,
+            countCanada,
+            countMexico,
+            countHwExt
+        ]
         let bbArr = [
-                lakesRelativeBuffer,
-                hwRelativeBuffer,
-                countyRelativeBuffer,
-                stateRelativeBuffer,
-                stateRelativeBuffer,
-                stateRelativeBuffer,
-                hwExtRelativeBuffer
+            lakesRelativeBuffer,
+            hwRelativeBuffer,
+            countyRelativeBuffer,
+            stateRelativeBuffer,
+            stateRelativeBuffer,
+            stateRelativeBuffer,
+            hwExtRelativeBuffer
         ]
         let prefArr = [
-                GeographyType.lakes.display,
-                true,
-                true,
-                true,
-                RadarPreferences.camxBorders,
-                RadarPreferences.camxBorders,
-                RadarPreferences.hwEnhExt
+            GeographyType.lakes.display,
+            true,
+            true,
+            true,
+            RadarPreferences.camxBorders,
+            RadarPreferences.camxBorders,
+            RadarPreferences.hwEnhExt
         ]
-        let fileAdd = [false, false, false, false, true, true, false]
+        let fileAdd = [
+            false,
+            false,
+            false,
+            false,
+            true,
+            true,
+            false
+        ]
         fileidArr.indices.forEach {
             loadBuffer(fileidArr[$0], bbArr[$0], countArr[$0], prefArr[$0], fileAdd[$0])
         }
