@@ -93,7 +93,7 @@ final class UtilityRadarUI {
     }
 
     static func getRadarStatus(_ uiv: UIViewController, _ radarSite: String) {
-        _ = FutureText2({ getRadarStatusMessage(radarSite) }, {s in Route.textViewer(uiv, s) })
+        _ = FutureText2({ getRadarStatusMessage(radarSite) }, { s in Route.textViewer(uiv, s) })
     }
 
     static func getRadarStatusMessage(_ radarSite: String) -> String {
