@@ -168,7 +168,7 @@ final class ObjectTileMatrix: NSObject {
         case "nsslwrf":
             Route.model(uiv!, "NSSLWRF")
         case "lightning":
-            uiv!.goToVC(vcLightning())
+            Route.lightning(uiv!)
         case "wpc_rainfall":
             uiv!.goToVC(vcWpcRainfallSummary())
         case "ncar_ensemble":

@@ -5,6 +5,8 @@
 		 [ADD] AWC Radar Mosaic - ordering of sectors in menu has changed to make more sense with left/right wipe motion
 	 	 [ADD] GOES Vis - animation now downloads files in parallel
 	 	 [ADD] NCEP GFS - add sector "CONUS"
+	 	 [ADD] change Lightning icon to now point to GOES GLM https://www.star.nesdis.noaa.gov/GOES/conus_band.php?sat=G16&band=EXTENT&length=12
+			 the provider used previously has had issues with reliability and is not part of NOAA.
 	 	 [FIX] crash in certain situations when using text to speech after speech is done
 	 	 [ADD] SPC Soundings, add "TEXT" button to show raw text for sounding
 		 [ADD] SPC Convective outlook - disable screen timeout in case TTS is used

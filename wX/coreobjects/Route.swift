@@ -87,6 +87,17 @@ final class Route {
         uiv.goToVC(vc)
     }
     
+    static func lightning(_ uiv: UIViewController) {
+        if UIPreferences.lightningUseGoes {
+            let vc = vcGoes()
+            vc.productCode = "GLM"
+            vc.sectorCode = "CONUS"
+            uiv.goToVC(vc)
+        } else {
+            uiv.goToVC(vcLightning())
+        }
+    }
+    
     static func spcMcdWatchSummary(_ uiv: UIViewController, _ type: PolygonEnum) {
         let vc = vcSpcWatchMcdMpd()
         vc.watchMcdMpdType = type

@@ -32,7 +32,8 @@ final class UIPreferences {
     static var debugMode = false
     static var animInterval = 250
     static var playlistStr = ""
-
+    static var lightningUseGoes = true
+    
     static func initialize() {
         #if targetEnvironment(macCatalyst)
         tilesPerRow = 5
@@ -53,6 +54,7 @@ final class UIPreferences {
         radarToolbarTransparent = Utility.readPref("RADAR_TOOLBAR_TRANSPARENT", "true").hasPrefix("t")
         mainScreenRadarFab = Utility.readPref("UI_MAIN_SCREEN_RADAR_FAB", "true").hasPrefix("t")
         mainScreenCondense = Utility.readPref("UI_MAIN_SCREEN_CONDENSE", "false").hasPrefix("t")
+        lightningUseGoes = Utility.readPref("LIGHTNING_USE_GOES", "true").hasPrefix("t")
         nwsIconSize = Utility.readPref("NWS_ICON_SIZE_PREF", 68.0)
         animInterval = Utility.readPref("ANIM_INTERVAL", 6)
         playlistStr = Utility.readPref("PLAYLIST", "")

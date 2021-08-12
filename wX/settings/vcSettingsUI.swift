@@ -53,7 +53,8 @@ final class vcSettingsUI: UIwXViewController {
         switches.append(Switch(stackView, "USE_NWS_API_SEVEN_DAY", "Use new NWS API for 7 day", "false"))
         switches.append(Switch(stackView, "USE_NWS_API_HOURLY", "Use new NWS API for hourly", "true"))
         switches.append(Switch(stackView, "WFO_REMEMBER_LOCATION", "WFO text viewer remembers location", "false"))
-        switches.append(Switch(stackView, "DEBUG_MODE", "Debug mode - developer use", "false"))
+        switches.append(Switch(stackView, "LIGHTNING_USE_GOES", "Use GOES GLM for lightning", "true"))
+        // switches.append(Switch(stackView, "DEBUG_MODE", "Debug mode - developer use", "false"))
     }
     
     func setupComboBox() {

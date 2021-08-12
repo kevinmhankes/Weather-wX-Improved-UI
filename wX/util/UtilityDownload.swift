@@ -426,7 +426,12 @@ final class UtilityDownload {
             needsBitmap = false
             bitmap = UtilityGoes.getImage("09", "CONUS")
         case "LTG":
-            url = UtilityLightning.getImageUrl(Utility.readPref("LIGHTNING_SECTOR", "usa_big"), Utility.readPref("LIGHTNING_PERIOD", "0.25"))
+            if UIPreferences.lightningUseGoes {
+                needsBitmap = false
+                bitmap = UtilityGoes.getImage("GLM", "CONUS")
+            } else {
+                url = UtilityLightning.getImageUrl(Utility.readPref("LIGHTNING_SECTOR", "usa_big"), Utility.readPref("LIGHTNING_PERIOD", "0.25"))
+            }
         case "SND":
             let nwsOffice = UtilityLocation.getNearestSoundingSite(Location.latLon)
             needsBitmap = false
