@@ -839,7 +839,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 "Forecast: "
                     + pointerLocation.latString.truncate(6)
                     + ", "
-                    + pointerLocation.lonString.truncate(6), { _ in UtilityRadarUI.getForecast(pointerLocation, self) }
+                    + pointerLocation.lonString.truncate(6), { _ in Route.getForecast(self, pointerLocation) }
             )
         )
         alert.addAction(UIAlertAction("Meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self) }))

@@ -229,7 +229,7 @@ final class NexradTab {
         alert.addAction(UIAlertAction("Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self.uiv) }))
         alert.addAction(UIAlertAction(
             "Nearest forecast: " + pointerLocation.latString.truncate(6) + ", " + pointerLocation.lonString.truncate(6), { _ in
-                UtilityRadarUI.getForecast(pointerLocation, self.uiv)})
+                Route.getForecast(self.uiv, pointerLocation)})
         )
         alert.addAction(UIAlertAction("Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self.uiv) }))
         alert.addAction(UIAlertAction("Radar status message: " + wxMetal[index]!.radarSite, { _ in UtilityRadarUI.getRadarStatus(self.uiv, self.wxMetal[index]!.radarSite) }))

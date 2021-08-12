@@ -9,6 +9,12 @@ import UIKit
 
 final class Route {
     
+    static func getForecast(_ uiv: UIViewController, _ latLon: LatLon) {
+        let vc = vcAdhocLocation()
+        vc.latLon = latLon
+        uiv.goToVC(vc)
+    }
+    
     static func nhcStorm(_ uiv: UIViewController, _ storm: ObjectNhcStormDetails) {
         let vc = vcNhcStorm()
         vc.stormData = storm

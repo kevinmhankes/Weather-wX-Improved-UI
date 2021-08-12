@@ -83,13 +83,6 @@ final class UtilityRadarUI {
         _ = FutureText2({ UtilityMetar.findClosestMetar(location) }, { s in Route.textViewer(uiv, s) })
     }
 
-    // TODO move to route
-    static func getForecast(_ location: LatLon, _ uiv: UIViewController) {
-        let vc = vcAdhocLocation()
-        vc.latLon = location
-        uiv.goToVC(vc)
-    }
-
     static func getMeteogram(_ location: LatLon, _ uiv: UIViewController) {
         let obsSite = UtilityMetar.findClosestObservation(location)
         let url = "https://www.nws.noaa.gov/mdl/gfslamp/meteo.php?"
