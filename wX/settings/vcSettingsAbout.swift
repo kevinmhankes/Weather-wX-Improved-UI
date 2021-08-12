@@ -13,7 +13,7 @@ final class vcSettingsAbout: UIwXViewController {
     private let nwsStatusUrl = "https://forecast.weather.gov/product.php?site=NWS&product=ADA&issuedby=SDM"
     private static let copyright = "©"
     private let aboutText = GlobalVariables.appName + " is an efficient and configurable method to access weather content from the "
-        + "National Weather Service, Environment Canada, and NSSL WRF."
+        + "National Weather Service, Environment Canada, NSSL WRF, and Blitzortung.org."
         + " Software is provided \"as is\". Use at your own risk. Use for educational purposes "
         + "and non-commercial purposes only. Do not use for operational purposes.  "
         + copyright
