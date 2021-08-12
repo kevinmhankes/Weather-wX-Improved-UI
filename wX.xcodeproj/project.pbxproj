@@ -181,6 +181,7 @@
 		03AB4AA721AE15AB0037633A /* UtilityWXMetalPerfL3FourBit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB4AA621AE15AB0037633A /* UtilityWXMetalPerfL3FourBit.swift */; };
 		03AB4AA921AE15B30037633A /* UtilityWXMetalPerfL2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB4AA821AE15B20037633A /* UtilityWXMetalPerfL2.swift */; };
 		03AB4AAB21AE161C0037633A /* Level2Metal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB4AAA21AE161C0037633A /* Level2Metal.swift */; };
+		03AD3FA126C5183B0042C6B2 /* RadarGeometryFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD3FA026C5183B0042C6B2 /* RadarGeometryFile.swift */; };
 		03B1528B26A8E13400172721 /* RadarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1528A26A8E13400172721 /* RadarType.swift */; };
 		03BB59AF1FE721B000A7F4A1 /* DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB59AE1FE721AF00A7F4A1 /* DistanceUnit.swift */; };
 		03BF9A422296798C00203B26 /* ObjectSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF9A412296798B00203B26 /* ObjectSlider.swift */; };
@@ -579,6 +580,7 @@
 		03AB4AA621AE15AB0037633A /* UtilityWXMetalPerfL3FourBit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerfL3FourBit.swift; sourceTree = "<group>"; };
 		03AB4AA821AE15B20037633A /* UtilityWXMetalPerfL2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityWXMetalPerfL2.swift; sourceTree = "<group>"; };
 		03AB4AAA21AE161C0037633A /* Level2Metal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level2Metal.swift; sourceTree = "<group>"; };
+		03AD3FA026C5183B0042C6B2 /* RadarGeometryFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarGeometryFile.swift; sourceTree = "<group>"; };
 		03B1528A26A8E13400172721 /* RadarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarType.swift; sourceTree = "<group>"; };
 		03BB59AE1FE721AF00A7F4A1 /* DistanceUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceUnit.swift; sourceTree = "<group>"; };
 		03BF9A412296798B00203B26 /* ObjectSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSlider.swift; sourceTree = "<group>"; };
@@ -1143,6 +1145,7 @@
 				0354D3FB23C1194E0024153D /* PressureCenter.swift */,
 				0354D3F923C119480024153D /* PressureCenterTypeEnum.swift */,
 				035144A126A5E91500AF38B6 /* RadarGeometry.swift */,
+				03AD3FA026C5183B0042C6B2 /* RadarGeometryFile.swift */,
 				03B1528A26A8E13400172721 /* RadarType.swift */,
 				F0B3350A1DA3FD1C0035BD36 /* RID.swift */,
 				037FF27C21A993450002E6E6 /* Shaders.metal */,
@@ -1671,6 +1674,7 @@
 				037FF27D21A993450002E6E6 /* Shaders.metal in Sources */,
 				F0F4FBA51DB2983A00C79E8C /* TabBarControllerSwipeExtension.swift in Sources */,
 				F0B335A81DA3FD960035BD36 /* UtilityFileManagement.swift in Sources */,
+				03AD3FA126C5183B0042C6B2 /* RadarGeometryFile.swift in Sources */,
 				03A41C4122C4C86A00C9044F /* ObjectCanadaWarnings.swift in Sources */,
 				0382E04222043ADF00DA45C2 /* UtilityObs.swift in Sources */,
 				0351449E26A5E90D00AF38B6 /* PolygonType.swift in Sources */,
