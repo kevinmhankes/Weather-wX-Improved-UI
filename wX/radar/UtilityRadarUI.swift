@@ -72,31 +72,11 @@ final class UtilityRadarUI {
         }
     }
 
-    static func showNearestProduct(_ type: PolygonEnum, _ location: LatLon, _ uiv: UIViewController) {
-        let txt = UtilityWatch.show(location, type)
-        let token = String(describing: type) + txt
-        // let vc = vcSpcWatchMcdMpd()
-        print("http " + token)
-        if token.hasPrefix("WPCMPD") && token != "WPCMPD" {
-//            vc.watchMcdMpdNumber = token.replace("WPCMPD", "")
-//            vc.watchMcdMpdType = .WPCMPD
-            Route.spcMcdWatchItem(uiv, .WPCMPD, token.replace("WPCMPD", ""))
+    static func showNearestWatch(_ type: PolygonEnum, _ location: LatLon, _ uiv: UIViewController) {
+        let number = UtilityWatch.show(location, type)
+        if number != "" {
+            Route.spcMcdWatchItem(uiv, type, number)
         }
-        if token.hasPrefix("SPCMCD") && token != "SPCMCD" {
-//            vc.watchMcdMpdNumber = token.replace("SPCMCD", "")
-//            vc.watchMcdMpdType = .SPCMCD
-            Route.spcMcdWatchItem(uiv, .SPCMCD, token.replace("SPCMCD", ""))
-        }
-        if token.hasPrefix("SPCWAT") && token != "SPCWAT" {
-//            vc.watchMcdMpdNumber = token.replace("SPCWAT", "")
-//            vc.watchMcdMpdType = .SPCWAT
-            Route.spcMcdWatchItem(uiv, .SPCWAT, token.replace("SPCWAT", ""))
-        }
-//        if token != "SPCWAT" && token != "SPCMCD" && token != "WPCMPD" && token != "" {
-//            // uiv.goToVC(vc)
-//                Route.spcMcdWatchItem(self, .SPCWAT, buttonActions[sender.data].replace("SPCWAT", ""))
-//            }
-//        }
     }
 
     static func getMetar(_ location: LatLon, _ uiv: UIViewController) {

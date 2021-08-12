@@ -822,14 +822,14 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
 //        }
         
         if RadarPreferences.watMcd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.numberList.getValue() != "" {
-            alert.addAction(UIAlertAction("Show Watch", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self) }))
+            alert.addAction(UIAlertAction("Show Watch", { _ in UtilityRadarUI.showNearestWatch(.SPCWAT, pointerLocation, self) }))
         }
         if RadarPreferences.watMcd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]!.numberList.getValue()  != "" {
             // print(MyApplication.mcdNoList.value)
-            alert.addAction(UIAlertAction("Show MCD", { _ in UtilityRadarUI.showNearestProduct(.SPCMCD, pointerLocation, self) }))
+            alert.addAction(UIAlertAction("Show MCD", { _ in UtilityRadarUI.showNearestWatch(.SPCMCD, pointerLocation, self) }))
         }
         if RadarPreferences.mpd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]!.numberList.getValue()  != "" {
-            alert.addAction(UIAlertAction("Show MPD", { _ in UtilityRadarUI.showNearestProduct(.WPCMPD, pointerLocation, self) }))
+            alert.addAction(UIAlertAction("Show MPD", { _ in UtilityRadarUI.showNearestWatch(.WPCMPD, pointerLocation, self) }))
         }
 
         let obsSite = UtilityMetar.findClosestObservation(pointerLocation)

@@ -219,11 +219,11 @@ final class NexradTab {
             alert.addAction(UIAlertAction("Show Warning text", { _ in UtilityRadarUI.showPolygonText(pointerLocation, self.uiv) }))
         }
         if RadarPreferences.watMcd {
-            alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self.uiv) }))
-            alert.addAction(UIAlertAction("Show MCD text", { _ in UtilityRadarUI.showNearestProduct(.SPCMCD, pointerLocation, self.uiv) }))
+            alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestWatch(.SPCWAT, pointerLocation, self.uiv) }))
+            alert.addAction(UIAlertAction("Show MCD text", { _ in UtilityRadarUI.showNearestWatch(.SPCMCD, pointerLocation, self.uiv) }))
         }
         if RadarPreferences.mpd {
-            alert.addAction(UIAlertAction("Show MPD text", { _ in UtilityRadarUI.showNearestProduct(.WPCMPD, pointerLocation, self.uiv) }))
+            alert.addAction(UIAlertAction("Show MPD text", { _ in UtilityRadarUI.showNearestWatch(.WPCMPD, pointerLocation, self.uiv) }))
         }
         let obsSite = UtilityMetar.findClosestObservation(pointerLocation)
         alert.addAction(UIAlertAction("Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self.uiv) }))
