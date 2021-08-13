@@ -156,7 +156,7 @@ final class ObjectTileMatrix: NSObject {
         case "nws_sector":
             Route.radarMosaic(uiv!)
         case "opc":
-            uiv!.goToVC(vcOpc())
+            Route.opc(uiv!)
         case "goesfulldisk":
             Route.goesGlobal(uiv!)
         case "nwsobs":
