@@ -270,6 +270,10 @@ final class Route {
         }
     }
     
+    static func obsSites(_ uiv: UIViewController) {
+        uiv.goToVC(vcObsSites())
+    }
+    
     static func settings(_ uiv: UIViewController) {
         uiv.goToVC(vcSettingsMain())
     }

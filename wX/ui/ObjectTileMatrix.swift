@@ -160,7 +160,7 @@ final class ObjectTileMatrix: NSObject {
         case "goesfulldisk":
             uiv!.goToVC(vcGoesGlobal())
         case "nwsobs":
-            uiv!.goToVC(vcObsSites())
+            Route.obsSites(uiv!)
         case "wxogldualpane":
             Route.radar(uiv!, "2")
         case "wxoglquadpane":
