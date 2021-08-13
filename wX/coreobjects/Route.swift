@@ -242,6 +242,10 @@ final class Route {
         vis(uiv)
     }
     
+    static func goesGlobal(_ uiv: UIViewController) {
+        uiv.goToVC(vcGoesGlobal())
+    }
+    
     static func wfoText(_ uiv: UIViewController) {
         if Location.isUS {
             uiv.goToVC(vcWfoText())

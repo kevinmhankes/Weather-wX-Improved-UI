@@ -158,7 +158,7 @@ final class ObjectTileMatrix: NSObject {
         case "opc":
             uiv!.goToVC(vcOpc())
         case "goesfulldisk":
-            uiv!.goToVC(vcGoesGlobal())
+            Route.goesGlobal(uiv!)
         case "nwsobs":
             Route.obsSites(uiv!)
         case "wxogldualpane":
