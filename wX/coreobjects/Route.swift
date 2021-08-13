@@ -375,23 +375,23 @@ final class Route {
     static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String) {
         switch menuItem {
         case "Soundings":
-            Route.soundings(uiv)
+            soundings(uiv)
         case "Hourly Forecast":
-            Route.hourly(uiv)
+            hourly(uiv)
         case "Settings":
-            Route.settings(uiv)
+            settings(uiv)
         case "Observations":
-            Route.observations(uiv)
+            observations(uiv)
         case "PlayList":
-            Route.playList(uiv)
+            playList(uiv)
         case "Radar Mosaic":
-            Route.radarMosaicLocal(uiv)
+            radarMosaicLocal(uiv)
         case "Canadian Alerts":
-            Route.alerts(uiv)
+            alerts(uiv)
         case "US Alerts":
-            Route.alerts(uiv)
+            alerts(uiv)
         default:
-            Route.hourly(uiv)
+            hourly(uiv)
         }
     }
 }
