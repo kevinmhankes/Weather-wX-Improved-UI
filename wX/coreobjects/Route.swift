@@ -246,6 +246,10 @@ final class Route {
         uiv.goToVC(vcGoesGlobal())
     }
     
+    static func nhc(_ uiv: UIViewController) {
+        uiv.goToVC(vcNhc())
+    }
+    
     static func opc(_ uiv: UIViewController) {
         uiv.goToVC(vcOpc())
     }

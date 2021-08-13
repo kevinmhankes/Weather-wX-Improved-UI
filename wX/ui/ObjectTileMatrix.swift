@@ -152,7 +152,7 @@ final class ObjectTileMatrix: NSObject {
         case "fmap":
             Route.wpcImage(uiv!)
         case "nhc":
-            uiv!.goToVC(vcNhc())
+            Route.nhc(uiv!)
         case "nws_sector":
             Route.radarMosaic(uiv!)
         case "opc":
