@@ -110,10 +110,10 @@ class vcTabParent: UIViewController {
         objTileMatrix.dashClicked()
     }
 
-    @objc func warningsClicked() {
-        let vc = vcUSAlerts()
-        objTileMatrix.genericClicked(vc)
-    }
+//    @objc func warningsClicked() {
+//        let vc = vcUSAlerts()
+//        objTileMatrix.genericClicked(vc)
+//    }
 
     func refreshViews() {
         removeAllViews()

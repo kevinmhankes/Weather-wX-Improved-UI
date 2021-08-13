@@ -184,9 +184,9 @@ final class ObjectTileMatrix: NSObject {
         }
     }
 
-    @objc func genericClicked(_ vc: UIViewController) {
-        uiv!.goToVC(vc)
-    }
+//    @objc func genericClicked(_ vc: UIViewController) {
+//        uiv!.goToVC(vc)
+//    }
 
     @objc func cloudClicked() {
         Route.cloud(uiv!)
