@@ -289,6 +289,10 @@ final class Route {
         uiv.goToVC(vc)
     }
     
+    static func wpcRainfallSummary(_ uiv: UIViewController) {
+        uiv.goToVC(vcWpcRainfallSummary())
+    }
+    
     static func spcMeso(_ uiv: UIViewController) {
         let vc = vcSpcMeso()
         uiv.goToVC(vc)

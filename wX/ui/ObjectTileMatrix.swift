@@ -170,7 +170,7 @@ final class ObjectTileMatrix: NSObject {
         case "lightning":
             Route.lightning(uiv!)
         case "wpc_rainfall":
-            uiv!.goToVC(vcWpcRainfallSummary())
+            Route.wpcRainfallSummary(uiv!)
         case "ncar_ensemble":
             Route.model(uiv!, "NCAR_ENSEMBLE")
         case "wpcgefs":
