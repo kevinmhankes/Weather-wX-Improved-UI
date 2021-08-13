@@ -201,7 +201,7 @@ final class ObjectTileMatrix: NSObject {
     }
 
     @objc func menuClicked() {
-        UtilityActions.menuClicked(uiv!, menuButton)
+        Route.menuClicked(uiv!, menuButton)
     }
 
     @objc func dashClicked() {

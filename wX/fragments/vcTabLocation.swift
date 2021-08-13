@@ -246,7 +246,7 @@ final class vcTabLocation: vcTabParent {
     }
 
     override func menuClicked() {
-        UtilityActions.menuClicked(self, menuButton)
+        Route.menuClicked(self, menuButton)
     }
 
     override func dashClicked() {
