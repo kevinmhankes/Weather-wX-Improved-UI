@@ -337,7 +337,7 @@ final class Route {
         uiv.goToVC(vc)
     }
     
-    static func menuClicked(_ uiv: UIViewController, _ button: ToolbarIcon) {
+    static func subMenuClicked(_ uiv: UIViewController, _ button: ToolbarIcon) {
         // items in the list below need to match items in menuItemClicked's switch
         var menuList = [
             "Hourly Forecast",
@@ -362,7 +362,7 @@ final class Route {
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
         menuList.forEach { item in
-            let action = UIAlertAction(title: item, style: .default, handler: { _ in menuItemClicked(uiv, item) })
+            let action = UIAlertAction(title: item, style: .default, handler: { _ in subMenuItemClicked(uiv, item) })
             if let popoverController = alert.popoverPresentationController {
                 popoverController.barButtonItem = button
             }
@@ -372,7 +372,7 @@ final class Route {
         uiv.present(alert, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
     
-    static func menuItemClicked(_ uiv: UIViewController, _ menuItem: String) {
+    static func subMenuItemClicked(_ uiv: UIViewController, _ menuItem: String) {
         switch menuItem {
         case "Soundings":
             soundings(uiv)
