@@ -322,6 +322,10 @@ final class Route {
         uiv.goToVC(vc)
     }
     
+    static func spcSwoSummary(_ uiv: UIViewController) {
+        uiv.goToVC(vcSpcSwoSummary())
+    }
+    
     static func spcTstormSummary(_ uiv: UIViewController) {
         uiv.goToVC(vcSpcTstormSummary())
     }

@@ -102,7 +102,7 @@ final class ObjectTileMatrix: NSObject {
         case "spcsref":
             Route.model(uiv!, "SPCSREF")
         case "spc_sum":
-            uiv!.goToVC(vcSpcSwoSummary())
+            Route.spcSwoSummary(uiv!)
         case "day1":
             Route.swo(uiv!, "1")
         case "day2":
@@ -132,7 +132,7 @@ final class ObjectTileMatrix: NSObject {
         case "spchref":
             Route.model(uiv!, "SPCHREF")
         default:
-            uiv!.goToVC(vcSpcSwo())
+            Route.swo(uiv!, "1")
         }
     }
 
