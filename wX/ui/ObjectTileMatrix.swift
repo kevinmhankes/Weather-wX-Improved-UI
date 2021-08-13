@@ -122,11 +122,11 @@ final class ObjectTileMatrix: NSObject {
         case "meso":
             Route.spcMeso(uiv!)
         case "fire_outlook":
-            uiv!.goToVC(vcSpcFireSummary())
+            Route.spcFireSummary(uiv!)
         case "tstorm":
-            uiv!.goToVC(vcSpcTstormSummary())
+            Route.spcTstormSummary(uiv!)
         case "spccompmap":
-            uiv!.goToVC(vcSpcCompMap())
+            Route.spcCompMap(uiv!)
         case "spchrrr":
             Route.model(uiv!, "SPCHRRR")
         case "spchref":

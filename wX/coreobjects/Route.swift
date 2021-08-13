@@ -309,9 +309,21 @@ final class Route {
         uiv.goToVC(vcWpcRainfallSummary())
     }
     
+    static func spcCompMap(_ uiv: UIViewController) {
+        uiv.goToVC(vcSpcCompMap())
+    }
+    
+    static func spcFireSummary(_ uiv: UIViewController) {
+        uiv.goToVC(vcSpcFireSummary())
+    }
+    
     static func spcMeso(_ uiv: UIViewController) {
         let vc = vcSpcMeso()
         uiv.goToVC(vc)
+    }
+    
+    static func spcTstormSummary(_ uiv: UIViewController) {
+        uiv.goToVC(vcSpcTstormSummary())
     }
     
     static func spcMesoFromHomeScreen(_ uiv: UIViewController, _ token: String) {
