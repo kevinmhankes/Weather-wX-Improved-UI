@@ -80,7 +80,7 @@ final class vcSevereDashboard: UIwXViewController {
     }
 
     @objc func goToAlerts() {
-        goToVC(vcUSAlerts())
+        Route.alerts(self)
     }
 
     @objc func goToAlert(sender: GestureData) {

@@ -38,8 +38,7 @@ final class vcSpotters: UIwXViewController {
     }
 
     @objc func showSpotterReports() {
-        let vc = vcSpotterReports()
-        goToVC(vc)
+        Route.spotterReports(self)
     }
 
     @objc func buttonPressed(sender: GestureData) {

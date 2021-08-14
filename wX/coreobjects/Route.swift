@@ -290,6 +290,10 @@ final class Route {
         uiv.goToVC(vcSettingsMain())
     }
     
+    static func spotterReports(_ uiv: UIViewController) {
+        uiv.goToVC(vcSpotterReports())
+    }
+    
     static func playList(_ uiv: UIViewController) {
         uiv.goToVC(vcPlayList())
     }
