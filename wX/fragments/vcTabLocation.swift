@@ -334,7 +334,7 @@ final class vcTabLocation: vcTabParent {
     }
     
     @objc func gotoHourly() {
-        goToVC(vcHourly())
+        Route.hourly(self)
     }
 
     func getCurrentConditionCards() {
