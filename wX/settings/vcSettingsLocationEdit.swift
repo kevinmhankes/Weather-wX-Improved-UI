@@ -104,9 +104,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
     }
 
     @objc func helpClicked() {
-        let vc = vcTextViewer()
-        vc.html = helpStatement
-        goToVC(vc)
+        Route.textViewer(self, helpStatement)
     }
 
     @objc func saveClicked() {
