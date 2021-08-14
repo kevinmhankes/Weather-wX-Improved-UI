@@ -210,8 +210,7 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
     }
 
     @objc func caClicked() {
-        let vc = vcSettingsLocationCanada()
-        goToVC(vc)
+        Route.settingsLocationCanada(self)
     }
 
     override func viewWillAppear(_ animated: Bool) {

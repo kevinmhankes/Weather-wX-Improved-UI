@@ -298,6 +298,10 @@ final class Route {
         uiv.goToVC(vcSettingsAbout())
     }
     
+    static func settingsLocationCanada(_ uiv: UIViewController) {
+        uiv.goToVC(vcSettingsLocationCanada())
+    }
+    
     static func settingsColors(_ uiv: UIViewController) {
         uiv.goToVC(vcSettingsColorListing())
     }
