@@ -34,21 +34,21 @@ final class vcSettingsMain: UIwXViewController {
     @objc func actionClick(sender: GestureData) {
         switch sender.strData {
         case "Locations":
-            goToVC(vcSettingsLocation())
+            Route.settingsLocation(self)
         case "Radar":
-            goToVC(vcSettingsRadar())
+            Route.settingsRadar(self)
         case "User Interface":
-            goToVC(vcSettingsUI())
+            Route.settingsUI(self)
         case "Colors":
-            goToVC(vcSettingsColorListing())
+            Route.settingsColors(self)
         case "Home Screen":
-            goToVC(vcSettingsHomescreen())
+            Route.settingsHomeScreen(self)
         case "Spotters":
-            goToVC(vcSpotters())
+            Route.spotters(self)
         case "Celsius to Fahrenheit table":
             Route.textViewer(self, UtilityMath.celsiusToFahrenheitTable(), isFixedWidth: true)
         case "About " + GlobalVariables.appName:
-            goToVC(vcSettingsAbout())
+            Route.settingsAbout(self)
         default:
             break
         }

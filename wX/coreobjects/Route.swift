@@ -294,6 +294,34 @@ final class Route {
         uiv.goToVC(vcSettingsMain())
     }
     
+    static func settingsAbout(_ uiv: UIViewController) {
+        uiv.goToVC(vcSettingsAbout())
+    }
+    
+    static func settingsColors(_ uiv: UIViewController) {
+        uiv.goToVC(vcSettingsColorListing())
+    }
+    
+    static func settingsHomeScreen(_ uiv: UIViewController) {
+        uiv.goToVC(vcSettingsHomescreen())
+    }
+    
+    static func settingsLocation(_ uiv: UIViewController) {
+        uiv.goToVC(vcSettingsLocation())
+    }
+    
+    static func settingsRadar(_ uiv: UIViewController) {
+        uiv.goToVC(vcSettingsRadar())
+    }
+    
+    static func settingsUI(_ uiv: UIViewController) {
+        uiv.goToVC(vcSettingsUI())
+    }
+    
+    static func spotters(_ uiv: UIViewController) {
+        uiv.goToVC(vcSpotters())
+    }
+    
     static func spotterReports(_ uiv: UIViewController) {
         uiv.goToVC(vcSpotterReports())
     }
