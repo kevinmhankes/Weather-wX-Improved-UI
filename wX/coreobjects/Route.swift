@@ -270,6 +270,10 @@ final class Route {
         }
     }
     
+    static func lsrByWfo(_ uiv: UIViewController) {
+        uiv.goToVC(vcLsrByWfo())
+    }
+    
     static func soundings(_ uiv: UIViewController) {
         uiv.goToVC(vcSoundings())
     }

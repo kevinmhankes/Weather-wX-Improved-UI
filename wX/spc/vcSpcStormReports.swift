@@ -102,8 +102,7 @@ final class vcSpcStormReports: UIwXViewController {
     }
 
     @objc func lsrClicked() {
-        let vc = vcLsrByWfo()
-        goToVC(vc)
+        Route.lsrByWfo(self)
     }
 
     @objc func filterClicked() {
