@@ -91,12 +91,14 @@ final class vcNhcStorm: UIwXViewController {
     func displayImage() {
         objectImageSummary = ObjectImageSummary(self, boxImages, bitmaps, imagesPerRowWide: 3)
         for (index, url) in imageUrls.enumerated() {
-            objectImageSummary.objectImages[index].addGestureRecognizer(GestureData(url, self, #selector(imageClicked)))
+            objectImageSummary.objectImages[index].removeGestures()
+            objectImageSummary.objectImages[index].addGestureRecognizer(GestureData(stormData.baseUrl + url, self, #selector(imageClicked)))
         }
     }
 
     @objc func imageClicked(sender: GestureData) {
-        Route.imageViewer(self, bitmaps[sender.data].url)
+        print("http" + sender.strData)
+        Route.imageViewer(self, sender.strData)
     }
 
     @objc func goesClicked(sender: UIButton) {

@@ -1,10 +1,11 @@
 
-56138 2021_08_10 [ADD] AWC Radar Mosaic - animation now downloads files in parallel 
+56138 2021_08_20 [ADD] AWC Radar Mosaic - animation now downloads files in parallel 
 	 	 [ADD] AWC Radar Mosaic - remove sectors no longer working: AK/HA/CARIB
 		 [ADD] AWC Radar Mosaic - you can now swipe left/right on image to change sector
 		 [ADD] AWC Radar Mosaic - ordering of sectors in menu has changed to make more sense with left/right wipe motion
 	 	 [ADD] GOES Vis - animation now downloads files in parallel
 	 	 [ADD] NCEP GFS - add sector "CONUS"
+	 	 [FIX] NHC Storm - images were not expanding to correct image
 	 	 [ADD] change Lightning icon to now point to GOES GLM https://www.star.nesdis.noaa.gov/GOES/conus_band.php?sat=G16&band=EXTENT&length=12
 			 the provider used previously has had issues with reliability and is not part of NOAA.
 	 	 [FIX] crash in certain situations when using text to speech after speech is done

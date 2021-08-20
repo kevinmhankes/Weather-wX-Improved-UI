@@ -75,6 +75,10 @@ final class ObjectImage {
         addGestureRecognizer(gesture)
     }
     
+    func removeGestures() {
+        img.gestureRecognizers?.forEach(img.removeGestureRecognizer)
+    }
+    
     var isHidden: Bool {
         get { img.isHidden }
         set { img.isHidden = newValue }
