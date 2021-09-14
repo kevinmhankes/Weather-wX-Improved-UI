@@ -104,7 +104,7 @@ final class RadarGeometry {
             RadarGeometryFile(stateLinesFileResid, countStateUs, stateRelativeBuffer, true, false),
             RadarGeometryFile(caResid, countCanada, stateRelativeBuffer, RadarPreferences.camxBorders, true),
             RadarGeometryFile(mxResid, countMexico, stateRelativeBuffer, RadarPreferences.camxBorders, true),
-            RadarGeometryFile(hwExtFileResid, countHwExt, stateRelativeBuffer, RadarPreferences.hwEnhExt, false)
+            RadarGeometryFile(hwExtFileResid, countHwExt, hwExtRelativeBuffer, RadarPreferences.hwEnhExt, false)
         ]
 //        let fileidArr = [
 //            lakesFileResid,
