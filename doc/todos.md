@@ -9,3 +9,5 @@
 * OPC Grib2 https://ocean.weather.gov/lightning/lightning_pdd.php
 * SPC HREF - cache base layer images
 * [FIX] main screen images, if no image, don't show
+* [FIX] remove CLI in WFO Text
+* [FIX] scan for Future* not being used
