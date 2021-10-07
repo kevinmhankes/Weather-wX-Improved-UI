@@ -7,28 +7,26 @@ Helpful Links to check status from NWS if I am on vacation or not able to respon
 * [https://radar3pub.ncep.noaa.gov/](https://radar3pub.ncep.noaa.gov/)
 * [https://www.nco.ncep.noaa.gov/status/messages/](https://radar3pub.ncep.noaa.gov/)
 
-*Finally, versions of Android prior to Android 6.0 might be no longer supported after October 1, 2022.*
+**Versions of Android prior to Android 6.0 will no longer supported after October 1, 2022.**
+
+[wX (Android) ChangeLog](https://gitlab.com/joshua.tee/wx/-/blob/master/doc/ChangeLog_User.md)
+
+[wXL23 (iOS) ChangeLog](https://gitlab.com/joshua.tee/wxl23/-/blob/master/doc/ChangeLog_User.md)
 
 Questions, suggestions, comments - please send to: joshua.tee@gmail.com
 wX is now in its 9th year of active development. Thank-you for all the encouragement, thanks, bug reports, and suggestions along the way.
 
-
 Please see “Settings -> About” for wX/wXL23 disclaimer. The Android wX version is as follows, the wXL23 is mostly the same:
-```
-wX is an efficient and configurable method to access weather content from the NWS,
-Environment Canada, NSSL WRF, and blitzortung.org.
-Additional software and tools are used from Telecine, GraphView,
-bzip2, TouchImageView, OkHttp, ImageMap, HoloColorPicker, and OpenStreetMaps.
-Software is provided \"as is\". Use at your own risk. Use for educational purposes
-and non-commercial purposes only. Do not use it for operational purposes.  
-Copyright 2013-2021 joshua.tee@gmail.com .
+
+*wX is an efficient and configurable method to access weather content from the NWS, Environment Canada, NSSL WRF, and blitzortung.org. Additional software and tools are used from Telecine, GraphView, bzip2, TouchImageView, OkHttp, ImageMap, HoloColorPicker, and OpenStreetMaps. Software is provided "as is". Use at your own risk. Use for educational purposes and non-commercial purposes only. Do not use it for operational purposes. Copyright 2013-2021 joshua.tee@gmail.com .*
+
+**wX is licensed under the GNU GPLv3 license. For more information on the license please go here:**
+[http://www.gnu.org/licenses/gpl-3.0.en.html](http://www.gnu.org/licenses/gpl-3.0.en.html)
 
 Privacy Policy: this app does not collect any data from the user or the user’s device.
 
 Please report bugs or suggestions via email to me as opposed to app store reviews.
-wX is licensed under the GNU GPLv3 license. For more information on the license please go here:
-http://www.gnu.org/licenses/gpl-3.0.en.html
-```
+
 [[_TOC_]]
 
 ### What are the numbers in the tab title area for SPC and MISC (Android only)?
