@@ -1,4 +1,3 @@
-[[_TOC_]]
 
 # “wX” FAQ covering Android’s “wX” and iOS “wXL23”
 
@@ -30,6 +29,7 @@ Please report bugs or suggestions via email to me as opposed to app store review
 wX is licensed under the GNU GPLv3 license. For more information on the license please go here:
 http://www.gnu.org/licenses/gpl-3.0.en.html
 ```
+[[_TOC_]]
 
 ### What are the numbers in the tab title area for SPC and MISC (Android only)?
 
