@@ -69,13 +69,13 @@ final class UtilityGoes {
         // https://cdn.star.nesdis.noaa.gov/GOES17/ABI/CONUS/GEOCOLOR/1250x750.jpg
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/CONUS/GEOCOLOR/1250x750.jpg
         // If GLM is selected and user switches to sector w/o GLM show default instead
-        if additionalCodes.contains(productLocal) && !sectorsWithAdditional.contains(sector) {
-            productLocal = "GEOCOLOR"
-        }
+//        if additionalCodes.contains(productLocal) && !sectorsWithAdditional.contains(sector) {
+//            productLocal = "GEOCOLOR"
+//        }
         var url = GlobalVariables.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + productLocal + "/" + getImageSize(sector) + ".jpg"
         if productLocal == "GLM" {
             url = url.replace("ABI", "GLM")
-            url = url.replace(sectorLocal + "/GLM", sectorLocal + "/EXTENT")
+            url = url.replace(sectorLocal + "/GLM", sectorLocal + "/EXTENT3")
         }
         let bitmap = Bitmap(url)
         bitmap.info = productLocal
@@ -242,18 +242,22 @@ final class UtilityGoes {
         "AirMass - RGB composite based on the data from IR and WV",
         "Sandwich RGB - Bands 3 and 13 combo",
         "Day Cloud Phase",
-        "Night Microphysics"
-    ]
-
-    static let additionalLabels = [
+        "Night Microphysics",
+        "Fire Temperature",
+        "Dust RGB",
         "GLM FED+GeoColor",
         "DMW"
     ]
 
-    static let additionalCodes = [
-        "GLM",
-        "DMW"
-    ]
+//    static let additionalLabels = [
+//        "GLM FED+GeoColor",
+//        "DMW"
+//    ]
+//
+//    static let additionalCodes = [
+//        "GLM",
+//        "DMW"
+//    ]
 
     static let codes = [
         "GEOCOLOR",
@@ -277,6 +281,8 @@ final class UtilityGoes {
         "Sandwich",
         "DayCloudPhase",
         "NightMicrophysics",
+        "FireTemperature",
+        "Dust",
         "GLM",
         "DMW"
     ]

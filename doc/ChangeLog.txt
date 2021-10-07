@@ -1,5 +1,5 @@
 
-56140 2021_09_14 
+56140 2021_10_07 [ADD] Add additional GOES products FireTemperature, Dust, GLM
    *public release
 56139 2021_09_14 [FIX] secondary roads were not showing correctly 
    *public release
