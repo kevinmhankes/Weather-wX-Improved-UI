@@ -1,6 +1,8 @@
+[[_TOC_]]
+
 # “wX” FAQ covering Android’s “wX” and iOS “wXL23”
 
-Last updated: 2021-09-30
+Last updated: 2021-10-07
 
 Helpful Links to check status from NWS if I am on vacation or not able to respond quickly to update the FAQ:
 * [https://radar3pub.ncep.noaa.gov/](https://radar3pub.ncep.noaa.gov/)
@@ -13,18 +15,21 @@ wX is now in its 9th year of active development. Thank-you for all the encourage
 
 
 Please see “Settings -> About” for wX/wXL23 disclaimer. The Android wX version is as follows, the wXL23 is mostly the same:
+```
 wX is an efficient and configurable method to access weather content from the NWS,
-        Environment Canada, NSSL WRF, and blitzortung.org.
-        Additional software and tools are used from Telecine, GraphView,
-        bzip2, TouchImageView, OkHttp, ImageMap, HoloColorPicker, and OpenStreetMaps.
-        Software is provided \"as is\". Use at your own risk. Use for educational purposes and non-commercial purposes only. Do not use it for operational purposes.  Copyright 2013-2021 joshua.tee@gmail.com .
-        Privacy Policy: this app does not collect any data from the user or the user’s device.
-        Please report bugs or suggestions via email to me as opposed to app store reviews.
-        wX is licensed under the GNU GPLv3 license. For more information on the license please go here:
-    http://www.gnu.org/licenses/gpl-3.0.en.html
+Environment Canada, NSSL WRF, and blitzortung.org.
+Additional software and tools are used from Telecine, GraphView,
+bzip2, TouchImageView, OkHttp, ImageMap, HoloColorPicker, and OpenStreetMaps.
+Software is provided \"as is\". Use at your own risk. Use for educational purposes
+and non-commercial purposes only. Do not use it for operational purposes.  
+Copyright 2013-2021 joshua.tee@gmail.com .
 
+Privacy Policy: this app does not collect any data from the user or the user’s device.
 
-
+Please report bugs or suggestions via email to me as opposed to app store reviews.
+wX is licensed under the GNU GPLv3 license. For more information on the license please go here:
+http://www.gnu.org/licenses/gpl-3.0.en.html
+```
 
 ### What are the numbers in the tab title area for SPC and MISC (Android only)?
 
