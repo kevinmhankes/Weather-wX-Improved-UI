@@ -37,12 +37,14 @@ class vcTabParent: UIViewController {
     }
 
     func setTabBarColor() {
-        tabBarController?.tabBar.barTintColor = UIColor(
+        let bgcolor = UIColor(
             red: AppColors.primaryColorRed,
             green: AppColors.primaryColorGreen,
             blue: AppColors.primaryColorBlue,
             alpha: CGFloat(1.0)
         )
+        tabBarController?.tabBar.barTintColor = bgcolor
+        tabBarController?.view.backgroundColor = bgcolor
     }
 
     @objc func handleSwipes(sender: UISwipeGestureRecognizer) {
