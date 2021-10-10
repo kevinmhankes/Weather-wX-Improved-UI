@@ -31,7 +31,7 @@ final class vcSpotters: UIwXViewController {
     private func display() {
         refreshViews()
         spotterCountButton.title = "Count: " + String(spotterData.count)
-        spotterDataSorted = spotterData.sorted(by: { $1.lastName > $0.lastName })
+        spotterDataSorted = spotterData.sorted { $1.lastName > $0.lastName }
         spotterDataSorted.enumerated().forEach { index, item in
             _ = ObjectSpotterCard(self, item, GestureData(index, self, #selector(buttonPressed)))
         }

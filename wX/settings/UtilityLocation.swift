@@ -99,7 +99,7 @@ final class UtilityLocation {
             currentDistance = LatLon.distance(location, radar.location, .MILES)
             radarSites[index].distance = Int(currentDistance)
         }
-        radarSites = radarSites.sorted(by: { $0.distance < $1.distance })
+        radarSites = radarSites.sorted { $0.distance < $1.distance }
         return Array(radarSites[0...cnt])
     }
 

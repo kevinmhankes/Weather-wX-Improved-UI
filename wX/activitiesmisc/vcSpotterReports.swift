@@ -29,7 +29,7 @@ final class vcSpotterReports: UIwXViewController {
     func display() {
         refreshViews()
         spotterReportCountButton.title = "Count: " + String(spotterReportsData.count)
-        spotterReportsDataSorted = spotterReportsData.sorted(by: { $1.time > $0.time })
+        spotterReportsDataSorted = spotterReportsData.sorted { $1.time > $0.time }
         spotterReportsDataSorted.enumerated().forEach { index, item in
             _ = ObjectSpotterReportCard(self, item, GestureData(index, self, #selector(buttonPressed)))
         }
