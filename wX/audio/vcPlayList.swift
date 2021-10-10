@@ -118,7 +118,9 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     @objc func playClicked() {
         var textToSpeak = ""
-        playlistItems.forEach { textToSpeak += Utility.readPref("PLAYLIST_" + $0, "") }
+        playlistItems.forEach {
+            textToSpeak += Utility.readPref("PLAYLIST_" + $0, "")
+        }
         UtilityAudio.playClicked(textToSpeak, synthesizer, fab)
     }
 
@@ -140,7 +142,7 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
     }
 
     func downloadAndAddProduct(_ product: String, _ button: ToolbarIcon) {
-        _ = FutureText(product, { s in self.displayAndAddProduct(s, product, button) })
+        _ = FutureText(product) { s in self.displayAndAddProduct(s, product, button) }
     }
 
     private func displayAndAddProduct(_ s: String, _ product: String, _ button: ToolbarIcon) {
