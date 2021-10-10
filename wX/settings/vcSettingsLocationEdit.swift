@@ -151,14 +151,10 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         )
         alert.addTextField { textField in textField.text = "" }
         alert.addAction(
-            UIAlertAction(
-                title: "OK",
-                style: .default,
-                handler: { _ in
-                    let textField = alert.textFields![0]
-                    self.searchAddress(textField.text!)
-                }
-            )
+            UIAlertAction(title: "OK", style: .default) { _ in
+                let textField = alert.textFields![0]
+                self.searchAddress(textField.text!)
+            }
         )
         present(alert, animated: UIPreferences.backButtonAnimation, completion: nil)
     }
