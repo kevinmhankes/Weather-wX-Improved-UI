@@ -47,8 +47,9 @@ final class vcCanadaWarnings: UIwXViewController {
     }
 
     func getWarningDetail(_ url: String) {
-        _ = FutureText2({ UtilityCanada.getHazardsFromUrl(url) }, { data in Route.textViewer(self, data.replaceAllRegexp("<.*?>", "").replace("ATOM", "").replace("\n\n", "\n"))}
-        )
+        _ = FutureText2({ UtilityCanada.getHazardsFromUrl(url) }, { data in
+            Route.textViewer(self, data.replaceAllRegexp("<.*?>", "").replace("ATOM", "").replace("\n\n", "\n"))
+        })
     }
 
     private func display() {
@@ -59,6 +60,6 @@ final class vcCanadaWarnings: UIwXViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil, completion: { _ in self.display() })
+        coordinator.animate(alongsideTransition: nil) { _ in self.display() }
     }
 }
