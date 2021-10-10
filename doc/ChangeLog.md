@@ -3,6 +3,7 @@
 		 [FIX] xcode13 + ios15 caused nav controller to be black on first launch, add background set
 		 [FIX] TOR/TST/FFW warning was listed twice in Settings -> Colors
 		 [REF] use trailing closure syntax when possible
+		 [REF] radar Perf - remove references to data stored in files
    *public release
 56139 2021_09_14 [FIX] secondary roads were not showing correctly 
    *public release

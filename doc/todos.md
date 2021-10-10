@@ -1,5 +1,4 @@
 * [FIX] settings locations -- macOS popup menu is outside window
-* [REF] radar Perf - remove references to data stored in files
 * [ADD] wrapper for alert action cancel
 * [ADD] mainscreen nexrad long press distance to obs
 * [REF] why is handling of submenu different between vcTabParent and other tabs (object tile matrix)?
