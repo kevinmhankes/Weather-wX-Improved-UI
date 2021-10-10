@@ -569,7 +569,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 updatePolygonWarningsNonGeneric(t)
             }
             for t in [PolygonTypeGeneric.TOR, PolygonTypeGeneric.TST, PolygonTypeGeneric.FFW] {
-                _ = FutureVoid(ObjectPolygonWarning.polygonDataByType[t]!.download, { self.updatePolygonWarningsNonGeneric(t) })
+                _ = FutureVoid(ObjectPolygonWarning.polygonDataByType[t]!.download) { self.updatePolygonWarningsNonGeneric(t) }
             }
         }
     }
@@ -590,15 +590,15 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             updatePolygonWatchGeneric(t)
         }
         if PolygonType.MCD.display {
-            _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]!.download, { self.updatePolygonWatchGeneric(PolygonEnum.SPCMCD) })
+            _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]!.download) { self.updatePolygonWatchGeneric(PolygonEnum.SPCMCD) }
         }
         
         if PolygonType.WATCH.display {
-            _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.download, { self.updatePolygonWatchGeneric(PolygonEnum.SPCWAT) })
+            _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.download) { self.updatePolygonWatchGeneric(PolygonEnum.SPCWAT) }
         }
         
         if PolygonType.MPD.display {
-            _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]!.download, { self.updatePolygonWatchGeneric(PolygonEnum.WPCMPD) })
+            _ = FutureVoid(ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]!.download) { self.updatePolygonWatchGeneric(PolygonEnum.WPCMPD) }
         }
     }
     
@@ -622,7 +622,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         map.toggleMap(self)
     }
 
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? { map.mapView(annotation) }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        map.mapView(annotation)
+    }
 
     func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         map.mapShown = map.mapViewExtra(annotationView, control, mapCall)
@@ -692,7 +694,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 title: "Select number of animation frames:",
                 animateButton,
                 [5, 10, 20, 30, 40, 50, 60],
-                animateFrameCntClicked(_:)
+                animateFrameCntClicked
             )
         } else {
             stopAnimate()
