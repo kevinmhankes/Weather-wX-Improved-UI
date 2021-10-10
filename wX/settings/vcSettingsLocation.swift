@@ -30,7 +30,7 @@ final class vcSettingsLocation: UIwXViewController {
 
     func download() {
         (0..<Location.numLocations).forEach {
-            self.currentConditions.append(ObjectCurrentConditions($0))
+            currentConditions.append(ObjectCurrentConditions($0))
         }
     }
 
