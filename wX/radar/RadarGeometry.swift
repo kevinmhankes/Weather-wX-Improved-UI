@@ -126,21 +126,6 @@ final class RadarGeometry {
         }
     }
 
-//    static func loadBuffer(_ fileID: String, _ bb: MemoryBuffer, _ count: Int, _ pref: Bool, _ addData: Bool) {
-//        if pref {
-//            let floatSize: Float = 0.0
-//            var newArray = [UInt8](repeating: 0, count: count * 4)
-//            let path = Bundle.main.path(forResource: fileID, ofType: "bin")
-//            let data = NSData(contentsOfFile: path!)
-//            data!.getBytes(&newArray, length: MemoryLayout.size(ofValue: floatSize) * count)
-//            if addData {
-//                bb.appendArray(newArray)
-//            } else {
-//                bb.copy(newArray)
-//            }
-//        }
-//    }
-
     // this is only called after leaving settings -> radar
     static func resetTimerOnRadarPolygons() {
         ObjectPolygonWarning.resetTimers()
