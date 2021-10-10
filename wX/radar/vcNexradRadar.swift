@@ -56,11 +56,10 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         paneRange.indices.forEach {
             render($0)
         }
-        coordinator.animate(alongsideTransition: nil,
-                            completion: { _ in
-                                self.map.setupMap(GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap)
-                                self.resetTextObject() }
-        )
+        coordinator.animate(alongsideTransition: nil) { _ in
+            self.map.setupMap(GlobalArrays.radars + GlobalArrays.tdwrRadarsForMap)
+            self.resetTextObject()
+        }
     }
 
     func setPaneSize(_ cgsize: CGSize) {
