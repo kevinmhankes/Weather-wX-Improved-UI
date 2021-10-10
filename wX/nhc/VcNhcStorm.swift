@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcNhcStorm: UIwXViewController {
+final class VcNhcStorm: UIwXViewController {
 
     private var productButton = ToolbarIcon()
     private var goesButton = ToolbarIcon()

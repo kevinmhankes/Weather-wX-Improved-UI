@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcTabMisc: vcTabParent {
+final class VcTabMisc: VcTabParent {
 
     private var tilesPerRow = UIPreferences.tilesPerRow
 

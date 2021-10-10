@@ -16,7 +16,7 @@ final class Route {
     }
     
     static func nhcStorm(_ uiv: UIViewController, _ storm: ObjectNhcStormDetails) {
-        let vc = vcNhcStorm()
+        let vc = VcNhcStorm()
         vc.stormData = storm
         uiv.goToVC(vc)
     }
@@ -225,7 +225,7 @@ final class Route {
     }
     
     static func model(_ uiv: UIViewController, _ model: String) {
-        let vc = vcModels()
+        let vc = VcModels()
         vc.modelActivitySelected = model
         uiv.goToVC(vc)
     }
@@ -247,7 +247,7 @@ final class Route {
     }
     
     static func nhc(_ uiv: UIViewController) {
-        uiv.goToVC(vcNhc())
+        uiv.goToVC(VcNhc())
     }
     
     static func opc(_ uiv: UIViewController) {

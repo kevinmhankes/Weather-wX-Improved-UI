@@ -8,7 +8,7 @@ import UIKit
 import Metal
 import simd
 
-final class vcTabLocation: vcTabParent {
+final class VcTabLocation: VcTabParent {
 
     var menuButton = ToolbarIcon()
     private var objectCurrentConditions = ObjectCurrentConditions()

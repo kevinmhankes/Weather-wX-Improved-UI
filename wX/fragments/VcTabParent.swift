@@ -6,7 +6,7 @@
 
 import UIKit
 
-class vcTabParent: UIViewController {
+class VcTabParent: UIViewController {
 
     var scrollView = UIScrollView()
     var stackView = ObjectStackView(.fill, .horizontal)

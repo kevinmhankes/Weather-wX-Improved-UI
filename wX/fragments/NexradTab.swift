@@ -11,7 +11,7 @@ import simd
 final class NexradTab {
     
     var wxMetal = [WXMetalRender?]()
-    var uiv: vcTabLocation!
+    var uiv: VcTabLocation!
     private var metalLayer = [CAMetalLayer?]()
     private var pipelineState: MTLRenderPipelineState!
     private var commandQueue: MTLCommandQueue!

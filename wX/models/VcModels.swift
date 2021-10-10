@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcModels: UIwXViewController {
+final class VcModels: UIwXViewController {
 
     private var image = TouchImage()
     private var sectorButton = ToolbarIcon()

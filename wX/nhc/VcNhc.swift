@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcNhc: UIwXViewController {
+final class VcNhc: UIwXViewController {
 
     private var textProductButton = ToolbarIcon()
     private var imageProductButton = ToolbarIcon()
