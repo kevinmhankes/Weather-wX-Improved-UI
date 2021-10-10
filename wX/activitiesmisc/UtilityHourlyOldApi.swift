@@ -9,36 +9,36 @@ import Foundation
 final class UtilityHourlyOldApi {
 
     static func getHourlyString(_ locNumber: Int) -> String {
-        let latLon: LatLon = Location.getLatLon(locNumber)
-        let html: String = UtilityIO.getHtml("https://forecast.weather.gov/MapClick.php?lat=" +
+        let latLon = Location.getLatLon(locNumber)
+        let html = UtilityIO.getHtml("https://forecast.weather.gov/MapClick.php?lat=" +
                latLon.latString + "&lon=" +
                latLon.lonString + "&FcstType=digitalDWML")
-        let header: String = "Time".ljust(13) + " " + "Temp".ljust(5) + "Dew".ljust(5) + "Precip%".ljust(7) + "Cloud%".ljust(6) + GlobalVariables.newline
-        return GlobalVariables.newline + header + UtilityHourlyOldApi.parseHourly(html)
+        let header = "Time".ljust(13) + " " + "Temp".ljust(5) + "Dew".ljust(5) + "Precip%".ljust(7) + "Cloud%".ljust(6) + GlobalVariables.newline
+        return GlobalVariables.newline + header + parseHourly(html)
     }
        
     static func parseHourly(_ html: String) -> String {
-        let regexpList: [String] = [
+        let regexpList = [
             "<temperature type=.hourly.*?>(.*?)</temperature>",
             "<temperature type=.dew point.*?>(.*?)</temperature>",
             "<time-layout.*?>(.*?)</time-layout>",
             "<probability-of-precipitation.*?>(.*?)</probability-of-precipitation>",
             "<cloud-amount type=.total.*?>(.*?)</cloud-amount>"
         ]
-        let rawData: [String] = UtilityString.parseXmlExt(regexpList, html)
-        let temp2List: [String] = UtilityString.parseXmlValue(rawData[0])
-        let temp3List: [String] = UtilityString.parseXmlValue(rawData[1])
-        var time2List: [String] = UtilityString.parseXml(rawData[2], "start-valid-time")
-        let temp4List: [String] = UtilityString.parseXmlValue(rawData[3])
-        let temp5List: [String] = UtilityString.parseXmlValue(rawData[4])
+        let rawData = UtilityString.parseXmlExt(regexpList, html)
+        let temp2List = UtilityString.parseXmlValue(rawData[0])
+        let temp3List = UtilityString.parseXmlValue(rawData[1])
+        var time2List = UtilityString.parseXml(rawData[2], "start-valid-time")
+        let temp4List = UtilityString.parseXmlValue(rawData[3])
+        let temp5List = UtilityString.parseXmlValue(rawData[4])
 
-        var sb: String = ""
-        let year: Int = UtilityTime.getYear()
+        var sb = ""
+        let year = UtilityTime.getYear()
 
-        let temp2Len: Int = temp2List.count
-        let temp3Len: Int = temp3List.count
-        let temp4Len: Int = temp4List.count
-        let temp5Len: Int = temp5List.count
+        let temp2Len = temp2List.count
+        let temp3Len = temp3List.count
+        let temp4Len = temp4List.count
+        let temp5Len = temp5List.count
 
         for j in 1..<temp2Len {
             time2List[j] = UtilityString.replaceAllRegexp(time2List[j], "-0[0-9]:00", "")
@@ -46,14 +46,14 @@ final class UtilityHourlyOldApi {
             time2List[j] = time2List[j].replace("T", " ")
             time2List[j] = time2List[j].replace("00:00", "00")
 
-            let timeSplit: [String] = time2List[j].split(" ")
-            let timeSplit2: [String] = timeSplit[0].split("-")
+            let timeSplit = time2List[j].split(" ")
+            let timeSplit2 = timeSplit[0].split("-")
             let month = to.Int(timeSplit2[0])
             let day = to.Int(timeSplit2[1])
             let dayOfTheWeek = UtilityTime.dayOfWeek(year, month, day)
-            var temp3Val: String = "."
-            var temp4Val: String = "."
-            var temp5Val: String = "."
+            var temp3Val = "."
+            var temp4Val = "."
+            var temp5Val = "."
             if temp2Len == temp3Len {
                temp3Val = temp3List[j]
             }
