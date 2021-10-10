@@ -919,7 +919,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if wxMetalRenders[0]!.isTdwr {
             tilts = ["Tilt 1", "Tilt 2", "Tilt 3"]
         }
-        _ = ObjectPopUp(self, title: "Tilt Selection", productButton[0], tilts, changeTilt(_:))
+        _ = ObjectPopUp(self, title: "Tilt Selection", productButton[0], tilts, changeTilt)
     }
 
     func changeTilt(_ tilt: Int) {
