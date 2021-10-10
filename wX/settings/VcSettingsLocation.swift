@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcSettingsLocation: UIwXViewController {
+final class VcSettingsLocation: UIwXViewController {
 
     private var fab: ObjectFab!
     private var productButton = ToolbarIcon()

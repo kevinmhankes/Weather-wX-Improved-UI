@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcSettingsRadar: UIwXViewController {
+final class VcSettingsRadar: UIwXViewController {
 
     private var objectSliders = [ObjectSlider]()
     private var switches = [Switch]()

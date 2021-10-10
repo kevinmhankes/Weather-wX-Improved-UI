@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcSettingsHomescreen: UIwXViewController {
+final class VcSettingsHomescreen: UIwXViewController {
 
     private var homeScreenFav = [String]()
     private var addImageButton = ToolbarIcon()

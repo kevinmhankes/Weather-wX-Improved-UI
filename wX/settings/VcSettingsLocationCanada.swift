@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcSettingsLocationCanada: UIwXViewController {
+final class VcSettingsLocationCanada: UIwXViewController {
 
     private var objectTextViews = [Text]()
     private var cityDisplay = false

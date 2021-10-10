@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcSettingsUI: UIwXViewController {
+final class VcSettingsUI: UIwXViewController {
 
     private var objectSliders = [ObjectSlider]()
     private var switches = [Switch]()

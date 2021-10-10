@@ -10,7 +10,7 @@ import CoreLocation
 import MapKit
 import UserNotifications
 
-final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+final class VcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     private var labelTextView = Text()
     private var latTextView = Text()

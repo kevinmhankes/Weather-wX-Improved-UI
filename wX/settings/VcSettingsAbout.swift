@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcSettingsAbout: UIwXViewController {
+final class VcSettingsAbout: UIwXViewController {
 
     private let faqUrl = "https://gitlab.com/joshua.tee/wxl23/-/tree/master/doc/FAQ.md"
     private let releaseNotesUrl = "https://gitlab.com/joshua.tee/wxl23/-/tree/master/doc/ChangeLog_User.md"

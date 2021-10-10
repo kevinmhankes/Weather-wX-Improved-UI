@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcSettingsColorListing: UIwXViewController {
+final class VcSettingsColorListing: UIwXViewController {
 
     private var colors = [wXColor]()
     private var objectTextViews = [Text]()

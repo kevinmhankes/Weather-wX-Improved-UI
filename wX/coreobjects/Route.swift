@@ -22,7 +22,7 @@ final class Route {
     }
     
     static func colorPicker(_ uiv: UIViewController, _ color: wXColor) {
-        let vc = vcSettingsColorPicker()
+        let vc = VcSettingsColorPicker()
         vc.colorObject = color
         uiv.goToVC(vc)
     }
@@ -47,13 +47,13 @@ final class Route {
     }
     
     static func radarMosaicLocal(_ uiv: UIViewController) {
-        let vc = vcRadarMosaicAwc()
+        let vc = VcRadarMosaicAwc()
         vc.nwsMosaicType = "local"
         uiv.goToVC(vc)
     }
     
     static func radarMosaic(_ uiv: UIViewController) {
-        let vc = vcRadarMosaicAwc()
+        let vc = VcRadarMosaicAwc()
         uiv.goToVC(vc)
     }
     
@@ -112,13 +112,13 @@ final class Route {
     }
     
     static func locationAdd(_ uiv: UIViewController) {
-        let vc = vcSettingsLocationEdit()
+        let vc = VcSettingsLocationEdit()
         vc.settingsLocationEditNum = "0"
         uiv.goToVC(vc)
     }
     
     static func locationEdit(_ uiv: UIViewController, _ number: String) {
-        let vc = vcSettingsLocationEdit()
+        let vc = VcSettingsLocationEdit()
         vc.settingsLocationEditNum = number
         uiv.goToVC(vc)
     }
@@ -181,20 +181,20 @@ final class Route {
     }
     
     static func radar(_ uiv: UIViewController, _ paneString: String) {
-        let vc = vcNexradRadar()
+        let vc = VcNexradRadar()
         vc.wxoglPaneCount = paneString
         uiv.goToVC(vc)
     }
     
     static func radarNoSave(_ uiv: UIwXViewController, _ radarSite: String) {
-        let vc = vcNexradRadar()
+        let vc = VcNexradRadar()
         vc.radarSiteOverride = radarSite
         vc.savePreferences = false
         uiv.goToVC(vc)
     }
     
     static func radarFromTimeButton(_ uiv: UIViewController, _ paneString: String) {
-        let vc = vcNexradRadar()
+        let vc = VcNexradRadar()
         vc.wxoglPaneCount = paneString
         vc.wxoglCalledFromTimeButton = true
         vc.savePreferences = false
@@ -291,35 +291,35 @@ final class Route {
     }
     
     static func settings(_ uiv: UIViewController) {
-        uiv.goToVC(vcSettingsMain())
+        uiv.goToVC(VcSettingsMain())
     }
     
     static func settingsAbout(_ uiv: UIViewController) {
-        uiv.goToVC(vcSettingsAbout())
+        uiv.goToVC(VcSettingsAbout())
     }
     
     static func settingsLocationCanada(_ uiv: UIViewController) {
-        uiv.goToVC(vcSettingsLocationCanada())
+        uiv.goToVC(VcSettingsLocationCanada())
     }
     
     static func settingsColors(_ uiv: UIViewController) {
-        uiv.goToVC(vcSettingsColorListing())
+        uiv.goToVC(VcSettingsColorListing())
     }
     
     static func settingsHomeScreen(_ uiv: UIViewController) {
-        uiv.goToVC(vcSettingsHomescreen())
+        uiv.goToVC(VcSettingsHomescreen())
     }
     
     static func settingsLocation(_ uiv: UIViewController) {
-        uiv.goToVC(vcSettingsLocation())
+        uiv.goToVC(VcSettingsLocation())
     }
     
     static func settingsRadar(_ uiv: UIViewController) {
-        uiv.goToVC(vcSettingsRadar())
+        uiv.goToVC(VcSettingsRadar())
     }
     
     static func settingsUI(_ uiv: UIViewController) {
-        uiv.goToVC(vcSettingsUI())
+        uiv.goToVC(VcSettingsUI())
     }
     
     static func spotters(_ uiv: UIViewController) {
