@@ -17,9 +17,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
     private var numbers = [String]()
     private var listOfText = [String]()
     private var urls = [String]()
-    // private var productNumber = ""
     private var objectWatchProduct: ObjectWatchProduct?
-    // var watchMcdMpdNumber = ""
     var watchMcdMpdType = PolygonEnum.SPCWAT
 
     override func viewDidLoad() {
@@ -27,10 +25,6 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
         UIApplication.shared.isIdleTimerDisabled = true
         let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         let radarButton = ToolbarIcon(self, .radar, #selector(radarClicked))
-//        productNumber = watchMcdMpdNumber
-//        if productNumber != "" {
-//            watchMcdMpdNumber = ""
-//        }
         toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, playButton, playListButton, shareButton, radarButton]).items
         objScrollStackView = ScrollStackView(self)
         getContent()
@@ -48,12 +42,7 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
     }
 
     private func download() {
-        var productNumberList = [String]()
-        // if productNumber == "" {
-            productNumberList = ObjectWatchProduct.getNumberList(watchMcdMpdType)
-//        } else {
-//            productNumberList = [productNumber]
-//        }
+        let productNumberList = ObjectWatchProduct.getNumberList(watchMcdMpdType)
         productNumberList.forEach {
             let number = String(format: "%04d", (Int($0.replace(" ", "")) ?? 0))
             objectWatchProduct = ObjectWatchProduct(watchMcdMpdType, number)
@@ -143,12 +132,9 @@ final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ in
-                self.refreshViews()
-                self.display()
-            }
-        )
+        coordinator.animate(alongsideTransition: nil) { _ in
+            self.refreshViews()
+            self.display()
+        }
     }
 }
