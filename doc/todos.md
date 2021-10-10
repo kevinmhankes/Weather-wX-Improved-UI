@@ -1,3 +1,4 @@
+* [ADD] mainscreen nexrad long press distance to obs
 * [REF] why is handling of submenu different between vcTabParent and other tabs (object tile matrix)?
 * [ADD] use route in object tile matrix
 * [BUG] playlist, play audio, sleep device, wait 30 min, unlick, audio briefly plays and quits
