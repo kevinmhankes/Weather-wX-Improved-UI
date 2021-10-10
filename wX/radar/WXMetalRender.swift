@@ -139,7 +139,7 @@ final class WXMetalRender {
             watchBuffers,
             watchTornadoBuffers,
             mpdBuffers
-            ].forEach {
+        ].forEach {
             if $0.type.display {
                 radarLayers.append($0)
             }
