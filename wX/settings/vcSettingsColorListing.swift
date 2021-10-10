@@ -51,8 +51,10 @@ final class vcSettingsColorListing: UIwXViewController {
         colors.append(wXColor("Tornado Watch", "RADAR_COLOR_TOR_WATCH", 255, 0, 0 ))
         colors.append(wXColor("Flash Flood Warning", "RADAR_COLOR_FFW", 0, 255, 0 ))
         ObjectPolygonWarning.polygonList.forEach { poly in
-            let polygonType = ObjectPolygonWarning.polygonDataByType[poly]!
-            colors.append(wXColor(polygonType.name, polygonType.prefTokenColor, polygonType.defaultColors[poly]!))
+            if poly != PolygonTypeGeneric.TOR && poly != PolygonTypeGeneric.TST && poly != PolygonTypeGeneric.FFW {
+                let polygonType = ObjectPolygonWarning.polygonDataByType[poly]!
+                colors.append(wXColor(polygonType.name, polygonType.prefTokenColor, polygonType.defaultColors[poly]!))
+            }
         }
         colors.append(wXColor("MCD", "RADAR_COLOR_MCD", 153, 51, 255 ))
         colors.append(wXColor("MPD", "RADAR_COLOR_MPD", 0, 255, 0 ))
