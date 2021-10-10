@@ -805,14 +805,14 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 + " "
                 + Utility.getRadarSiteName(rid.name)
                 + " " + String(rid.distance) + " mi"
-            alert.addAction(UIAlertAction(radarDescription, { _ in self.radarSiteChanged(rid.name, index) }))
+            alert.addAction(UIAlertAction(radarDescription) { _ in self.radarSiteChanged(rid.name, index) })
         }
 
         if WXGLNexrad.canTilt(wxMetalRenders[index]!.product) {
-            alert.addAction(UIAlertAction("Change Tilt", { _ in self.showTiltMenu() }))
+            alert.addAction(UIAlertAction("Change Tilt") { _ in self.showTiltMenu() })
         }
         if RadarPreferences.warnings || ObjectPolygonWarning.areAnyEnabled() { // took out && warningCount > 0
-            alert.addAction(UIAlertAction("Show Warning", { _ in UtilityRadarUI.showWarning(pointerLocation, self) }))
+            alert.addAction(UIAlertAction("Show Warning") { _ in UtilityRadarUI.showWarning(pointerLocation, self) })
         }
 //        if RadarPreferences.radarWatMcd && MyApplication.watNoList.value != "" {
 //            alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self) }))
@@ -826,32 +826,30 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
 //        }
         
         if RadarPreferences.watMcd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.numberList.getValue() != "" {
-            alert.addAction(UIAlertAction("Show Watch", { _ in UtilityRadarUI.showNearestWatch(.SPCWAT, pointerLocation, self) }))
+            alert.addAction(UIAlertAction("Show Watch") { _ in UtilityRadarUI.showNearestWatch(.SPCWAT, pointerLocation, self) })
         }
         if RadarPreferences.watMcd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCMCD]!.numberList.getValue()  != "" {
             // print(MyApplication.mcdNoList.value)
-            alert.addAction(UIAlertAction("Show MCD", { _ in UtilityRadarUI.showNearestWatch(.SPCMCD, pointerLocation, self) }))
+            alert.addAction(UIAlertAction("Show MCD") { _ in UtilityRadarUI.showNearestWatch(.SPCMCD, pointerLocation, self) })
         }
         if RadarPreferences.mpd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]!.numberList.getValue()  != "" {
-            alert.addAction(UIAlertAction("Show MPD", { _ in UtilityRadarUI.showNearestWatch(.WPCMPD, pointerLocation, self) }))
+            alert.addAction(UIAlertAction("Show MPD") { _ in UtilityRadarUI.showNearestWatch(.WPCMPD, pointerLocation, self) })
         }
 
         let obsSite = UtilityMetar.findClosestObservation(pointerLocation)
-        alert.addAction(UIAlertAction("Observation: " + obsSite.name + " " + to.String(obsSite.distance) + " miles", { _ in UtilityRadarUI.getMetar(pointerLocation, self) }))
+        alert.addAction(UIAlertAction("Observation: " + obsSite.name + " " + to.String(obsSite.distance) + " miles") { _ in UtilityRadarUI.getMetar(pointerLocation, self) })
         alert.addAction(
             UIAlertAction(
                 "Forecast: "
                     + pointerLocation.latString.truncate(6)
                     + ", "
-                    + pointerLocation.lonString.truncate(6), { _ in Route.getForecast(self, pointerLocation) }
-            )
+                    + pointerLocation.lonString.truncate(6)) { _ in Route.getForecast(self, pointerLocation) }
         )
-        alert.addAction(UIAlertAction("Meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self) }))
+        alert.addAction(UIAlertAction("Meteogram: " + obsSite.name) { _ in UtilityRadarUI.getMeteogram(pointerLocation, self) })
         alert.addAction(
             UIAlertAction(
-                "Radar status message: " + wxMetalRenders[index]!.radarSite, { _ in
+                "Radar status message: " + wxMetalRenders[index]!.radarSite) { _ in
                     UtilityRadarUI.getRadarStatus(self, self.wxMetalRenders[index]!.radarSite) }
-            )
         )
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(dismiss)
