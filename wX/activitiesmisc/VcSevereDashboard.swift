@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-final class vcSevereDashboard: UIwXViewController {
+final class VcSevereDashboard: UIwXViewController {
 
     private var buttonActions = [String]()
     private var severeNotices = [PolygonEnum: SevereNotice]()

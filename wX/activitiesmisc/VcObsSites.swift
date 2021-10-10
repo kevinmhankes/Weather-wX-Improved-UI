@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcObsSites: UIwXViewController {
+final class VcObsSites: UIwXViewController {
 
     private var listCity = [String]()
     private var stateSelected = ""

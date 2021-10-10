@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcTextViewer: UIwXViewControllerWithAudio {
+final class VcTextViewer: UIwXViewControllerWithAudio {
 
     var html = ""
     var isFixedWidth = false

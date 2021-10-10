@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcCanadaText: UIwXViewControllerWithAudio {
+final class VcCanadaText: UIwXViewControllerWithAudio {
 
     private var productButton = ToolbarIcon()
     private let prefToken = "CA_TEXT_LASTUSED"

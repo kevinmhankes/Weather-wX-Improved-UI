@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcUSAlertsDetail: UIwXViewControllerWithAudio {
+final class VcUSAlertsDetail: UIwXViewControllerWithAudio {
 
     private var cap = CapAlert()
     private var objectAlertDetail: ObjectAlertDetail!

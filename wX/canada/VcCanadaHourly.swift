@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcCanadaHourly: UIwXViewControllerWithAudio {
+final class VcCanadaHourly: UIwXViewControllerWithAudio {
 
     override func viewDidLoad() {
         super.viewDidLoad()

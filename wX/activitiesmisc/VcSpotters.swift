@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcSpotters: UIwXViewController {
+final class VcSpotters: UIwXViewController {
 
     private var spotterData = [Spotter]()
     private var spotterDataSorted = [Spotter]()

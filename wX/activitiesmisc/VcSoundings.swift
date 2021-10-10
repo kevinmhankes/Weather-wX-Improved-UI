@@ -7,7 +7,7 @@
 import UIKit
 import MapKit
 
-final class vcSoundings: UIwXViewController, MKMapViewDelegate {
+final class VcSoundings: UIwXViewController, MKMapViewDelegate {
 
     private var image = TouchImage()
     private var siteButton = ToolbarIcon()

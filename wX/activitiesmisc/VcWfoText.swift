@@ -7,7 +7,7 @@
 import UIKit
 import MapKit
 
-final class vcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
+final class VcWfoText: UIwXViewControllerWithAudio, MKMapViewDelegate {
 
     private var productButton = ToolbarIcon()
     private var siteButton = ToolbarIcon()

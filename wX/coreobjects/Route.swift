@@ -10,7 +10,7 @@ import UIKit
 final class Route {
     
     static func getForecast(_ uiv: UIViewController, _ latLon: LatLon) {
-        let vc = vcAdhocLocation()
+        let vc = VcAdhocLocation()
         vc.latLon = latLon
         uiv.goToVC(vc)
     }
@@ -40,7 +40,7 @@ final class Route {
     }
     
     static func textViewer(_ uiv: UIViewController, _ text: String, isFixedWidth: Bool = false) {
-        let vc = vcTextViewer()
+        let vc = VcTextViewer()
         vc.html = text
         vc.isFixedWidth = isFixedWidth
         uiv.goToVC(vc)
@@ -94,7 +94,7 @@ final class Route {
             vc.sectorCode = "CONUS"
             uiv.goToVC(vc)
         } else {
-            uiv.goToVC(vcLightning())
+            uiv.goToVC(VcLightning())
         }
     }
     
@@ -137,14 +137,14 @@ final class Route {
     
     static func alerts(_ uiv: UIViewController) {
         if !Location.isUS {
-            uiv.goToVC(vcCanadaWarnings())
+            uiv.goToVC(VcCanadaWarnings())
         } else {
-            uiv.goToVC(vcUSAlerts())
+            uiv.goToVC(VcUSAlerts())
         }
     }
     
     static func alertDetail(_ uiv: UIViewController, _ url: String) {
-        let vc = vcUSAlertsDetail()
+        let vc = VcUSAlertsDetail()
         vc.usAlertsDetailUrl = url
         uiv.goToVC(vc)
     }
@@ -167,7 +167,7 @@ final class Route {
     }
     
     static func imageViewer(_ uiv: UIViewController, _ url: String) {
-        let vc = vcImageViewer()
+        let vc = VcImageViewer()
         vc.url = url
         uiv.goToVC(vc)
     }
@@ -202,7 +202,7 @@ final class Route {
     }
     
     static func map(_ uiv: UIwXViewController, _ lat: String, _ lon: String, radius: Double = 20000.0) {
-        let vc = vcMapKitView()
+        let vc = VcMapKitView()
         vc.mapKitLat = lat
         vc.mapKitLon = lon
         vc.mapKitRadius = radius
@@ -210,7 +210,7 @@ final class Route {
     }
     
     static func web(_ uiv: UIwXViewController, _ url: String) {
-        let vc = vcWebView()
+        let vc = VcWebView()
         vc.showProduct = false
         vc.useUrl = true
         vc.url = url
@@ -218,7 +218,7 @@ final class Route {
     }
     
     static func webTwitter(_ uiv: UIViewController, _ url: String) {
-        let vc = vcWebView()
+        let vc = VcWebView()
         vc.url = ""
         vc.aStateCode = url
         uiv.goToVC(vc)
@@ -232,9 +232,9 @@ final class Route {
     
     static func severeDashboard(_ uiv: UIViewController) {
         if Location.isUS {
-            uiv.goToVC(vcSevereDashboard())
+            uiv.goToVC(VcSevereDashboard())
         } else {
-            uiv.goToVC(vcCanadaWarnings())
+            uiv.goToVC(VcCanadaWarnings())
         }
     }
     
@@ -251,43 +251,43 @@ final class Route {
     }
     
     static func opc(_ uiv: UIViewController) {
-        uiv.goToVC(vcOpc())
+        uiv.goToVC(VcOpc())
     }
     
     static func wfoText(_ uiv: UIViewController) {
         if Location.isUS {
-            uiv.goToVC(vcWfoText())
+            uiv.goToVC(VcWfoText())
         } else {
-            uiv.goToVC(vcCanadaText())
+            uiv.goToVC(VcCanadaText())
         }
     }
     
     static func hourly(_ uiv: UIViewController) {
         if Location.isUS {
-            uiv.goToVC(vcHourly())
+            uiv.goToVC(VcHourly())
         } else {
-            uiv.goToVC(vcCanadaHourly())
+            uiv.goToVC(VcCanadaHourly())
         }
     }
     
     static func lsrByWfo(_ uiv: UIViewController) {
-        uiv.goToVC(vcLsrByWfo())
+        uiv.goToVC(VcLsrByWfo())
     }
     
     static func soundings(_ uiv: UIViewController) {
-        uiv.goToVC(vcSoundings())
+        uiv.goToVC(VcSoundings())
     }
     
     static func observations(_ uiv: UIViewController) {
         if !Location.isUS {
             Route.imageViewer(uiv, "http://weather.gc.ca/data/wxoimages/wocanmap0_e.jpg")
         } else {
-            uiv.goToVC(vcObservations())
+            uiv.goToVC(VcObservations())
         }
     }
     
     static func obsSites(_ uiv: UIViewController) {
-        uiv.goToVC(vcObsSites())
+        uiv.goToVC(VcObsSites())
     }
     
     static func settings(_ uiv: UIViewController) {
@@ -323,15 +323,15 @@ final class Route {
     }
     
     static func spotters(_ uiv: UIViewController) {
-        uiv.goToVC(vcSpotters())
+        uiv.goToVC(VcSpotters())
     }
     
     static func spotterReports(_ uiv: UIViewController) {
-        uiv.goToVC(vcSpotterReports())
+        uiv.goToVC(VcSpotterReports())
     }
     
     static func playList(_ uiv: UIViewController) {
-        uiv.goToVC(vcPlayList())
+        uiv.goToVC(VcPlayList())
     }
     
     static func wpcImage(_ uiv: UIViewController) {
