@@ -34,7 +34,7 @@ final class vcSpcCompMap: UIwXViewController {
             if index > 0 && layers.contains(UtilitySpcCompmap.urlIndices[UtilitySpcCompmap.labels.firstIndex(of: rid)!]) {
                 pre = "(on) "
             }
-            alert.addAction(UIAlertAction(pre + rid, { _ in self.productChanged(index) }))
+            alert.addAction(UIAlertAction(pre + rid) { _ in self.productChanged(index) })
         }
         alert.finish()
     }
