@@ -45,7 +45,6 @@ final class UtilityWXMetalPerf {
         (0..<numberOfRadials).forEach { radial in
             numberOfRleHalfWords = dis2.getUnsignedShort()
             angle = (450.0 - (Double(Int(dis2.getUnsignedShort())) / 10.0))
-            // print(angle)
             dis2.skipBytes(2)
             if radial < numberOfRadials - 1 {
                 dis2.mark(dis2.position)

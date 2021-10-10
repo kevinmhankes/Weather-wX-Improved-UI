@@ -81,8 +81,6 @@ final class UtilityWXMetalPerfL2 {
         let disFirst: MemoryBuffer
         disFirst = fileStorage.animationMemoryBufferL2[index]
         disFirst.position = 0
-        print("size start")
-        
         let refDecompSize = 827040
         let velDecompSize = 460800
         var loopCnt = 0
@@ -143,10 +141,7 @@ final class UtilityWXMetalPerfL2 {
                 break
             }
         }
-        //
         fileStorage.animationMemoryBuffer[index] = UtilityIO.readFileToByteBuffer(destinationPath)
         UtilityFileManagement.deleteFile(destinationPath)
-//        print(index)
-//        print(fileStorage.animationMemoryBuffer[index].capacity)
     }
 }
