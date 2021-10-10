@@ -49,7 +49,7 @@ final class vcSettingsHomescreen: UIwXViewController {
     @objc func addClicked() {
         let alert = ObjectPopUp(self, "Product Selection", addButton)
         Array(UtilityHomeScreen.localChoicesText.keys).sorted().forEach { item in
-            alert.addAction(UIAlertAction(title: UtilityHomeScreen.localChoicesText[item], style: .default, handler: { _ in self.addProduct(item) }))
+            alert.addAction(UIAlertAction(title: UtilityHomeScreen.localChoicesText[item], style: .default) { _ in self.addProduct(item) })
         }
         alert.finish()
     }
@@ -73,7 +73,7 @@ final class vcSettingsHomescreen: UIwXViewController {
         let alert = ObjectPopUp(self, "Graphical Products", addImageButton)
         (UtilityHomeScreen.localChoicesImages + GlobalArrays.nwsImageProducts).forEach { item in
             let list = item.split(":")
-            alert.addAction(UIAlertAction(title: list[1], style: .default, handler: { _ in self.addProduct("IMG-" + list[0]) }))
+            alert.addAction(UIAlertAction(title: list[1], style: .default) { _ in self.addProduct("IMG-" + list[0]) })
         }
         alert.finish()
     }
@@ -82,7 +82,7 @@ final class vcSettingsHomescreen: UIwXViewController {
         let alert = ObjectPopUp(self, "Text Products", addTextButton)
         UtilityWpcText.labelsWithCodes.forEach { item in
             let list = item.split(":")
-            alert.addAction(UIAlertAction(title: list[1], style: .default, handler: { _ in self.addProduct("TXT-" + list[0]) }))
+            alert.addAction(UIAlertAction(title: list[1], style: .default) { _ in self.addProduct("TXT-" + list[0]) })
         }
         alert.finish()
     }
@@ -97,12 +97,12 @@ final class vcSettingsHomescreen: UIwXViewController {
         let title = sender.strData
         let alert = ObjectPopUp(self, title, addButton)
         if index != 0 {
-            alert.addAction(UIAlertAction(title: "Move Up", style: .default, handler: { _ in self.move(index, .up) }))
+            alert.addAction(UIAlertAction(title: "Move Up", style: .default) { _ in self.move(index, .up) })
         }
         if index != (homeScreenFav.count - 1) {
-            alert.addAction(UIAlertAction(title: "Move Down", style: .default, handler: { _ in self.move(index, .down) }))
+            alert.addAction(UIAlertAction(title: "Move Down", style: .default) { _ in self.move(index, .down) })
         }
-        alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { _ in self.delete(selection: index) }))
+        alert.addAction(UIAlertAction(title: "Delete", style: .default) { _ in self.delete(selection: index) })
         alert.finish()
     }
 
