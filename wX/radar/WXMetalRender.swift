@@ -703,14 +703,14 @@ final class WXMetalRender {
     }
 
     func constructWBLines() {
-        constructGenericLinesShort(wbBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(projectionNumbers, isGust: false, fileStorage))
+        constructGenericLinesShort(wbBuffers, WXGLNexradLevel3WindBarbs.decode(projectionNumbers, isGust: false, fileStorage))
         constructWBLinesGusts()
         constructWBCircle()
         wbBuffers.generateMtlBuffer(device)
     }
 
     func constructWBLinesGusts() {
-        constructGenericLinesShort(wbGustsBuffers, WXGLNexradLevel3WindBarbs.decodeAndPlot(projectionNumbers, isGust: true, fileStorage))
+        constructGenericLinesShort(wbGustsBuffers, WXGLNexradLevel3WindBarbs.decode(projectionNumbers, isGust: true, fileStorage))
         wbGustsBuffers.generateMtlBuffer(device)
     }
 
