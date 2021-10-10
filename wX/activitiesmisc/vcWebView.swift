@@ -62,7 +62,7 @@ final class vcWebView: UIwXViewController {
             self,
             productButton,
             GlobalArrays.states + UtilityCanada.provinceCodes,
-            productChanged(_:)
+            productChanged
         )
     }
 
