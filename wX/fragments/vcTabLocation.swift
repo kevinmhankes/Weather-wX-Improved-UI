@@ -303,10 +303,10 @@ final class vcTabLocation: vcTabParent {
         let alert = UIAlertController(title: "Select location:", message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
         (0..<Location.numberOfLocations).forEach { index in
-            let action = UIAlertAction(title: Location.getName(index), style: .default, handler: { _ in self.locationChanged(index) })
+            let action = UIAlertAction(title: Location.getName(index), style: .default) { _ in self.locationChanged(index) }
             alert.addAction(action)
         }
-        alert.addAction(UIAlertAction(title: "Add location..", style: .default, handler: { _ in self.addLocation() }))
+        alert.addAction(UIAlertAction(title: "Add location..", style: .default) { _ in self.addLocation() })
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         if let popoverController = alert.popoverPresentationController {
             popoverController.barButtonItem = menuButton
@@ -317,14 +317,11 @@ final class vcTabLocation: vcTabParent {
     @objc func ccAction() {
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert.view.tintColor = ColorCompatibility.label
-        alert.addAction(UIAlertAction(title: "Edit location..", style: .default, handler: { _ in self.editLocation() }))
-        alert.addAction(UIAlertAction(title: "Refresh data", style: .default, handler: { _ in self.getContentSuper() }))
+        alert.addAction(UIAlertAction(title: "Edit location..", style: .default) { _ in self.editLocation() })
+        alert.addAction(UIAlertAction(title: "Refresh data", style: .default) { _ in self.getContentSuper() })
         if UtilitySettings.isRadarInHomeScreen() {
-            alert.addAction(UIAlertAction(
-                                title: Location.rid + ": " + WXGLNexrad.getRadarTimeStamp(nexradTab.wxMetal[0]!.fileStorage),
-                                style: .default,
-                                handler: { _ in Route.radarFromMainScreen(self) })
-                            )
+            alert.addAction(UIAlertAction(title: Location.rid + ": " + WXGLNexrad.getRadarTimeStamp(nexradTab.wxMetal[0]!.fileStorage),
+                                style: .default) { _ in Route.radarFromMainScreen(self) })
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         if let popoverController = alert.popoverPresentationController {
