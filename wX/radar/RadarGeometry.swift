@@ -106,55 +106,6 @@ final class RadarGeometry {
             RadarGeometryFile(mxResid, countMexico, stateRelativeBuffer, RadarPreferences.camxBorders, true),
             RadarGeometryFile(hwExtFileResid, countHwExt, hwExtRelativeBuffer, RadarPreferences.hwEnhExt, false)
         ]
-//        let fileidArr = [
-//            lakesFileResid,
-//            hwFileResid,
-//            countyFileResid,
-//            stateLinesFileResid,
-//            caResid,
-//            mxResid,
-//            hwExtFileResid
-//        ]
-//        let countArr = [
-//            countLakes,
-//            countHw,
-//            countCounty,
-//            countStateUs,
-//            countCanada,
-//            countMexico,
-//            countHwExt
-//        ]
-//        let bbArr = [
-//            lakesRelativeBuffer,
-//            hwRelativeBuffer,
-//            countyRelativeBuffer,
-//            stateRelativeBuffer,
-//            stateRelativeBuffer,
-//            stateRelativeBuffer,
-//            hwExtRelativeBuffer
-//        ]
-//        let prefArr = [
-//            GeographyType.lakes.display,
-//            true,
-//            true,
-//            true,
-//            RadarPreferences.camxBorders,
-//            RadarPreferences.camxBorders,
-//            RadarPreferences.hwEnhExt
-//        ]
-//        let fileAdd = [
-//            false,
-//            false,
-//            false,
-//            false,
-//            true,
-//            true,
-//            false
-//        ]
-//        fileidArr.indices.forEach {
-//            loadBuffer(fileidArr[$0], bbArr[$0], countArr[$0], prefArr[$0], fileAdd[$0])
-//        }
-        
         dataFiles.forEach { dataFile in
             loadBuffer(dataFile)
         }
