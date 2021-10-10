@@ -4,6 +4,7 @@
 		 [FIX] TOR/TST/FFW warning was listed twice in Settings -> Colors
 		 [REF] use trailing closure syntax when possible
 		 [REF] radar Perf - remove references to data stored in files
+		 [FIX] re-architect SPC SWO Summary in response to crash reports (speculated on what the problem was)
    *public release
 56139 2021_09_14 [FIX] secondary roads were not showing correctly 
    *public release
