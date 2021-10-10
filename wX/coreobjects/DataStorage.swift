@@ -7,7 +7,7 @@
 final class DataStorage {
 
     private let preference: String
-    private var data: String = ""
+    private var data = ""
 
     init(_ preference: String) {
         self.preference = preference
