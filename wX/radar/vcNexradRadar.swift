@@ -387,7 +387,9 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
     }
 
     @objc func tapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
-        if !map.mapShown { WXMetalSurfaceView.singleTap(self, wxMetalRenders, wxMetalTextObject, gestureRecognizer) }
+        if !map.mapShown {
+            WXMetalSurfaceView.singleTap(self, wxMetalRenders, wxMetalTextObject, gestureRecognizer)
+        }
     }
 
     @objc func tapGestureDouble(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -451,10 +453,11 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 pipelineState = nil
                 timer = nil
                 wxMetalTextObject = WXMetalTextObject()
-                dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
-            } else {
-                dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
-            }
+                // dismiss(animated: UIPreferences.backButtonAnimation) {}
+            } // else {
+                // dismiss(animated: UIPreferences.backButtonAnimation, completion: {})
+            dismiss(animated: UIPreferences.backButtonAnimation) {}
+            // }
         }
     }
 
