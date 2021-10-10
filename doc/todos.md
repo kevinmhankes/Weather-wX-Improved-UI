@@ -1,3 +1,4 @@
+* [FIX] GOES GLM for new sectors res is to low
 * [FIX] settings locations -- macOS popup menu is outside window
 * [ADD] wrapper for alert action cancel
 * [ADD] mainscreen nexrad long press distance to obs
