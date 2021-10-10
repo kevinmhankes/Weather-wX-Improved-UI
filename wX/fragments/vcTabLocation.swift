@@ -347,7 +347,7 @@ final class vcTabLocation: vcTabParent {
     }
 
     func getContentText(_ product: String, _ stackView: UIStackView) {
-        _ = FutureText(product.uppercased(), { s in self.displayText(product, stackView, s) })
+        _ = FutureText(product.uppercased()) { s in self.displayText(product, stackView, s) }
     }
 
     private func displayText(_ product: String, _ stackView: UIStackView, _ html: String) {
