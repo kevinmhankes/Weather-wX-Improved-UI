@@ -794,13 +794,12 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
                 + " " + String(rid.distance) + " mi"
             alert.addAction(UIAlertAction(radarDescription) { _ in self.radarSiteChanged(rid.name, index) })
         }
-
         if WXGLNexrad.canTilt(wxMetalRenders[index]!.product) {
             alert.addAction(UIAlertAction("Change Tilt") { _ in self.showTiltMenu() })
         }
         if RadarPreferences.warnings || ObjectPolygonWarning.areAnyEnabled() { // took out && warningCount > 0
             alert.addAction(UIAlertAction("Show Warning") { _ in UtilityRadarUI.showWarning(pointerLocation, self) })
-        }        
+        }
         if RadarPreferences.watMcd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.numberList.getValue() != "" {
             alert.addAction(UIAlertAction("Show Watch") { _ in UtilityRadarUI.showNearestWatch(.SPCWAT, pointerLocation, self) })
         }
@@ -811,7 +810,6 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         if RadarPreferences.mpd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.WPCMPD]!.numberList.getValue()  != "" {
             alert.addAction(UIAlertAction("Show MPD") { _ in UtilityRadarUI.showNearestWatch(.WPCMPD, pointerLocation, self) })
         }
-
         let obsSite = UtilityMetar.findClosestObservation(pointerLocation)
         alert.addAction(UIAlertAction("Observation: " + obsSite.name + " " + to.String(obsSite.distance) + " miles") { _ in UtilityRadarUI.getMetar(pointerLocation, self) })
         alert.addAction(
@@ -925,20 +923,16 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
             UIKeyCommand(input: "8", modifierFlags: .numericPad, action: #selector(keyUpArrow)),
             UIKeyCommand(input: "6", modifierFlags: .numericPad, action: #selector(keyRightArrow)),
             UIKeyCommand(input: "2", modifierFlags: .numericPad, action: #selector(keyDownArrow)),
-
             UIKeyCommand(input: "7", modifierFlags: .numericPad, action: #selector(keyLeftUpArrow)),
             UIKeyCommand(input: "9", modifierFlags: .numericPad, action: #selector(keyRightUpArrow)),
             UIKeyCommand(input: "3", modifierFlags: .numericPad, action: #selector(keyRightDownArrow)),
             UIKeyCommand(input: "1", modifierFlags: .numericPad, action: #selector(keyLeftDownArrow)),
-
             UIKeyCommand(input: "5", modifierFlags: .numericPad, action: #selector(keyZoomOut)),
             UIKeyCommand(input: "0", modifierFlags: .numericPad, action: #selector(keyZoomIn)),
-
             UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags: [], action: #selector(keyRightArrow)),
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: [], action: #selector(keyLeftArrow)),
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: [], action: #selector(keyUpArrow)),
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: [], action: #selector(keyDownArrow)),
-
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: .alternate, action: #selector(keyZoomOut)),
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: .alternate, action: #selector(keyZoomIn))
         ]

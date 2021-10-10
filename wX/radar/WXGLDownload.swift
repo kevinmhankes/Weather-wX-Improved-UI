@@ -151,13 +151,10 @@ final class WXGLDownload {
             sizes.append($0.split(" ")[0])
         }
         sizes.removeLast()
-        // print(html)
         let tmpArr = html.replace("<br>", " ").split(" ")
         if tmpArr.count < 4 {
             return ""
         }
-        // print(sizes)
-        // print(tmpArr.count)
         var fileName = tmpArr[tmpArr.count - 1].split("\n")[0]
         let fnPrev = tmpArr[tmpArr.count - 2].split("\n")[0]
         let fnSize = Int(sizes[sizes.count - 1]) ?? 1
@@ -166,7 +163,6 @@ final class WXGLDownload {
         if ratio < 0.75 {
             fileName = fnPrev
         }
-        // print("AAA " + baseUrl + fileName)
         return baseUrl + fileName
     }
     
