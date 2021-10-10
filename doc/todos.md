@@ -14,3 +14,10 @@
 * [FIX] main screen images, if no image, don't show
 * [FIX] remove CLI in WFO Text
 * [FIX] scan for Future* not being used
+
+old:
+button.addTarget(self, action: #selector(test(sender:)), for: .touchUpInside)
+@objc func test(sender: UIButton){}
+
+iOS 14 onwards
+button.addAction(UIAction(title: "Test Button", handler: { _ in  print("Test")}), for: .touchUpInside)
