@@ -1,6 +1,7 @@
 
-56140 2021_10_08 [ADD] Add additional GOES products FireTemperature, Dust, GLM
+56140 2021_10_10 [ADD] Add additional GOES products FireTemperature, Dust, GLM
 		 [FIX] xcode13 + ios15 caused nav controller to be black on first launch, add background set
+		 [REF] use trailing closure syntax when possible
    *public release
 56139 2021_09_14 [FIX] secondary roads were not showing correctly 
    *public release
