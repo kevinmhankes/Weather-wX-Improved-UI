@@ -75,12 +75,9 @@ final class vcLsrByWfo: UIwXViewController, MKMapViewDelegate {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(
-            alongsideTransition: nil,
-            completion: { _ in
-                self.map.setupMap(GlobalArrays.wfos)
-                self.display()
-            }
-        )
+        coordinator.animate(alongsideTransition: nil) { _ in
+            self.map.setupMap(GlobalArrays.wfos)
+            self.display()
+        }
     }
 }
