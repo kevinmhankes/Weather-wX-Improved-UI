@@ -16,11 +16,11 @@ final class ObjectPolygonWatch {
     static var polygonDataByType = [PolygonEnum: ObjectPolygonWatch]()
     static var watchLatlonCombined = DataStorage("WATCH_LATLON_COMBINED")
 
-    var storage: DataStorage = DataStorage("")
-    var latLonList: DataStorage  = DataStorage("")
-    var numberList: DataStorage  = DataStorage("")
+    var storage = DataStorage("")
+    var latLonList  = DataStorage("")
+    var numberList  = DataStorage("")
     let type: PolygonEnum
-    var timer: DownloadTimer = DownloadTimer("")
+    var timer = DownloadTimer("")
 
     init(_ type: PolygonEnum) {
         self.type = type
