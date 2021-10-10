@@ -465,11 +465,11 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         let alert = ObjectPopUp(self, "", productButton[sender.tag])
         if WXGLNexrad.isRidTdwr(wxMetalRenders[sender.tag]!.radarSite) {
             WXGLNexrad.radarProductListTdwr.forEach { product in
-                alert.addAction(UIAlertAction(product, { _ in self.productChanged(sender.tag, product.split(":")[0]) }))
+                alert.addAction(UIAlertAction(product) { _ in self.productChanged(sender.tag, product.split(":")[0]) })
             }
         } else {
             wxMetalRenders[sender.tag]!.radarProductList.forEach { product in
-                alert.addAction(UIAlertAction(product, { _ in self.productChanged(sender.tag, product.split(":")[0]) }))
+                alert.addAction(UIAlertAction(product) { _ in self.productChanged(sender.tag, product.split(":")[0]) })
             }
         }
         alert.finish()
