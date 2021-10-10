@@ -61,15 +61,15 @@ final class vcPlayList: UIwXViewController, AVSpeechSynthesizerDelegate {
 
     @objc func buttonPressed(sender: GestureData) {
         let alert = ObjectPopUp(self, playlistItems[sender.data], addNationalProductButton)
-        alert.addAction(UIAlertAction("Play", { _ in self.playProduct(selection: sender.data) }))
-        alert.addAction(UIAlertAction("View Text", { _ in self.viewProduct(selection: sender.data) }))
+        alert.addAction(UIAlertAction("Play") { _ in self.playProduct(selection: sender.data) })
+        alert.addAction(UIAlertAction("View Text") { _ in self.viewProduct(selection: sender.data) })
         if sender.data != 0 {
-            alert.addAction(UIAlertAction("Move Up", { _ in self.move(sender.data, .up) }))
+            alert.addAction(UIAlertAction("Move Up") { _ in self.move(sender.data, .up) })
         }
         if sender.data != (playlistItems.count - 1) {
-            alert.addAction(UIAlertAction("Move Down", { _ in self.move(sender.data, .down) }))
+            alert.addAction(UIAlertAction("Move Down") { _ in self.move(sender.data, .down) })
         }
-        alert.addAction(UIAlertAction("Delete", { _ in self.delete(selection: sender.data) }))
+        alert.addAction(UIAlertAction("Delete") { _ in self.delete(selection: sender.data) })
         alert.finish()
     }
 
