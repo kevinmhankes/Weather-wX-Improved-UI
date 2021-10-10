@@ -728,29 +728,16 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
 
     func getAnimate(_ frameCnt: Int) {
         DispatchQueue.global(qos: .userInitiated).async {
-            var animArray = [[String]]()
-            self.wxMetalRenders.enumerated().forEach { index, wxMetalRender in
-                if RadarPreferences.useFileStorage {
-                    _ = WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.radarSite, wxMetalRender!.fileStorage)
-                } else {
-                    animArray.append(WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.radarSite, wxMetalRender!.fileStorage))
-                    animArray[index].indices.forEach {
-                        UtilityFileManagement.deleteFile(String(index) + "nexrad_anim" + String($0))
-                        UtilityFileManagement.moveFile(animArray[index][$0], String(index) + "nexrad_anim" + String($0))
-                    }
-                }
+            self.wxMetalRenders.forEach { wxMetalRender in
+                _ = WXGLDownload.getRadarFilesForAnimation(frameCnt, wxMetalRender!.product, wxMetalRender!.radarSite, wxMetalRender!.fileStorage)
             }
             var scaleFactor = 1
             while self.inOglAnim {
                 for frame in (0..<frameCnt) {
                     if self.inOglAnim {
-                        self.wxMetalRenders.enumerated().forEach { index, wxMetalRender in
+                        self.wxMetalRenders.forEach { wxMetalRender in
                             let buttonText = " (" + String(frame + 1) + "/" + String(frameCnt) + ")"
-                            if RadarPreferences.useFileStorage {
-                                wxMetalRender!.getRadar(String(frame), buttonText)
-                            } else {
-                                wxMetalRender!.getRadar(String(index) + "nexrad_anim" + String(frame), buttonText)
-                            }
+                            wxMetalRender!.getRadar(String(frame), buttonText)
                             scaleFactor = 1
                         }
                         var interval = UIPreferences.animInterval

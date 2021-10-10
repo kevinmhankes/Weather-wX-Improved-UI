@@ -59,8 +59,5 @@ final class UIPreferences {
         animInterval = Utility.readPref("ANIM_INTERVAL", 6)
         playlistStr = Utility.readPref("PLAYLIST", "")
         debugMode = Utility.readPref("DEBUG_MODE", "false").hasPrefix("t")
-        if debugMode {
-            // RadarPreferences.useFileStorage = true
-        }
     }
 }

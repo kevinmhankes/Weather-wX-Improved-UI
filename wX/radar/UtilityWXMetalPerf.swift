@@ -15,14 +15,8 @@ final class UtilityWXMetalPerf {
     
     static func decode8BitAndGenRadials(_ radarBuffers: ObjectMetalRadarBuffers, _ fileStorage: FileStorage) -> Int {
         var totalBins = 0
-        let disFirst: MemoryBuffer
-        if RadarPreferences.useFileStorage {
-            disFirst = fileStorage.memoryBuffer
-        } else {
-            disFirst = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)
-        }
+        let disFirst = fileStorage.memoryBuffer
         disFirst.position = 0
-        
         if disFirst.capacity == 0 {
             return 0
         }

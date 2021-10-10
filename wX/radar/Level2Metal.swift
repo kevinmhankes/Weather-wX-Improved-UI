@@ -13,14 +13,9 @@ final class Level2Metal {
     private static var vcp: Int16 = 0
 
     static func decode(_ radarBuffers: ObjectMetalRadarBuffers, _ fileStorage: FileStorage, _ days: MemoryBuffer, _ msecs: MemoryBuffer) {
-        let fileName = radarBuffers.fileName + ".decomp" + radarBuffers.rd.index
+        // let fileName = radarBuffers.fileName + ".decomp" + radarBuffers.rd.index
         let velocityProd = (radarBuffers.rd.productCode == 154)
-        var dis2: MemoryBuffer
-        if RadarPreferences.useFileStorage {
-            dis2 = fileStorage.memoryBuffer
-        } else {
-            dis2 = UtilityIO.readFileToByteBuffer(fileName)
-        }
+        let dis2 = fileStorage.memoryBuffer
         if dis2.capacity > fileHeaderSize {
             var highReflectivity = [Level2Record]()
             var highVelocity = [Level2Record]()

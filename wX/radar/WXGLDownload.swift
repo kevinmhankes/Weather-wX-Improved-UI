@@ -40,26 +40,14 @@ final class WXGLDownload {
     }
     
     static func getRadarFile(_ url: String, _ radarSite: String, _ product: String, _ indexString: String, _ isTdwr: Bool, _ fileStorage: FileStorage) -> String {
-        let l2BaseFn = "l2"
-        let l3BaseFn = "nids"
         let ridPrefix = getRidPrefix(radarSite, isTdwr)
         if !product.contains("L2") {
             let data = getRadarFileUrl(radarSite, product, isTdwr).getDataFromUrl()
-            if RadarPreferences.useFileStorage {
-                fileStorage.memoryBuffer = MemoryBuffer(data)
-            } else {
-                UtilityIO.saveInputStream(data, l3BaseFn + indexString)
-            }
+            fileStorage.memoryBuffer = MemoryBuffer(data)
         } else {
             if url == "" {
                 let data = getInputStreamFromURLL2(getLevel2Url(radarSite))
-                if  RadarPreferences.useFileStorage {
-                    fileStorage.memoryBufferL2 = MemoryBuffer(data)
-                } else {
-                    UtilityIO.saveInputStream(data, l2BaseFn + "_d" + indexString)
-                    UtilityFileManagement.deleteFile(l2BaseFn + indexString)
-                    UtilityFileManagement.moveFile(l2BaseFn + "_d" + indexString, l2BaseFn + indexString)
-                }
+                fileStorage.memoryBufferL2 = MemoryBuffer(data)
             }
         }
         return ridPrefix
@@ -116,15 +104,10 @@ final class WXGLDownload {
             listOfFiles.append("sn." + String(format: "%04d", tmpK))
             index += 1
         }
-        
         fileStorage.animationMemoryBuffer = [MemoryBuffer](repeating: MemoryBuffer(), count: frameCount)
         (0..<frameCount).forEach { index in
             let data = (getRadarDirectoryUrl(radarSite, product, ridPrefix) + listOfFiles[index]).getDataFromUrl()
-            if RadarPreferences.useFileStorage {
-                fileStorage.animationMemoryBuffer[index] = MemoryBuffer(data)
-            } else {
-                UtilityIO.saveInputStream(data, listOfFiles[index])
-            }
+            fileStorage.animationMemoryBuffer[index] = MemoryBuffer(data)
         }
         return listOfFiles
     }
@@ -150,12 +133,8 @@ final class WXGLDownload {
                 let url = list[list.count - (frameCount - index + additionalAdd) * 2]
                 listOfFiles.append(url)
                 let data = getInputStreamFromURLL2(baseUrl + url)
-                if RadarPreferences.useFileStorage {
-                    fileStorage.animationMemoryBufferL2[index] = MemoryBuffer(data)
-                    UtilityWXMetalPerfL2.decompressForAnimation(fileStorage, index)
-                } else {
-                    UtilityIO.saveInputStream(data, url)
-                }
+                fileStorage.animationMemoryBufferL2[index] = MemoryBuffer(data)
+                UtilityWXMetalPerfL2.decompressForAnimation(fileStorage, index)
                 dispatchGroup.leave()
             }
         }

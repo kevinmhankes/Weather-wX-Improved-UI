@@ -7,16 +7,8 @@
 final class UtilityWXMetalPerfL3FourBit {
 
     static func decodeRadial(_ radarBuffers: ObjectMetalRadarBuffers, _ fileStorage: FileStorage) -> UInt16 {
-        // let dis = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)
-        
-        let dis: MemoryBuffer
-        if RadarPreferences.useFileStorage {
-            dis = fileStorage.memoryBuffer
-        } else {
-            dis = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)
-        }
+        let dis = fileStorage.memoryBuffer
         dis.position = 0
-        
         if dis.capacity > 0 {
             dis.skipBytes(170)
             let numberOfRangeBins = dis.getUnsignedShort()
@@ -41,16 +33,8 @@ final class UtilityWXMetalPerfL3FourBit {
     }
 
     static func decodeRaster(_ radarBuffers: ObjectMetalRadarBuffers, _ fileStorage: FileStorage) -> UInt16 {
-        // let dis = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)
-        
-        let dis: MemoryBuffer
-        if RadarPreferences.useFileStorage {
-            dis = fileStorage.memoryBuffer
-        } else {
-            dis = UtilityIO.readFileToByteBuffer(radarBuffers.fileName)
-        }
+        let dis: MemoryBuffer = fileStorage.memoryBuffer
         dis.position = 0
-        
         if dis.capacity > 0 {
             dis.skipBytes(172)
             /*let iCoordinateStart = dis.getUnsignedShort()
