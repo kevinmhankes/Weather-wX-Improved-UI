@@ -17,7 +17,7 @@ final class vcSettingsColorListing: UIwXViewController {
         objScrollStackView = ScrollStackView(self)
         stackView.spacing = 0
         setupColorObjects()
-        colors.sort(by: { $0.uiLabel < $1.uiLabel })
+        colors.sort { $0.uiLabel < $1.uiLabel }
         display()
     }
 

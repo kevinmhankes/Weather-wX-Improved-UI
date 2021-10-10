@@ -1,3 +1,4 @@
+* [FIX] settings colors -- ffw/tor/tst show up twice
 * [ADD] mainscreen nexrad long press distance to obs
 * [REF] why is handling of submenu different between vcTabParent and other tabs (object tile matrix)?
 * [ADD] use route in object tile matrix
