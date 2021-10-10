@@ -39,7 +39,6 @@ final class vcAdhocLocation: UIwXViewController {
     }
 
     override func getContent() {
-        // refreshViews()
         _ = FutureVoid(downloadCc, displayCc)
         _ = FutureVoid(downloadHazards, displayHazards)
         _ = FutureVoid(downloadSevenDay, displaySevenDay)
