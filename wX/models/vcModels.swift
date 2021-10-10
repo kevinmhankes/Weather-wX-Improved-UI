@@ -135,19 +135,19 @@ final class vcModels: UIwXViewController {
     }
 
     @objc func prodClicked() {
-        _ = ObjectPopUp(self, productButton, modelObj.paramLabels, prodChanged(_:))
+        _ = ObjectPopUp(self, productButton, modelObj.paramLabels, prodChanged)
     }
 
     @objc func showProdMenu() {
-        _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, showSubMenu(_:))
+        _ = ObjectPopUp(self, "Product Selection", productButton, subMenu.objTitles, showSubMenu)
     }
 
     func showSubMenu(_ index: Int) {
-        _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, prodChanged(_:))
+        _ = ObjectPopUp(self, productButton, subMenu.objTitles, index, subMenu, prodChanged)
     }
 
     @objc func sectorClicked() {
-        _ = ObjectPopUp(self, title: "Region Selection", sectorButton, modelObj.sectors, sectorChanged(_:))
+        _ = ObjectPopUp(self, title: "Region Selection", sectorButton, modelObj.sectors, sectorChanged)
     }
 
     func sectorChanged(_ sector: String) {
@@ -156,7 +156,7 @@ final class vcModels: UIwXViewController {
     }
 
     @objc func runClicked() {
-        _ = ObjectPopUp(self, title: "Run Selection", runButton, modelObj.runTimeData.listRun, runChanged(_:))
+        _ = ObjectPopUp(self, title: "Run Selection", runButton, modelObj.runTimeData.listRun, runChanged)
     }
 
     func runChanged(_ run: String) {
@@ -165,7 +165,7 @@ final class vcModels: UIwXViewController {
     }
 
     @objc func modelClicked() {
-        _ = ObjectPopUp(self, title: "Model Selection", modelButton, modelObj.models, modelChanged(_:))
+        _ = ObjectPopUp(self, title: "Model Selection", modelButton, modelObj.models, modelChanged)
     }
 
     func modelChanged(_ model: String) {
@@ -187,7 +187,7 @@ final class vcModels: UIwXViewController {
     }
 
     @objc func timeClicked() {
-        _ = ObjectPopUp(self, title: "Time Selection", timeButton, modelObj.times, timeChanged(_:))
+        _ = ObjectPopUp(self, title: "Time Selection", timeButton, modelObj.times, timeChanged)
     }
 
     func timeChanged(_ time: Int) {
