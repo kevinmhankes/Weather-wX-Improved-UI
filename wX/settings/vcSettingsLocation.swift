@@ -8,7 +8,7 @@ import UIKit
 
 final class vcSettingsLocation: UIwXViewController {
 
-    private var fab: ObjectFab?
+    private var fab: ObjectFab!
     private var productButton = ToolbarIcon()
     private var locationCards = [ObjectCardLocationItem]()
     private var currentConditions = [ObjectCurrentConditions]()
