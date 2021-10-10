@@ -213,26 +213,26 @@ final class NexradTab {
         alert.view.tintColor = ColorCompatibility.label
         ridNearbyList.forEach { rid in
             let radarDescription = rid.name + " " + Utility.getRadarSiteName(rid.name) + " " + String(rid.distance) + " mi"
-            alert.addAction(UIAlertAction(radarDescription, { _ in self.ridChanged(rid.name) }))
+            alert.addAction(UIAlertAction(radarDescription) { _ in self.ridChanged(rid.name) })
         }
         if RadarPreferences.warnings || ObjectPolygonWarning.areAnyEnabled() {
-            alert.addAction(UIAlertAction("Show Warning text", { _ in UtilityRadarUI.showWarning(pointerLocation, self.uiv) }))
+            alert.addAction(UIAlertAction("Show Warning text") { _ in UtilityRadarUI.showWarning(pointerLocation, self.uiv) })
         }
         if RadarPreferences.watMcd {
-            alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestWatch(.SPCWAT, pointerLocation, self.uiv) }))
-            alert.addAction(UIAlertAction("Show MCD text", { _ in UtilityRadarUI.showNearestWatch(.SPCMCD, pointerLocation, self.uiv) }))
+            alert.addAction(UIAlertAction("Show Watch text") { _ in UtilityRadarUI.showNearestWatch(.SPCWAT, pointerLocation, self.uiv) })
+            alert.addAction(UIAlertAction("Show MCD text") { _ in UtilityRadarUI.showNearestWatch(.SPCMCD, pointerLocation, self.uiv) })
         }
         if RadarPreferences.mpd {
-            alert.addAction(UIAlertAction("Show MPD text", { _ in UtilityRadarUI.showNearestWatch(.WPCMPD, pointerLocation, self.uiv) }))
+            alert.addAction(UIAlertAction("Show MPD text") { _ in UtilityRadarUI.showNearestWatch(.WPCMPD, pointerLocation, self.uiv) })
         }
         let obsSite = UtilityMetar.findClosestObservation(pointerLocation)
-        alert.addAction(UIAlertAction("Nearest observation: " + obsSite.name, { _ in UtilityRadarUI.getMetar(pointerLocation, self.uiv) }))
+        alert.addAction(UIAlertAction("Nearest observation: " + obsSite.name) { _ in UtilityRadarUI.getMetar(pointerLocation, self.uiv) })
         alert.addAction(UIAlertAction(
-            "Nearest forecast: " + pointerLocation.latString.truncate(6) + ", " + pointerLocation.lonString.truncate(6), { _ in
+            "Nearest forecast: " + pointerLocation.latString.truncate(6) + ", " + pointerLocation.lonString.truncate(6)) { _ in
                 Route.getForecast(self.uiv, pointerLocation)})
-        )
-        alert.addAction(UIAlertAction("Nearest meteogram: " + obsSite.name, { _ in UtilityRadarUI.getMeteogram(pointerLocation, self.uiv) }))
-        alert.addAction(UIAlertAction("Radar status message: " + wxMetal[index]!.radarSite, { _ in UtilityRadarUI.getRadarStatus(self.uiv, self.wxMetal[index]!.radarSite) }))
+        
+        alert.addAction(UIAlertAction("Nearest meteogram: " + obsSite.name) { _ in UtilityRadarUI.getMeteogram(pointerLocation, self.uiv) })
+        alert.addAction(UIAlertAction("Radar status message: " + wxMetal[index]!.radarSite) { _ in UtilityRadarUI.getRadarStatus(self.uiv, self.wxMetal[index]!.radarSite) })
         let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(dismiss)
         if let popoverController = alert.popoverPresentationController {
