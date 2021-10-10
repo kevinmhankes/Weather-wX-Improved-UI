@@ -25,7 +25,6 @@ final class ObjectSpotterReportCard {
         textViews[2].color = ColorCompatibility.systemGray2
         uiv.stackView.addLayout(boxV)
         textViews.forEach {
-            // $0.tv.widthAnchor.constraint(equalTo: uiv.scrollView.widthAnchor).isActive = true
             $0.constrain(uiv.scrollView)
         }
         boxV.addGesture(gesture)
