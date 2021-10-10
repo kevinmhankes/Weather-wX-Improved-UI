@@ -296,25 +296,22 @@ final class vcSettingsLocationEdit: UIViewController, CLLocationManagerDelegate,
         center.latitude = lat
         center.longitude = lon
         let loc = CLLocation(latitude: center.latitude, longitude: center.longitude)
-        ceo.reverseGeocodeLocation(
-            loc,
-            completionHandler: { placeMarks, error in
-                if error != nil {
-                    print("reverse geodcode fail: \(error!.localizedDescription)")
-                }
-                let pm = placeMarks! as [CLPlacemark]
-                if pm.count > 0 {
-                    let pm = placeMarks![0]
-                    let locationName: String
-                    if pm.locality != nil && pm.administrativeArea != nil {
-                        locationName = pm.administrativeArea! + ", " + pm.locality!
-                    } else {
-                        locationName = "Location"
-                    }
-                    self.saveFromMap(locationName, latStr, lonStr)
-                }
+        ceo.reverseGeocodeLocation(loc) { placeMarks, error in
+            if error != nil {
+                print("reverse geodcode fail: \(error!.localizedDescription)")
             }
-        )
+            let pm = placeMarks! as [CLPlacemark]
+            if pm.count > 0 {
+                let pm = placeMarks![0]
+                let locationName: String
+                if pm.locality != nil && pm.administrativeArea != nil {
+                    locationName = pm.administrativeArea! + ", " + pm.locality!
+                } else {
+                    locationName = "Location"
+                }
+                self.saveFromMap(locationName, latStr, lonStr)
+            }
+        }
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
