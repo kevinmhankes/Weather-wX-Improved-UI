@@ -13,10 +13,12 @@ final class ObjectImageSummary {
     //
     var objectImages = [ObjectImage]()
     var imageStackViewList = [ObjectStackView]()
+    var bitmaps = [Bitmap]()
 
     init(_ uiv: UIwXViewController, _ bitmaps: [Bitmap], imagesPerRowWide: Int = 3) {
         var imageCount = 0
         var imagesPerRow = 2
+        self.bitmaps = bitmaps
         imageStackViewList.removeAll()
         objectImages.removeAll()
         if UtilityUI.isTablet() && UtilityUI.isLandscape() {
@@ -51,6 +53,7 @@ final class ObjectImageSummary {
     init(_ uiv: UIwXViewController, _ parentBox: ObjectStackView, _ bitmaps: [Bitmap], imagesPerRowWide: Int = 3) {
         var imageCount = 0
         var imagesPerRow = 2
+        self.bitmaps = bitmaps
         imageStackViewList.removeAll()
         objectImages.removeAll()
         if UtilityUI.isTablet() { // && UtilityUI.isLandscape()
@@ -91,6 +94,7 @@ final class ObjectImageSummary {
 
     func setBitmap(_ index: Int, _ bitmap: Bitmap) {
         objectImages[index].setBitmap(bitmap)
+        self.bitmaps[index] = bitmap
     }
 
     @objc func imageClicked(sender: GestureData) {}

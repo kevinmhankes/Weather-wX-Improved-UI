@@ -8,8 +8,8 @@ import UIKit
 
 final class vcSpcSwoSummary: UIwXViewController {
 
-    private var bitmaps = [Bitmap]()
     private var urls = [String]()
+    private var objectImageSummary: ObjectImageSummary!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +20,9 @@ final class vcSpcSwoSummary: UIwXViewController {
     }
 
     override func getContent() {
-        bitmaps.removeAll()
         urls.removeAll()
-        bitmaps = [Bitmap](repeating: Bitmap(), count: 8)
+        refreshViews()
+        objectImageSummary = ObjectImageSummary(self, [Bitmap](repeating: Bitmap(815, 555), count: 8), imagesPerRowWide: 4)
         urls = [String](repeating: "", count: 3)
         _ = FutureVoid(download13, {})
         _ = FutureVoid(download48, {})
@@ -35,19 +35,19 @@ final class vcSpcSwoSummary: UIwXViewController {
     }
     
     private func download13Bitmap(_ day: Int) {
-        _ = FutureVoid({ self.bitmaps[day] = Bitmap(self.urls[day]) }, display)
+        _ = FutureBytes(self.urls[day], { bitmap in self.objectImageSummary.setBitmap(day, bitmap) })
     }
     
     private func download48() {
         for day in (4...8) {
             let url = UtilitySpcSwo.getImageUrlsDays48(to.String(day))
-            _ = FutureVoid({ self.bitmaps[day - 1] = Bitmap(url) }, display)
+            _ = FutureBytes(url, { bitmap in self.objectImageSummary.setBitmap(day - 1, bitmap) })
         }
     }
 
     private func display() {
         refreshViews()
-        _ = ObjectImageSummary(self, bitmaps, imagesPerRowWide: 4)
+        objectImageSummary = ObjectImageSummary(self, objectImageSummary.bitmaps, imagesPerRowWide: 4)
     }
 
     @objc func imageClicked(sender: GestureData) {
@@ -62,7 +62,7 @@ final class vcSpcSwoSummary: UIwXViewController {
     }
 
     @objc func shareClicked(sender: UIButton) {
-        UtilityShare.image(self, sender, bitmaps)
+        UtilityShare.image(self, sender, objectImageSummary.bitmaps)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -22,6 +22,16 @@ final class Bitmap {
         )
         dataBm = image.pngData()!
     }
+    
+    init(_ w: Int, _ h: Int) {
+        image = Bitmap.imageWithSize(
+            size: CGSize(width: w, height: h),
+            filledWithColor: UIColor.white,
+            scale: 1.0,
+            opaque: false
+        )
+        dataBm = image.pngData()!
+    }
 
     init(_ bm: Data) {
         dataBm = bm
