@@ -800,18 +800,7 @@ final class vcNexradRadar: UIViewController, MKMapViewDelegate, CLLocationManage
         }
         if RadarPreferences.warnings || ObjectPolygonWarning.areAnyEnabled() { // took out && warningCount > 0
             alert.addAction(UIAlertAction("Show Warning") { _ in UtilityRadarUI.showWarning(pointerLocation, self) })
-        }
-//        if RadarPreferences.radarWatMcd && MyApplication.watNoList.value != "" {
-//            alert.addAction(UIAlertAction("Show Watch text", { _ in UtilityRadarUI.showNearestProduct(.SPCWAT, pointerLocation, self) }))
-//        }
-//        if RadarPreferences.radarWatMcd && MyApplication.mcdNoList.value != "" {
-//            // print(MyApplication.mcdNoList.value)
-//            alert.addAction(UIAlertAction("Show MCD text", { _ in UtilityRadarUI.showNearestProduct(.SPCMCD, pointerLocation, self) }))
-//        }
-//        if RadarPreferences.radarMpd && MyApplication.mpdNoList.value != "" {
-//            alert.addAction(UIAlertAction("Show MPD text", { _ in UtilityRadarUI.showNearestProduct(.WPCMPD, pointerLocation, self) }))
-//        }
-        
+        }        
         if RadarPreferences.watMcd && ObjectPolygonWatch.polygonDataByType[PolygonEnum.SPCWAT]!.numberList.getValue() != "" {
             alert.addAction(UIAlertAction("Show Watch") { _ in UtilityRadarUI.showNearestWatch(.SPCWAT, pointerLocation, self) })
         }
