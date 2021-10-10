@@ -27,7 +27,6 @@ final class WXMetalTextObject {
     private let scale: Double
     private let textSize = Double(RadarPreferences.textSize)
     private let context: UIViewController
-    // private let screenScale: Double
     private let xFudge: Double
     private let yFudge: Double
     private var fileStorage = FileStorage()
@@ -36,7 +35,6 @@ final class WXMetalTextObject {
         numPanes = 0
         glViewWidth = 0.0
         glViewHeight = 0.0
-        // screenScale = 0.0
         scale = 0.0
         xFudge = 15.0
         yFudge = 25.0
@@ -59,12 +57,10 @@ final class WXMetalTextObject {
         self.numPanes = numPanes
         fileStorage = wxMetalRender.fileStorage
         maxCitiesPerGlview = 16 / numPanes
-        // let fudgeFactor = 375.0
         var fudgeFactor: Double = 375.0 * Double(UtilityUI.getScreenScale()) / 2.0
         if UtilityUI.getScreenScale() < 1.6 {
             fudgeFactor = 375.0
         }
-        // self.screenScale = screenScale * (glViewWidth / fudgeFactor) * 0.5
         scale = 0.76 * screenScale * 0.5 * (glViewWidth / fudgeFactor)
         xFudge = 15.0 * (fudgeFactor / glViewWidth)
         yFudge = 25.0 * (fudgeFactor / glViewWidth)
