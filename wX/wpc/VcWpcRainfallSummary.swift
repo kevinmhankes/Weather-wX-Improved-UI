@@ -6,22 +6,22 @@
 
 import UIKit
 
-final class vcSpcFireSummary: UIwXViewController {
+final class VcWpcRainfallSummary: UIwXViewController {
 
     private var bitmaps = [Bitmap]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let statusButton = ToolbarIcon("SPC Fire Weather Outlooks", self, nil)
-        let shareButton = ToolbarIcon(self, .share, #selector(share))
+        let statusButton = ToolbarIcon("WPC Excessive Rainfall Outlooks", self, nil)
+        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
         toolbar.items = ToolbarItems([doneButton, statusButton, GlobalVariables.flexBarButton, shareButton]).items
         objScrollStackView = ScrollStackView(self)
-        bitmaps = [Bitmap](repeating: Bitmap(), count: UtilitySpcFireOutlook.urls.count)
+        bitmaps = [Bitmap](repeating: Bitmap(), count: UtilityWpcRainfallOutlook.urls.count)
         getContent()
     }
 
     override func getContent() {
-        UtilitySpcFireOutlook.urls.enumerated().forEach { i, url in
+        UtilityWpcRainfallOutlook.urls.enumerated().forEach { i, url in
             _ = FutureVoid({ self.download(url, i) }, display)
         }
     }
@@ -31,15 +31,15 @@ final class vcSpcFireSummary: UIwXViewController {
     }
 
     private func display() {
-       refreshViews()
-       _ = ObjectImageSummary(self, bitmaps)
+        refreshViews()
+        _ = ObjectImageSummary(self, bitmaps)
     }
 
     @objc func imageClicked(sender: GestureData) {
-        Route.spcFireOutlookForDay(self, sender.data)
+        Route.wpcRainfallForDay(self, sender.data)
     }
 
-    @objc func share(sender: UIButton) {
+    @objc func shareClicked(sender: UIButton) {
         UtilityShare.image(self, sender, bitmaps)
     }
 

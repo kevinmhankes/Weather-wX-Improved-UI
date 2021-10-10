@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcSpcSwo: UIwXViewControllerWithAudio {
+final class VcSpcSwo: UIwXViewControllerWithAudio {
 
     private var bitmaps = [Bitmap]()
     private var urls = [String]()

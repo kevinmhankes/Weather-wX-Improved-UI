@@ -28,13 +28,13 @@ final class Route {
     }
     
     static func spcFireOutlookForDay(_ uiv: UIViewController, _ day: Int) {
-        let vc = vcSpcFireOutlook()
+        let vc = VcSpcFireOutlook()
         vc.dayIndex = day
         uiv.goToVC(vc)
     }
     
     static func wpcRainfallForDay(_ uiv: UIViewController, _ day: Int) {
-        let vc = vcWpcRainfallDiscussion()
+        let vc = VcWpcRainfallDiscussion()
         vc.day = day
         uiv.goToVC(vc)
     }
@@ -58,14 +58,14 @@ final class Route {
     }
     
     static func vis(_ uiv: UIViewController) {
-        let vc = vcGoes()
+        let vc = VcGoes()
         vc.productCode = ""
         vc.sectorCode = ""
         uiv.goToVC(vc)
     }
     
     static func visNhc(_ uiv: UIViewController, _ url: String) {
-        let vc = vcGoes()
+        let vc = VcGoes()
         vc.productCode = ""
         vc.sectorCode = ""
         vc.url = url
@@ -74,14 +74,14 @@ final class Route {
     }
     
     static func goesWaterVapor(_ uiv: UIViewController) {
-        let vc = vcGoes()
+        let vc = VcGoes()
         vc.productCode = "09"
         vc.sectorCode = "CONUS"
         uiv.goToVC(vc)
     }
     
     static func goesVisConus(_ uiv: UIViewController) {
-        let vc = vcGoes()
+        let vc = VcGoes()
         vc.productCode = "GEOCOLOR"
         vc.sectorCode = "CONUS"
         uiv.goToVC(vc)
@@ -89,7 +89,7 @@ final class Route {
     
     static func lightning(_ uiv: UIViewController) {
         if UIPreferences.lightningUseGoes {
-            let vc = vcGoes()
+            let vc = VcGoes()
             vc.productCode = "GLM"
             vc.sectorCode = "CONUS"
             uiv.goToVC(vc)
@@ -99,13 +99,13 @@ final class Route {
     }
     
     static func spcMcdWatchSummary(_ uiv: UIViewController, _ type: PolygonEnum) {
-        let vc = vcSpcWatchMcdMpd()
+        let vc = VcSpcWatchMcdMpd()
         vc.watchMcdMpdType = type
         uiv.goToVC(vc)
     }
     
     static func spcMcdWatchItem(_ uiv: UIViewController, _ type: PolygonEnum, _ number: String) {
-        let vc = vcSpcMcdWatchMpdViewer()
+        let vc = VcSpcMcdWatchMpdViewer()
         vc.watchMcdMpdNumber = number
         vc.watchMcdMpdType = type
         uiv.goToVC(vc)
@@ -124,13 +124,13 @@ final class Route {
     }
     
     static func swo(_ uiv: UIViewController, _ day: String) {
-        let vc = vcSpcSwo()
+        let vc = VcSpcSwo()
         vc.spcSwoDay = day
         uiv.goToVC(vc)
     }
     
     static func swoState(_ uiv: UIViewController, _ day: String) {
-        let vc = vcSpcSwoState()
+        let vc = VcSpcSwoState()
         vc.day = day
         uiv.goToVC(vc)
     }
@@ -150,19 +150,19 @@ final class Route {
     }
     
     static func spcStormReports(_ uiv: UIViewController, _ day: String) {
-        let vc = vcSpcStormReports()
+        let vc = VcSpcStormReports()
         vc.spcStormReportsDay = day
         uiv.goToVC(vc)
     }
     
     static func wpcText(_ uiv: UIViewController, _ product: String) {
-        let vc = vcWpcText()
+        let vc = VcWpcText()
         vc.wpcTextProduct = product
         uiv.goToVC(vc)
     }
     
     static func wpcText(_ uiv: UIViewController) {
-        let vc = vcWpcText()
+        let vc = VcWpcText()
         uiv.goToVC(vc)
     }
     
@@ -243,7 +243,7 @@ final class Route {
     }
     
     static func goesGlobal(_ uiv: UIViewController) {
-        uiv.goToVC(vcGoesGlobal())
+        uiv.goToVC(VcGoesGlobal())
     }
     
     static func nhc(_ uiv: UIViewController) {
@@ -335,43 +335,43 @@ final class Route {
     }
     
     static func wpcImage(_ uiv: UIViewController) {
-        uiv.goToVC(vcWpcImg())
+        uiv.goToVC(VcWpcImg())
     }
     
     static func wpcImageFromHomeScreen(_ uiv: UIViewController, _ token: String) {
-        let vc = vcWpcImg()
+        let vc = VcWpcImg()
         vc.wpcImagesToken = token
         vc.wpcImagesFromHomeScreen = true
         uiv.goToVC(vc)
     }
     
     static func wpcRainfallSummary(_ uiv: UIViewController) {
-        uiv.goToVC(vcWpcRainfallSummary())
+        uiv.goToVC(VcWpcRainfallSummary())
     }
     
     static func spcCompMap(_ uiv: UIViewController) {
-        uiv.goToVC(vcSpcCompMap())
+        uiv.goToVC(VcSpcCompMap())
     }
     
     static func spcFireSummary(_ uiv: UIViewController) {
-        uiv.goToVC(vcSpcFireSummary())
+        uiv.goToVC(VcSpcFireSummary())
     }
     
     static func spcMeso(_ uiv: UIViewController) {
-        let vc = vcSpcMeso()
+        let vc = VcSpcMeso()
         uiv.goToVC(vc)
     }
     
     static func spcSwoSummary(_ uiv: UIViewController) {
-        uiv.goToVC(vcSpcSwoSummary())
+        uiv.goToVC(VcSpcSwoSummary())
     }
     
     static func spcTstormSummary(_ uiv: UIViewController) {
-        uiv.goToVC(vcSpcTstormSummary())
+        uiv.goToVC(VcSpcTstormSummary())
     }
     
     static func spcMesoFromHomeScreen(_ uiv: UIViewController, _ token: String) {
-        let vc = vcSpcMeso()
+        let vc = VcSpcMeso()
         vc.spcMesoToken = token
         vc.spcMesoFromHomeScreen = true
         uiv.goToVC(vc)

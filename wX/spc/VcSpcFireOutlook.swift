@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcSpcFireOutlook: UIwXViewControllerWithAudio {
+final class VcSpcFireOutlook: UIwXViewControllerWithAudio {
 
     private var bitmap = Bitmap()
     private var html = ""

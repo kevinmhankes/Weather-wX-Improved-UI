@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
+final class VcSpcWatchMcdMpd: UIwXViewControllerWithAudio {
     
     //
     // Provides a group of images of multiple watch/mpd/mcd or if only one show image/text

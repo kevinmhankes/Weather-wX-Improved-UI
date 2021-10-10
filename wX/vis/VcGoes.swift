@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcGoes: UIwXViewController {
+final class VcGoes: UIwXViewController {
 
     private var image = TouchImage()
     private var productButton = ToolbarIcon()

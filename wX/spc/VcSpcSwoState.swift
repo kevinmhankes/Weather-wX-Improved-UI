@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcSpcSwoState: UIwXViewController {
+final class VcSpcSwoState: UIwXViewController {
 
     private var state = ""
     private var stateButton = ToolbarIcon()

@@ -6,52 +6,45 @@
 
 import UIKit
 
-final class vcSpcTstormSummary: UIwXViewController {
+final class VcSpcFireSummary: UIwXViewController {
 
     private var bitmaps = [Bitmap]()
-    private var urls = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let shareButton = ToolbarIcon(self, .share, #selector(shareClicked))
-        toolbar.items = ToolbarItems([doneButton, GlobalVariables.flexBarButton, shareButton]).items
+        let statusButton = ToolbarIcon("SPC Fire Weather Outlooks", self, nil)
+        let shareButton = ToolbarIcon(self, .share, #selector(share))
+        toolbar.items = ToolbarItems([doneButton, statusButton, GlobalVariables.flexBarButton, shareButton]).items
         objScrollStackView = ScrollStackView(self)
+        bitmaps = [Bitmap](repeating: Bitmap(), count: UtilitySpcFireOutlook.urls.count)
         getContent()
     }
 
     override func getContent() {
-        urls.removeAll()
-        bitmaps.removeAll()
-        _ = FutureVoid(downloadHtml, downloadImages)
-    }
-
-    private func downloadHtml() {
-        urls = UtilitySpc.getTstormOutlookUrls()
-    }
-    
-    private func downloadImages() {
-        bitmaps = [Bitmap](repeating: Bitmap(), count: urls.count)
-        for (index, url) in urls.enumerated() {
-            _ = FutureVoid({ self.bitmaps[index] = Bitmap(url) }, display)
+        UtilitySpcFireOutlook.urls.enumerated().forEach { i, url in
+            _ = FutureVoid({ self.download(url, i) }, display)
         }
     }
 
+    private func download(_ url: String, _ i: Int) {
+        bitmaps[i] = Bitmap(url)
+    }
+
     private func display() {
-        refreshViews()
-        _ = ObjectImageSummary(self, bitmaps)
+       refreshViews()
+       _ = ObjectImageSummary(self, bitmaps)
     }
 
     @objc func imageClicked(sender: GestureData) {
-        Route.imageViewer(self, bitmaps[sender.data].url)
+        Route.spcFireOutlookForDay(self, sender.data)
     }
 
-    @objc func shareClicked(sender: UIButton) {
+    @objc func share(sender: UIButton) {
         UtilityShare.image(self, sender, bitmaps)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil) { _ in self.display() }
-        // coordinator.animate(alongsideTransition: nil, completion: { _ in self.display() })
     }
 }

@@ -6,7 +6,7 @@
 
 import UIKit
 
-final class vcSpcSwoSummary: UIwXViewController {
+final class VcSpcSwoSummary: UIwXViewController {
 
     private var urls = [String]()
     private var objectImageSummary: ObjectImageSummary!
