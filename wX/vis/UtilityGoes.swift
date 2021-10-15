@@ -50,7 +50,6 @@ final class UtilityGoes {
 
     static func getImage(_ product: String, _ sector: String) -> Bitmap {
         var sectorLocal = "SECTOR/" + sector
-        var productLocal = product
         if sector == "FD" || sector == "CONUS" || sector == "CONUS-G17" {
             sectorLocal = sector
         }
@@ -68,17 +67,13 @@ final class UtilityGoes {
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/cgl/12/latest.jpg
         // https://cdn.star.nesdis.noaa.gov/GOES17/ABI/CONUS/GEOCOLOR/1250x750.jpg
         // https://cdn.star.nesdis.noaa.gov/GOES16/ABI/CONUS/GEOCOLOR/1250x750.jpg
-        // If GLM is selected and user switches to sector w/o GLM show default instead
-//        if additionalCodes.contains(productLocal) && !sectorsWithAdditional.contains(sector) {
-//            productLocal = "GEOCOLOR"
-//        }
-        var url = GlobalVariables.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + productLocal + "/" + getImageSize(sector) + ".jpg"
-        if productLocal == "GLM" {
+        var url = GlobalVariables.goes16Url + "/" + satellite + "/ABI/" + sectorLocal + "/" + product + "/" + getImageSize(sector) + ".jpg"
+        if product == "GLM" {
             url = url.replace("ABI", "GLM")
             url = url.replace(sectorLocal + "/GLM", sectorLocal + "/EXTENT3")
         }
         let bitmap = Bitmap(url)
-        bitmap.info = productLocal
+        bitmap.info = product
         return bitmap
     }
 
@@ -248,16 +243,6 @@ final class UtilityGoes {
         "GLM FED+GeoColor",
         "DMW"
     ]
-
-//    static let additionalLabels = [
-//        "GLM FED+GeoColor",
-//        "DMW"
-//    ]
-//
-//    static let additionalCodes = [
-//        "GLM",
-//        "DMW"
-//    ]
 
     static let codes = [
         "GEOCOLOR",
