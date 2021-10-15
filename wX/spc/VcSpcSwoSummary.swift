@@ -35,13 +35,13 @@ final class VcSpcSwoSummary: UIwXViewController {
     }
     
     private func download13Bitmap(_ day: Int) {
-        _ = FutureBytes(urls[day], { bitmap in self.objectImageSummary.setBitmap(day, bitmap) })
+        _ = FutureBytes(urls[day]) { bitmap in self.objectImageSummary.setBitmap(day, bitmap) }
     }
     
     private func download48() {
         for day in (4...8) {
             let url = UtilitySpcSwo.getImageUrlsDays48(to.String(day))
-            _ = FutureBytes(url, { bitmap in self.objectImageSummary.setBitmap(day - 1, bitmap) })
+            _ = FutureBytes(url) { bitmap in self.objectImageSummary.setBitmap(day - 1, bitmap) }
         }
     }
 

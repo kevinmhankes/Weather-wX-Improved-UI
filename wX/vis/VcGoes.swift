@@ -138,11 +138,11 @@ final class VcGoes: UIwXViewController {
             animateButton.setImage(.play)
         } else {
             _ = ObjectPopUp(
-                    self,
-                    title: "Select number of animation frames:",
-                    animateButton,
-                    stride(from: 12, to: 96 + 12, by: 12),
-                    getAnimation
+                self,
+                title: "Select number of animation frames:",
+                animateButton,
+                stride(from: 12, to: 96 + 12, by: 12),
+                getAnimation
             )
         }
     }
