@@ -35,8 +35,10 @@ final class UtilityNws {
         
         // legacy add
         fileName = fileName.replace("http://forecast.weather.gov/newimages/medium/", "")
+        fileName = fileName.replace("https://forecast.weather.gov/newimages/medium/", "")
         fileName = fileName.replace(".png", "")
         fileName = fileName.replace("http://forecast.weather.gov/DualImage.php?", "")
+        fileName = fileName.replace("https://forecast.weather.gov/DualImage.php?", "")
         fileName = fileName.replace("&amp", "")
         // legacy add end
         
