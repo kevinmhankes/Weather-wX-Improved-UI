@@ -1,7 +1,9 @@
 
 # “wX” FAQ covering Android’s “wX” and iOS “wXL23”
 
-Last updated: 2021-10-07
+Last updated: 2021-10-22
+
+The iOS update released on 10/22 was the first compiled with Xcode 13. For users of large iPhones running iOS 15 you will see a new bug in which the bottom toolbar is partially obscured on first launch or when switching back to the app. The issue is being looked into.
 
 Helpful Links to check status from NWS if I am on vacation or not able to respond quickly to update the FAQ:
 * [https://radar3pub.ncep.noaa.gov/](https://radar3pub.ncep.noaa.gov/)

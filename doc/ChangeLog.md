@@ -1,5 +1,7 @@
 
-56141 2021_10_21 
+56141 2021_10_22
+* [FIX] possible fix for toolbar issue on ios15 large iphones compiled with xcode13
+
 56140 2021_10_21 [ADD] Add additional GOES products FireTemperature, Dust, GLM
 		 [FIX] NWS Icons not working after NWS html change
 		 [FIX] xcode13 + ios15 caused nav controller to be black on first launch, add background set

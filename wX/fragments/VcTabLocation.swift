@@ -101,16 +101,16 @@ final class VcTabLocation: VcTabParent {
         }
         view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self, toolbarType: .top)
-        stackView.get().widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        if objScrollStackView != nil && objScrollStackView!.fragmentHeightAnchor1 != nil {
-            view.removeConstraints([
-                objScrollStackView!.fragmentHeightAnchor1!,
-                objScrollStackView!.fragmentHeightAnchor2!,
-                objScrollStackView!.fragmentWidthAnchor1!,
-                objScrollStackView!.fragmentWidthAnchor2!
-            ])
-        }
-        objScrollStackView = ScrollStackView(self, scrollView, stackView.get())
+//        stackView.get().widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+//        if objScrollStackView != nil && objScrollStackView!.fragmentHeightAnchor1 != nil {
+//            view.removeConstraints([
+//                objScrollStackView!.fragmentHeightAnchor1!,
+//                objScrollStackView!.fragmentHeightAnchor2!,
+//                objScrollStackView!.fragmentWidthAnchor1!,
+//                objScrollStackView!.fragmentWidthAnchor2!
+//            ])
+//        }
+        // objScrollStackView = ScrollStackView(self, scrollView, stackView.get())
         globalHomeScreenFav = Utility.readPref("HOMESCREEN_FAV", GlobalVariables.homescreenFavDefault)
         globalTextViewFontSize = UIPreferences.textviewFontSize
         addLocationSelectionCard()
