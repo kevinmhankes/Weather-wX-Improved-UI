@@ -1,6 +1,6 @@
 
 56142 2021_10_23
-* 
+* [FIX] GOES Viewer, eep Eastern East Pacific image was not working after NOAA changed image resolution
 
 56141 2021_10_23
 * [FIX] possible fix for toolbar issue on ios15 large iphones compiled with xcode13
