@@ -101,6 +101,8 @@ final class VcTabLocation: VcTabParent {
         }
         view.addSubview(toolbar)
         toolbar.setConfigWithUiv(uiv: self, toolbarType: .top)
+        // lines below commented out Oct 2021 after first xcode13 build showed truncated nav bar on big iphones
+        // code below doesn't seem to have much of an impact anyway
 //        stackView.get().widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
 //        if objScrollStackView != nil && objScrollStackView!.fragmentHeightAnchor1 != nil {
 //            view.removeConstraints([
