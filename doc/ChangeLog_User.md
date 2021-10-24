@@ -12,4 +12,3 @@ FAQ can be accessed via Settings -> About
 * ChangeLog and FAQ now stored in gitlab and not google docs
 * Add additional GOES products FireTemperature, Dust, GLM
 
-Older change log data can be found [here](https://docs.google.com/document/d/e/2PACX-1vRZeQDVwKgzgzO2byDxjxcsTbj9JbwZIU_zhS-r7vUwlIDx1QjcltHThLOmG5P_FKs0Td8bYiQdRMgO/pub)
