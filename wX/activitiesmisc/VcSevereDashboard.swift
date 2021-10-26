@@ -45,12 +45,13 @@ final class VcSevereDashboard: UIwXViewController {
     }
 
     @objc func imageClicked(sender: GestureData) {
-        if buttonActions[sender.data].hasPrefix("WPCMPD") {
-            Route.spcMcdWatchItem(self, .WPCMPD, buttonActions[sender.data].replace("WPCMPD", ""))
+        let token = buttonActions[sender.data]
+        if token.hasPrefix("WPCMPD") {
+            Route.spcMcdWatchItem(self, .WPCMPD, token.replace("WPCMPD", ""))
         } else if buttonActions[sender.data].hasPrefix("SPCMCD") {
-            Route.spcMcdWatchItem(self, .SPCMCD, buttonActions[sender.data].replace("SPCMCD", ""))
+            Route.spcMcdWatchItem(self, .SPCMCD, token.replace("SPCMCD", ""))
         } else if buttonActions[sender.data].hasPrefix("SPCWAT") {
-            Route.spcMcdWatchItem(self, .SPCWAT, buttonActions[sender.data].replace("SPCWAT", ""))
+            Route.spcMcdWatchItem(self, .SPCWAT, token.replace("SPCWAT", ""))
         }
     }
 
