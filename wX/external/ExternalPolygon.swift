@@ -41,8 +41,8 @@ final class ExternalPolygon {
      */
     final class Builder {
         
-        private var vertexes: [ExternalPoint] = []
-        private var sides: [ExternalLine] = []
+        private var vertexes = [ExternalPoint]()
+        private var sides = [ExternalLine]()
         private var boundingBox = BoundingBox()
         private var firstPoint = true
         private var isClosed = false
