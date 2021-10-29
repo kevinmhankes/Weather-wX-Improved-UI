@@ -1,7 +1,8 @@
 
-56142 2021_10_27
+56142 2021_10_29
 * [FIX] GOES Viewer, eep Eastern East Pacific image was not working after NOAA changed image resolution
 * [ADD] National Images - add "_conus" to end of filename for SNOW/ICE Day1-3 for better graphic
+* [ADD] SPC HRRR - add back SCP/STP param
 
 56141 2021_10_23
 * [FIX] possible fix for toolbar issue on ios15 large iphones compiled with xcode13

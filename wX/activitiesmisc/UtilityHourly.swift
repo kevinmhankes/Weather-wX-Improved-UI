@@ -8,7 +8,7 @@ import Foundation
 
 final class UtilityHourly {
 
-    static let hourlyAbbreviationsFirst = [
+    static let abbreviations = [
         "Showers And Thunderstorms": "Sh/Tst",
         "Chance": "Chc",
         "Slight": "Slt",
@@ -21,20 +21,13 @@ final class UtilityHourly {
         "Drizzle": "Drz",
         "Isolated": "Iso",
         "Likely": "Lkly",
-        "T-storms": "Tst"
-    ]
-
-    static let hourlyAbbreviationsSecond = [
+        "T-storms": "Tst",
         "Showers": "Shwr",
-        "Rn And Sn": "Rn/Sn"
     ]
 
     static func getFooter() -> String {
         var footer = GlobalVariables.newline
-        hourlyAbbreviationsFirst.forEach { k, v in
-            footer += v + ": " + k + GlobalVariables.newline
-        }
-        hourlyAbbreviationsSecond.forEach { k, v in
+        abbreviations.forEach { k, v in
             footer += v + ": " + k + GlobalVariables.newline
         }
         return footer
@@ -85,10 +78,7 @@ final class UtilityHourly {
 
     static func shortenConditions(_ string: String) -> String {
         var hourly = string
-        hourlyAbbreviationsFirst.forEach { k, v in
-            hourly = hourly.replaceAll(k, v)
-        }
-        hourlyAbbreviationsSecond.forEach { k, v in
+        abbreviations.forEach { k, v in
             hourly = hourly.replaceAll(k, v)
         }
         return hourly

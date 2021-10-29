@@ -1116,8 +1116,6 @@ final class UtilityModelNcepInterface {
         "2m_dewp_10m_wnd",
         "2m_relh_10m_wnd",
         "2m_apparent_temp",
-        // "2m_min_temp",
-        // "2m_max_temp",
         "10m_wnd_gust",
         "total_cloud_cover"
     ]
@@ -1129,8 +1127,6 @@ final class UtilityModelNcepInterface {
         "2 meter dew point temp and 10 meter wind",
         "2 meter Relative Humidity and 10 meter Wind",
         "2 meter Apparent Temperature and 10 meter Wind",
-        // "2 meter minimum Temperature",
-        // "2 meter maximum temperature",
         "10 meter wind and gust",
         "Total Cloud Cover"
     ]
