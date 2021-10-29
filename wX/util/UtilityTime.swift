@@ -252,4 +252,40 @@ final class UtilityTime {
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         return formatter.string(from: UTCDate)
     }
+    
+    static func translateTimeForHourly(_ originalTime: String) -> String {
+        let originalTimeComponents = originalTime.replace("T", "-").split("-")
+        let year = to.Int(originalTimeComponents[0])
+        let month = to.Int(originalTimeComponents[1])
+        let day = to.Int(originalTimeComponents[2])
+        let hour = to.Int(originalTimeComponents[3].replace(":00:00", ""))
+        let hourString = String(hour)
+        let dayOfTheWeek: String
+        var futureDateComp = DateComponents()
+        futureDateComp.year = year
+        futureDateComp.month = month
+        futureDateComp.day = day
+        let calendar = Calendar.current
+        let futureDate = calendar.date(from: futureDateComp)!
+        let dayOfTheWeekIndex = calendar.component(.weekday, from: futureDate)
+        switch dayOfTheWeekIndex {
+        case 2:
+            dayOfTheWeek = "Mon"
+        case 3:
+            dayOfTheWeek = "Tue"
+        case 4:
+            dayOfTheWeek = "Wed"
+        case 5:
+            dayOfTheWeek = "Thu"
+        case 6:
+            dayOfTheWeek = "Fri"
+        case 7:
+            dayOfTheWeek = "Sat"
+        case 1:
+            dayOfTheWeek = "Sun"
+        default:
+            dayOfTheWeek = ""
+        }
+        return dayOfTheWeek + " " + hourString
+    }
 }

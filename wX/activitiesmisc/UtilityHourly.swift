@@ -22,7 +22,7 @@ final class UtilityHourly {
         "Isolated": "Iso",
         "Likely": "Lkly",
         "T-storms": "Tst",
-        "Showers": "Shwr",
+        "Showers": "Shwr"
     ]
 
     static func getFooter() -> String {
@@ -61,7 +61,7 @@ final class UtilityHourly {
         let shortForecasts = html.parseColumn("\"shortForecast\": \"(.*?)\"")
         var s = ""
         startTimes.indices.forEach { index in
-            let time = translateTime(startTimes[index])
+            let time = UtilityTime.translateTimeForHourly(startTimes[index])
             let temperature = Utility.safeGet(temperatures, index).replace("\"", "")
             let windSpeed = Utility.safeGet(windSpeeds, index).replace(" to ", "-")
             let windDirection = Utility.safeGet(windDirections, index)
@@ -82,41 +82,5 @@ final class UtilityHourly {
             hourly = hourly.replaceAll(k, v)
         }
         return hourly
-    }
-
-    static func translateTime(_ originalTime: String) -> String {
-        let originalTimeComponents = originalTime.replace("T", "-").split("-")
-        let year = to.Int(originalTimeComponents[0])
-        let month = to.Int(originalTimeComponents[1])
-        let day = to.Int(originalTimeComponents[2])
-        let hour = to.Int(originalTimeComponents[3].replace(":00:00", ""))
-        let hourString = String(hour)
-        let dayOfTheWeek: String
-        var futureDateComp = DateComponents()
-        futureDateComp.year = year
-        futureDateComp.month = month
-        futureDateComp.day = day
-        let calendar = Calendar.current
-        let futureDate = calendar.date(from: futureDateComp)!
-        let dayOfTheWeekIndex = calendar.component(.weekday, from: futureDate)
-        switch dayOfTheWeekIndex {
-        case 2:
-            dayOfTheWeek = "Mon"
-        case 3:
-            dayOfTheWeek = "Tue"
-        case 4:
-            dayOfTheWeek = "Wed"
-        case 5:
-            dayOfTheWeek = "Thu"
-        case 6:
-            dayOfTheWeek = "Fri"
-        case 7:
-            dayOfTheWeek = "Sat"
-        case 1:
-            dayOfTheWeek = "Sun"
-        default:
-            dayOfTheWeek = ""
-        }
-        return dayOfTheWeek + " " + hourString
     }
 }
