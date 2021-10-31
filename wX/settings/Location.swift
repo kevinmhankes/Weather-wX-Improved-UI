@@ -246,11 +246,9 @@ final class Location {
         }
         let locFragCurrentInt = Location.getCurrentLocation() + 1
         if locToDeleteInt == locFragCurrentInt {
-            // Utility.writePref("CURRENT_LOC_FRAGMENT", "1")
             Location.setCurrentLocationStr("1")
         } else if locFragCurrentInt > locToDeleteInt {
             let shiftNum = String(locFragCurrentInt - 1)
-            // Utility.writePref("CURRENT_LOC_FRAGMENT", shiftNum)
             Location.setCurrentLocationStr(shiftNum)
         }
         let widgetLocNum = Utility.readPref("WIDGET_LOCATION", "1")
