@@ -9,11 +9,11 @@ final class ObjectLocation {
     let lat: String
     let lon: String
     let name: String
-    private let countyCurrent: String
-    private let zoneCurrent: String
+    // private let countyCurrent: String
+    // private let zoneCurrent: String
     let wfo: String
     let rid: String
-    private let nwsStateCurrent: String
+    // private let nwsStateCurrent: String
     let state: String
     let isLocationUS: Bool
     var observation: String
@@ -25,11 +25,11 @@ final class ObjectLocation {
         lat = Utility.readPref("LOC" + locNumAsString + "_X", "")
         lon = Utility.readPref("LOC" + locNumAsString + "_Y", "")
         name = Utility.readPref("LOC" + locNumAsString + "_LABEL", "")
-        countyCurrent = Utility.readPref("COUNTY" + locNumAsString, "")
-        zoneCurrent = Utility.readPref("ZONE" + locNumAsString, "")
+        // countyCurrent = Utility.readPref("COUNTY" + locNumAsString, "")
+        // zoneCurrent = Utility.readPref("ZONE" + locNumAsString, "")
         wfo = Utility.readPref("NWS" + locNumAsString, "")
         rid = Utility.readPref("RID" + locNumAsString, "")
-        nwsStateCurrent = Utility.readPref("NWS" + locNumAsString + "_STATE", "")
+        // nwsStateCurrent = Utility.readPref("NWS" + locNumAsString + "_STATE", "")
         state = Utility.getRadarSiteName(rid).split(",")[0]
         observation = Utility.readPref("LOC" + locNumAsString + "_OBSERVATION", "")
         isLocationUS = Location.us(lat)
@@ -41,11 +41,11 @@ final class ObjectLocation {
         Utility.writePref("LOC" + locNumAsString + "_X", lat)
         Utility.writePref("LOC" + locNumAsString + "_Y", lon)
         Utility.writePref("LOC" + locNumAsString + "_LABEL", name)
-        Utility.writePref("COUNTY" + locNumAsString, countyCurrent)
-        Utility.writePref("ZONE" + locNumAsString, zoneCurrent)
+        // Utility.writePref("COUNTY" + locNumAsString, countyCurrent)
+        // Utility.writePref("ZONE" + locNumAsString, zoneCurrent)
         Utility.writePref("NWS" + locNumAsString, wfo)
         Utility.writePref("RID" + locNumAsString, rid)
-        Utility.writePref("NWS" + locNumAsString + "_STATE", nwsStateCurrent)
+        // Utility.writePref("NWS" + locNumAsString + "_STATE", nwsStateCurrent)
         Utility.writePref("LOC" + locNumAsString + "_OBSERVATION", observation)
         Location.refreshLocationData()
     }
