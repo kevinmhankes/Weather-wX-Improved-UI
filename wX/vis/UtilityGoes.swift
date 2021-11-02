@@ -8,30 +8,6 @@ import Foundation
 
 final class UtilityGoes {
 
-    private static let sizeMap = [
-        "CONUS": "1250x750",
-        "CONUS-G17": "1250x750",
-        "FD": "1808x1808",
-        "FD-G17": "1808x1808",
-        "gm": "1000x1000",
-        "car": "1000x1000",
-        "eus": "1000x1000",
-        "eep": "1800x1080",
-        "wus": "2000x2000",
-        "tpw": "1800x1080",
-        "taw": "1800x1080",
-        "can": "1125x560",
-        "mex": "1000x1000",
-        "nsa": "1800x1080",
-        "ssa": "1800x1080",
-        "np": "1800x1080",
-        "cam": "1000x1000",
-        "ak": "1000x1000",
-        "cak": "1200x1200",
-        "sea": "1200x1200",
-        "hi": "1200x1200"
-    ]
-
     private static func getImageSize(_ sector: String) -> String {
         let size = "latest"
         if UIPreferences.goesUseFullResolutionImages {
@@ -269,6 +245,30 @@ final class UtilityGoes {
         "Dust",
         "GLM",
         "DMW"
+    ]
+    
+    private static let sizeMap = [
+        "CONUS": "1250x750",
+        "CONUS-G17": "1250x750",
+        "FD": "1808x1808",
+        "FD-G17": "1808x1808",
+        "gm": "1000x1000",
+        "car": "1000x1000",
+        "eus": "1000x1000",
+        "eep": "1800x1080",
+        "wus": "2000x2000",
+        "tpw": "1800x1080",
+        "taw": "1800x1080",
+        "can": "1125x560",
+        "mex": "1000x1000",
+        "nsa": "1800x1080",
+        "ssa": "1800x1080",
+        "np": "1800x1080",
+        "cam": "1000x1000",
+        "ak": "1000x1000",
+        "cak": "1200x1200",
+        "sea": "1200x1200",
+        "hi": "1200x1200"
     ]
 
 //    static let sectorToLatLon = [
