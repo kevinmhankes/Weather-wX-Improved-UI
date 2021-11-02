@@ -20,9 +20,13 @@ final class UtilitySpcSwo {
         case "1", "2":
             let baseUrl = GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "probotlk_"
             urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk_" + time + ".gif")
-            ["_torn.gif", "_hail.gif", "_wind.gif"].forEach { urls.append(baseUrl + time + $0) }
+            ["_torn.gif", "_hail.gif", "_wind.gif"].forEach {
+                urls.append(baseUrl + time + $0)
+            }
         case "3":
-            ["otlk_", "prob_"].forEach { urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + $0 + time + ".gif") }
+            ["otlk_", "prob_"].forEach {
+                urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + $0 + time + ".gif")
+            }
         default:
             break
         }
