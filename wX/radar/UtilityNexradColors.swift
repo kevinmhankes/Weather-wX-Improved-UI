@@ -12,10 +12,9 @@ final class UtilityNexradColors {
 
     private static func interpolateHue(_ colorA: Double, _ colorB: Double, _ proportion: Double) -> Double {
         let diff = colorB - colorA
-        var ret: Double
         let total = 1.0
         if diff > total / 2 {
-            ret = (total - (colorB - colorA)) * -1.0
+            let ret = (total - (colorB - colorA)) * -1.0
             if ret < 0 {
                 return ret + total
             } else {
