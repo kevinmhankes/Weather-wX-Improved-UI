@@ -52,11 +52,11 @@ final class VcNhcStorm: UIwXViewController {
     }
 
     override func getContent() {
-        getContentImages()
+        getImages()
         _ = FutureVoid({ self.html = UtilityDownload.getTextProduct(self.product) }, display)
     }
 
-    func getContentImages() {
+    func getImages() {
         for (index, imageName) in imageUrls.enumerated() {
             var url = stormData.baseUrl
             if imageName == "WPCQPF_sm2.gif" {
