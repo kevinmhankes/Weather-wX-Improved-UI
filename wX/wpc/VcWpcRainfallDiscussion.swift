@@ -35,16 +35,16 @@ final class VcWpcRainfallDiscussion: UIwXViewControllerWithAudio {
     }
 
     override func getContent() {
-        getContentImage()
-        getContentText()
+        getImage()
+        getText()
     }
 
-    func getContentImage() {
+    func getImage() {
         let url = UtilityWpcRainfallOutlook.urls[day]
         _ = FutureVoid({ self.bitmap = Bitmap(url) }, display)
     }
 
-    func getContentText() {
+    func getText() {
         product = UtilityWpcRainfallOutlook.codes[day]
         _ = FutureVoid({ self.html = UtilityDownload.getTextProduct(self.product) }, display)
     }

@@ -33,16 +33,16 @@ final class VcSpcFireOutlook: UIwXViewControllerWithAudio {
     }
 
     override func getContent() {
-        getContentImage()
-        getContentText()
+        getImage()
+        getText()
     }
 
-    func getContentImage() {
+    func getImage() {
         let url = UtilitySpcFireOutlook.urls[dayIndex]
         _ = FutureVoid({ self.bitmap = Bitmap(url) }, display)
     }
 
-    func getContentText() {
+    func getText() {
         product = UtilitySpcFireOutlook.products[dayIndex]
         _ = FutureVoid({ self.html = UtilityDownload.getTextProduct(self.product) }, display)
     }
