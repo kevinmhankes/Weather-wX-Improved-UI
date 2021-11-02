@@ -29,10 +29,6 @@ final class UtilitySpcMeso {
         "mcon",
         "thea",
         "mxth",
-        // "temp_chg",
-        // "dwpt_chg",
-        // "mixr_chg",
-        // "thte_chg",
         "925mb",
         "850mb",
         "850mb2",
@@ -166,7 +162,7 @@ final class UtilitySpcMeso {
         "sigt1",
         "sigt2",
         "nstp",
-        "vtp", // Feb 2021
+        "vtp",
         "sigh",
         "sars1",
         "sars2",
@@ -336,7 +332,7 @@ final class UtilitySpcMeso {
         "Cond. Prob. Sigtor (Eqn 1)",
         "Cond. Prob. Sigtor (Eqn 2)",
         "Non-Supercell Tornado",
-        "Violent Tornado Parameter (VTP)", // Feb 2021
+        "Violent Tornado Parameter (VTP)",
         "Sgfnt Hail",
         "SARS Hail Size",
         "SARS Sig. Hail Percentage",
