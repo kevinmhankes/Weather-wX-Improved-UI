@@ -23,4 +23,17 @@ final class to {
     static func Float(_ s: String) -> Float {
         Swift.Float(s) ?? 0.0
     }
+    
+//    fun stringPadLeft(s: String, padAmount: Int): String {
+//        return String.format("%-" + padAmount.toString() + "s", s)
+//    }
+
+    static func stringPadLeftZeros(_ s: Int, _ padAmount: Int) -> String {
+        return Swift.String(format: "%0" + String(padAmount) + "d", s)
+        // return String.format("%0" + padAmount.toString() + "d", s)
+    }
+
+//    fun stringFromFloatFixed(d: Double, precision: Int): String {
+//        return String.format(  "%." + precision.toString() + "f", d)
+//    }
 }

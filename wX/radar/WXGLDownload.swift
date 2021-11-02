@@ -101,7 +101,9 @@ final class WXGLDownload {
             if tmpK < 0 {
                 tmpK += 251
             }
-            listOfFiles.append("sn." + String(format: "%04d", tmpK))
+            let fn = "sn." + to.stringPadLeftZeros(tmpK, 4)
+            listOfFiles.append(fn)
+            // listOfFiles.append("sn." + String(format: "%04d", tmpK))
             index += 1
         }
         fileStorage.animationMemoryBuffer = [MemoryBuffer](repeating: MemoryBuffer(), count: frameCount)
