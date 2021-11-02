@@ -40,7 +40,9 @@ final class UtilitySpcSwo {
     static func getUrls(_ day: String) -> [String] {
         var urls = [String]()
         if day == "4-8" || day == "48" || day == "4" {
-            (4...8).forEach { urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/exper/day4-8/day" + to.String($0) + "prob.gif") }
+            (4...8).forEach {
+                urls.append(GlobalVariables.nwsSPCwebsitePrefix + "/products/exper/day4-8/day" + to.String($0) + "prob.gif")
+            }
             return urls
         } else {
             let html = (GlobalVariables.nwsSPCwebsitePrefix + "/products/outlook/day" + day + "otlk.html").getHtml()
