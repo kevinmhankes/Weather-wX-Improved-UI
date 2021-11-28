@@ -1,3 +1,4 @@
+* [FIX] spc meson fix from wx
 * [ADD] use more func in to.
 * [REF] rename to to To and func to lowercase
 * [FIX] GOES GLM for new sectors res is to low
