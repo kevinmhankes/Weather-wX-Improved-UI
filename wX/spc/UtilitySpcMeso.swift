@@ -13,7 +13,7 @@ final class UtilitySpcMeso {
         ObjectMenuTitle("Thermodynamics", 19),
         ObjectMenuTitle("Wind Shear", 19),
         ObjectMenuTitle("Composite Indices", 23),
-        ObjectMenuTitle("Multi-Parameter Fields", 10),
+        ObjectMenuTitle("Multi-Parameter Fields", 11),
         ObjectMenuTitle("Heavy Rain", 8), // 3
         ObjectMenuTitle("Winter Weather", 14),
         ObjectMenuTitle("Fire Weather", 6),
@@ -62,9 +62,9 @@ final class UtilitySpcMeso {
         "peff",
         "fzlv",
         "les1",
-        "tadv_925",
-        "7tad",
-        "tadv"
+        "tadv_925"
+//        "7tad",
+//        "tadv"
     ]
 
     static let params = [
@@ -95,10 +95,10 @@ final class UtilitySpcMeso {
         "500mb",
         "300mb",
         "dlcp",
-        "sfnt",
         "tadv_925",
         "tadv",
         "7tad",
+        "sfnt",
         "9fnt",
         "8fnt",
         "7fnt",
@@ -183,6 +183,7 @@ final class UtilitySpcMeso {
         "comp",
         "lcls",
         "lr3c",
+        "3cape_shr3",
         "3cvr",
         "tdlr",
         "hail",
@@ -265,10 +266,10 @@ final class UtilitySpcMeso {
         "500mb Analysis",
         "300mb Analysis",
         "Deep Moisture Convergence",
-        "Sfc Frontogenesis",
         "925mb Temp Advection",
         "850mb Temp Advection",
         "700mb Temp Advection",
+        "Sfc Frontogenesis",
         "925mb Frontogenesis",
         "850mb Frontogenesis",
         "700mb Frontogenesis",
@@ -353,6 +354,7 @@ final class UtilitySpcMeso {
         "Most-Unstable LI / 850 & 500mb Winds",
         "LCL Height / Sfc-1km SR Helicity",
         "Sfc-3km Lapse Rate / Sfc-3km MLCAPE",
+        "Bulk Shear - Sfc-3km / Sfc-3km MLCAPE",
         "Sfc Vorticity / Sfc-3km MLCAPE",
         "Sfc Dwpt / 700-500mb Lapse Rates",
         "Hail Parameters",

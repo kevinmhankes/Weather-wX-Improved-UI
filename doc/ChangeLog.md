@@ -5,6 +5,8 @@
 * [ADD] SPC HRRR - add back SCP/STP param
 * [ADD] first build with Mac M1
 * [ADD] switch to non-experimental WPC winter weather forecasts day 4-7
+* [ADD] SPC Meso in "Multi-Parameter Fields" add "Bulk Shear - Sfc-3km / Sfc-3km MLCAPE"
+* [FIX] SPC Meso in "Upper Air" change ordering for "Sfc Frontogenesis" to match SPC website
 
 56141 2021_10_23
 * [FIX] possible fix for toolbar issue on ios15 large iphones compiled with xcode13
