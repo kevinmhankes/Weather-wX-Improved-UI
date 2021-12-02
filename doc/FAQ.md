@@ -129,7 +129,8 @@ Yes (these are still being solidified):
 
 ### Is there a desktop version available?
 
-For Chromebook, wX can be installed from the Play Store and should offer a decent experience. Please see the keyboard shortcuts listed in Settings -> About wX. Additionally in radar, trackpad two finger pan works along with pinch zoom. I personally have a number of unreleased desktop versions but will likely refrain from officially offering something. However, if you are interested in a Qt/C++ or a GTK3 or 4/C++(or Vala) version and are comfortable compiling from source code I might make the source code available but no support would be offered.
+For Chromebook, wX can be installed from the Play Store and should offer a decent experience. Please see the keyboard shortcuts listed in Settings -> About wX. Additionally in radar, trackpad two finger pan works along with pinch zoom. I personally have a number of unreleased desktop versions but will likely refrain from officially offering something. However, I do plan on a source code only release for a [desktop C++/Qt version](https://gitlab.com/joshua.tee/wxqt) before Feb 2022.
+
 
 ### Is there a version available for iOS?
 Yes, The iOS version “wXL23” has now been released on the Apple app store since late 2018. While not as full featured (for example, no notifications, no widgets, no color palette editor, no support for more than one nexrad radar in the home screen, no nexrad screen recording, drawing tool, distance measurer) it should provide most other core features:
