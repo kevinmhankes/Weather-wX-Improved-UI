@@ -1,9 +1,11 @@
 
 # “wX” FAQ covering Android’s “wX” and iOS “wXL23”
 
-Last updated: 2021-10-29
+Last updated: 2021-12-05
 
-**Status: No issues**
+**Status: GOES website not respond**
+
+All GOES 16-17 images are not available due to the following website being non-responsive: [https://www.star.nesdis.noaa.gov/goes/index.php](https://www.star.nesdis.noaa.gov/goes/index.php)
 
 Helpful Links to check status from NWS if I am on vacation or not able to respond quickly to update the FAQ:
 * [https://radar3pub.ncep.noaa.gov/](https://radar3pub.ncep.noaa.gov/)
