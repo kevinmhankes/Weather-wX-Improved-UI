@@ -3,7 +3,7 @@
 
 Last updated: 2021-12-05
 
-**Status: GOES website not respond**
+**Status: GOES website not responding**
 
 All GOES 16-17 images are not available due to the following website being non-responsive: [https://www.star.nesdis.noaa.gov/goes/index.php](https://www.star.nesdis.noaa.gov/goes/index.php)
 
