@@ -3,9 +3,10 @@
 
 Last updated: 2021-12-05
 
-**Status: GOES website not responding**
+**Status: SPC Convective Outlook Day 1 images are old **
 
-All GOES 16-17 images are not available due to the following website being non-responsive: [https://www.star.nesdis.noaa.gov/goes/index.php](https://www.star.nesdis.noaa.gov/goes/index.php)
+The Day 1 URL is showing 0100 UTC data for images but the text product is current:
+[https://www.spc.noaa.gov/products/outlook/day1otlk.html](https://www.spc.noaa.gov/products/outlook/day1otlk.html)
 
 Helpful Links to check status from NWS if I am on vacation or not able to respond quickly to update the FAQ:
 * [https://radar3pub.ncep.noaa.gov/](https://radar3pub.ncep.noaa.gov/)
@@ -240,6 +241,9 @@ That’s up to you but it should not be your only source. Please view the app di
 No it does not. Unlike Android in order to do this properly you need to use push notifications. I am unwilling to take on that extra cost (since I generate no revenue by choice from this personal hobby) and complexity.
 		
 ### App status history (primary NWS data issues)
+
+2021-12-05 (afternoon)
+All GOES 16-17 images are not available due to the following website being non-responsive: [https://www.star.nesdis.noaa.gov/goes/index.php](https://www.star.nesdis.noaa.gov/goes/index.php)
 
 Various parts of wX/wXL23 use api.weather.gov so you might see disruptions or degradations:
 
