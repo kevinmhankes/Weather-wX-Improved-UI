@@ -47,6 +47,7 @@ final class UtilityModelNcepInterface {
     ]
     
     static let sectorsNam = [
+        "CONUS",
         "NAMER",
         "NORTH-PAC",
         "EAST-PAC",
