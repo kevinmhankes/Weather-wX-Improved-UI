@@ -1,12 +1,14 @@
 
 # “wX” FAQ covering Android’s “wX” and iOS “wXL23”
 
-Last updated: 2021-12-06
+Last updated: 2021-12-15
+
+**Dec 15 5:50pm EST: Nexrad radar is slow to respond at times. This might impact location based current conditions as well**
 
 
 Helpful Links to check status from NWS if I am on vacation or not able to respond quickly to update the FAQ:
 * [https://radar3pub.ncep.noaa.gov/](https://radar3pub.ncep.noaa.gov/)
-* [https://www.nco.ncep.noaa.gov/status/messages/](https://radar3pub.ncep.noaa.gov/)
+* [https://www.nco.ncep.noaa.gov/status/messages/](https://www.nco.ncep.noaa.gov/status/messages/)
 
 **Versions of Android prior to Android 6.0 will no longer supported after October 1, 2022.**
 
