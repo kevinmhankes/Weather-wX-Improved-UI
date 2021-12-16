@@ -2,6 +2,11 @@
 	
 # App status history (primary NWS data issues)
 
+
+2021-12-15 (evening)
+**Dec 15 5:50pm EST - ~7:00pm EST: Nexrad radar is slow to respond at times. This might impact location based current conditions as well**
+
+
 2021-12-05 (evening)
 
 **Status: SPC Convective Outlook Day 1 images are old **
