@@ -1,7 +1,10 @@
 
 # “wX” FAQ covering Android’s “wX” and iOS “wXL23”
 
-Last updated: 2021-12-15
+Last updated: 2022-01-04
+
+Slowness in Nexrad radar and possibly other features like current conditions. NWS states per URL below:
+*FTPPRD/TGFTP/GIS/RIDGE2 access and slowness problems started around 07Z.  NCO support is investigating.*
 
 
 Helpful Links to check status from NWS if I am on vacation or not able to respond quickly to update the FAQ:
@@ -128,7 +131,7 @@ Yes (these are still being solidified):
 
 ### Is there a desktop version available?
 
-For Chromebook, wX can be installed from the Play Store and should offer a decent experience. Please see the keyboard shortcuts listed in Settings -> About wX. Additionally in radar, trackpad two finger pan works along with pinch zoom. I personally have a number of unreleased desktop versions but will likely refrain from officially offering something. However, I do plan on a source code only release for a [desktop C++/Qt version](https://gitlab.com/joshua.tee/wxqt) before Feb 2022.
+For Chromebook, wX can be installed from the Play Store and should offer a decent experience. Please see the keyboard shortcuts listed in Settings -> About wX. Additionally in radar, trackpad two finger pan works along with pinch zoom. I personally have a number of unreleased desktop versions but will likely refrain from officially offering something. However, I have released the source code for a [desktop C++/Qt version](https://gitlab.com/joshua.tee/wxqt) as of Dec 2021.
 
 
 ### Is there a version available for iOS?
