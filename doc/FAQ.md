@@ -237,4 +237,4 @@ No it does not. Unlike Android in order to do this properly you need to use push
 
 ### Hourly forecast is not working correctly, is there a workaround?
 
-Yes. By default the hourly forecast is using the "new" NWS API. Unfortunately it's not as reliable as the old one but it does offer different data. You can revert to the older data source by going to *Settings -> UI* and turning off *Use new NWS API for hourly* (The 7 day foreacst stopped using the NWS API in ~ Jan 2021 due to reliability issues)
+Yes. By default the hourly forecast is using the "new" NWS API. Unfortunately it's not as reliable as the old one but it does offer different data. You can revert to the older data source by going to *Settings -> UI* and turning off *Use new NWS API for hourly* (The 7 day forecast stopped using the NWS API in ~ Jan 2021 due to reliability issues)
