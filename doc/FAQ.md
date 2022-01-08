@@ -1,11 +1,7 @@
 
 # “wX” FAQ covering Android’s “wX” and iOS “wXL23”
 
-Last updated: 2022-01-04
-
-Slowness in Nexrad radar and possibly other features like current conditions. NWS states per URL below:
-*FTPPRD/TGFTP/GIS/RIDGE2 access and slowness problems started around 07Z.  NCO support is investigating.*
-
+Last updated: 2022-01-08
 
 Helpful Links to check status from NWS if I am on vacation or not able to respond quickly to update the FAQ:
 * [https://radar3pub.ncep.noaa.gov/](https://radar3pub.ncep.noaa.gov/)

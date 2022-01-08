@@ -2,6 +2,10 @@
 	
 # App status history (primary NWS data issues)
 
+2022-01-04
+Slowness in Nexrad radar and possibly other features like current conditions. NWS states per URL below:
+*FTPPRD/TGFTP/GIS/RIDGE2 access and slowness problems started around 07Z.  NCO support is investigating.*
+
 
 2021-12-15 (evening)
 **Dec 15 5:50pm EST - ~7:00pm EST: Nexrad radar is slow to respond at times. This might impact location based current conditions as well**
