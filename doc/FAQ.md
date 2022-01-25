@@ -32,6 +32,10 @@ Please report bugs or suggestions via email to me as opposed to app store review
 
 Yes. By default the hourly forecast is using the "new" NWS API (the 7 day forecast does not use the new API due to reliablity issues). Unfortunately it's not as reliable as the old one but it does offer different data. You can revert to the older data source by going to **Settings -> UI** and turning off **Use new NWS API for hourly**.  For the 7 day forecast you should make sure you already have **Use new NWS API for 7 day** turned **OFF**. After you return to the main screen, you can reload the 7 day forecast by tapping on the image to the left of the current conditions data at top and then selecting **Force Data Refresh...**
 
+### Where can I find more information on the weather acronyms used?
+
+Please see the following from the [National Weather Service Glossary](https://w1.weather.gov/glossary/) and [RADAR PRODUCTS AVAILABLE FROM RPCCDS (WSR-88D and TDWR PRODUCTS)](https://www.weather.gov/media/tg/rpccds_radar_products.pdf)
+
 ### What are the numbers in the tab title area for SPC and MISC (Android only)?
 
 If in settings you have “Check for SPC MCD/W”, “Check for WPC MPD”, and “Check for TOR,TST,FFW” enabled as an example you will see “SPC W(1)  M(2) P(2)” and “MISC (6,1,3)”. In this example across the US there is currently one watch, two SPC Mesoscale Discussions, and 2 WPC Mesoscale Precipitation discussions. In addition there are 6 severe thunderstorm warnings, 1 tornado warning, and 3 flash flood warnings. These numbers are updated according to the notification interval in Settings->Notifications ( default: 12min )
