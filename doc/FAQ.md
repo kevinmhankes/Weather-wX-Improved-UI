@@ -28,6 +28,9 @@ Privacy Policy: this app does not collect any data from the user or the user’s
 Please report bugs or suggestions via email to me as opposed to app store reviews.
 
 [[_TOC_]]
+### The hourly forecast or 7 day forecast is not working correctly, is there a workaround?
+
+Yes. By default the hourly forecast is using the "new" NWS API (7 day does not). Unfortunately it's not as reliable as the old one but it does offer different data. You can revert to the older data source by going to *Settings -> UI* and turning off *Use new NWS API for hourly* (The 7 day forecast stopped using the NWS API in ~ Jan 2021 due to reliability issues) For 7 day forecast you should make sure you already have *Use new NWS API for 7 day* turned *OFF*.
 
 ### What are the numbers in the tab title area for SPC and MISC (Android only)?
 
@@ -235,6 +238,3 @@ That’s up to you but it should not be your only source. Please view the app di
 
 No it does not. Unlike Android in order to do this properly you need to use push notifications. I am unwilling to take on that extra cost (since I generate no revenue by choice from this personal hobby) and complexity.
 
-### Hourly forecast is not working correctly, is there a workaround?
-
-Yes. By default the hourly forecast is using the "new" NWS API. Unfortunately it's not as reliable as the old one but it does offer different data. You can revert to the older data source by going to *Settings -> UI* and turning off *Use new NWS API for hourly* (The 7 day forecast stopped using the NWS API in ~ Jan 2021 due to reliability issues)
