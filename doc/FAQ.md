@@ -30,7 +30,7 @@ Please report bugs or suggestions via email to me as opposed to app store review
 [[_TOC_]]
 ### The hourly forecast or 7 day forecast is not working correctly, is there a workaround?
 
-Yes. By default the hourly forecast is using the "new" NWS API (7 day does not). Unfortunately it's not as reliable as the old one but it does offer different data. You can revert to the older data source by going to *Settings -> UI* and turning off *Use new NWS API for hourly* (The 7 day forecast stopped using the NWS API in ~ Jan 2021 due to reliability issues) For 7 day forecast you should make sure you already have *Use new NWS API for 7 day* turned *OFF*.
+Yes. By default the hourly forecast is using the "new" NWS API (7 day does not). Unfortunately it's not as reliable as the old one but it does offer different data. You can revert to the older data source by going to *Settings -> UI* and turning off *Use new NWS API for hourly* (The 7 day forecast stopped using the NWS API in ~ Jan 2021 due to reliability issues) For 7 day forecast you should make sure you already have *Use new NWS API for 7 day* turned *OFF*. After you return to the main screen, you can reload the 7 day forecast by tapping on the image to the left of the current conditions data at top and then selecting *Force Data Refresh...*
 
 ### What are the numbers in the tab title area for SPC and MISC (Android only)?
 
