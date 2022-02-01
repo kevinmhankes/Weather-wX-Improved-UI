@@ -1,6 +1,10 @@
 
 56143 2021_12_10
 * [ADD] Models NCEP NAM, add sector "CONUS"
+* [FIX] remove observation point KSTF (Starkville, MS) as it's impacting users.
+* [FIX] remove decomissioned text products
+  - "mimpac: Marine Weather disc for N PAC Ocean"
+  - "mimatn: Marine disc for N Atlantic Ocean"
 
 56142 2021_11_27
 * [FIX] GOES Viewer, eep Eastern East Pacific image was not working after NOAA changed image resolution
