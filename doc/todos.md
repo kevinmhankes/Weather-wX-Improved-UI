@@ -17,7 +17,14 @@
 * SPC HREF - cache base layer images
 * [FIX] main screen images, if no image, don't show
 * [FIX] remove CLI in WFO Text
-* [FIX] scan for Future* not being used
+* [FIX] scan for Future not being used
+* [REF] Utility has a function related to hazards
+* [REF] remove import UIKit when not needed (ex utilIO / utilLog)
+* [REF] LatLon needs import Foundation for math
+* [REF] UtilityDownloadNWS has a local appCreateEmail var declared, use GlobalVariables
+* [REF] move all IO into utilIO
+
+FYI - FoundationNetworking added in later Swift release
 
 old:
 button.addTarget(self, action: #selector(test(sender:)), for: .touchUpInside)
