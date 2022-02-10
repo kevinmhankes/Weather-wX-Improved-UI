@@ -10,6 +10,10 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
     var fileName = "nids"
     var rd = WXMetalNexradLevelData()
     var fileStorage = FileStorage()
+    // Feb 22 add 3
+    var numberOfRadials = 0
+    var numberOfRangeBins = 0
+    var binSize = 0.0
     
     init(_ bgColor: Int) {
         self.bgColor = bgColor
@@ -18,6 +22,7 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
     var colorMap: ObjectColorPalette { ObjectColorPalette.colorMap[Int(rd.productCode)]! }
     
     func initialize() {
+        // print("AAA init buffer ", rd.numberOfRadials, rd.numberOfRangeBins)
         if !RadarPreferences.showRadarWhenPan {
             honorDisplayHold = true
         }

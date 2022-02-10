@@ -118,7 +118,8 @@ final class WXGLNexrad {
         switch productCode {
         case 186:
             return 1390
-        case 180, 182:
+        // 2153 2154 are actually L3 153/154 but that conflicts with the original Level2
+        case 180, 182, 2153, 2154:
             return 720
         case 135, 99, 159, 161, 163, 170, 172:
             return 1200
@@ -143,7 +144,7 @@ final class WXGLNexrad {
             return binSize13
         case 180, 182:
             return binSize08
-        case 153, 154:
+        case 153, 154, 2153, 2154:
             return binSize13
         default:
             return binSize54

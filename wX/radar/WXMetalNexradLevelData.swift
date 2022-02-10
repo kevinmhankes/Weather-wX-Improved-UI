@@ -33,6 +33,7 @@ final class WXMetalNexradLevelData {
     private var fileStorage: FileStorage = FileStorage()
     private var isAnimating = false
     private var animationIndex = 0
+    private var originalProductCode: Int16 = 0
 
     convenience init(_ product: String, _ radarBuffers: ObjectMetalRadarBuffers, _ index: String, _ fileStorage: FileStorage, _ isAnimating: Bool, _ animationIndex: Int) {
         self.init()
@@ -42,6 +43,7 @@ final class WXMetalNexradLevelData {
         self.isAnimating = isAnimating
         self.animationIndex = animationIndex
         productCode = GlobalDictionaries.radarProductStringToShortInt[product] ?? 0
+        originalProductCode = productCode
         switch productCode {
         case 153, 154:
             radarType = .level2
@@ -88,9 +90,19 @@ final class WXMetalNexradLevelData {
             dis.skipBytes(26)
             dis.skipBytes(30)
             seekStart = dis.filePointer
-            binSize = WXGLNexrad.getBinSize(productCode)
-            numberOfRangeBins = Int(WXGLNexrad.getNumberRangeBins(Int(productCode)))
-            numberOfRadials = 360
+            binSize = WXGLNexrad.getBinSize(originalProductCode)
+            numberOfRangeBins = Int(WXGLNexrad.getNumberRangeBins(Int(originalProductCode)))
+            // print("AAAJ", binSize, numberOfRangeBins, productCode)
+            // numberOfRadials = 360
+            // Feb 22
+            if self.originalProductCode == 2153 || self.originalProductCode == 2154 {
+                self.numberOfRadials = 720
+            }
+            self.radarBuffers!.numberOfRangeBins = self.numberOfRangeBins
+            self.radarBuffers!.numberOfRadials = self.numberOfRadials
+            self.radarBuffers!.binSize = self.binSize
+            // TODO FIXME HACK
+            self.productCode = self.originalProductCode
         }
     }
 

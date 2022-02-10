@@ -72,12 +72,16 @@ final class GlobalDictionaries {
         "H2C": "DS.165h2",
         "H3C": "DS.165h3",
         "NCR": "DS.p37cr",
-        "NCZ": "DS.p38cr"
+        "NCZ": "DS.p38cr",
+        "N0B": "DS.00n1b", // TODO FIXME temp since lowest tilt not populating yet
+        "N0G": "DS.00n1g"
     ]
     
     static let radarProductStringToShortInt: [String: Int16] = [
         "L2REF": 153,
         "L2VEL": 154,
+        "N0B": 2153, // 2153 2154 are actually L3 153/154 but that conflicts with the original Level2
+        "N0G": 2154,
         // "N0R": 19,
         // "N1R": 19,
         // "N2R": 19,

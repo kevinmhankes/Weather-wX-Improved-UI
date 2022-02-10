@@ -23,6 +23,7 @@ final class UtilityWXMetalPerf {
         while disFirst.getShort() != -1 {}
         disFirst.skipBytes(100)
         let dis2 = UtilityIO.uncompress(disFirst)
+        print("AAA mem buf size ", dis2.capacity)
         dis2.skipBytes(30)
         var numberOfRleHalfWords: UInt16 = 0
         radarBuffers.colorMap.redValues.put(0, Color.red(radarBuffers.bgColor))
@@ -41,7 +42,10 @@ final class UtilityWXMetalPerf {
         var angleVCos = 0.0
         var angleNext = 0.0
         var angle0 = 0.0
-        let numberOfRadials = 360
+        // Feb 22
+        // var numberOfRadials = 360
+        let numberOfRadials = radarBuffers.numberOfRadials
+        // print("AAA number of radials", numberOfRadials, radarBuffers.binSize)
         (0..<numberOfRadials).forEach { radial in
             numberOfRleHalfWords = dis2.getUnsignedShort()
             angle = (450.0 - (Double(Int(dis2.getUnsignedShort())) / 10.0))
@@ -54,7 +58,7 @@ final class UtilityWXMetalPerf {
             }
             level = 0
             levelCount = 0
-            binStart = radarBuffers.rd.binSize
+            binStart = radarBuffers.binSize
             if radial == 0 {
                 angle0 = angle
             }
@@ -71,44 +75,45 @@ final class UtilityWXMetalPerf {
                 if curLevel == level {
                     levelCount += 1
                 } else {
-                    angleVCos = cos((angleV)/k180DivPi)
-                    angleVSin = sin((angleV)/k180DivPi)
+                    angleVCos = cos(angleV/k180DivPi)
+                    angleVSin = sin(angleV/k180DivPi)
                     // 1
-                    radarBuffers.putFloat((binStart * angleVCos))
-                    radarBuffers.putFloat((binStart * angleVSin))
+                    radarBuffers.putFloat(binStart * angleVCos)
+                    radarBuffers.putFloat(binStart * angleVSin)
                     radarBuffers.putColorsByIndex(level)
                     // 2
-                    radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleVCos))
-                    radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleVSin))
+                    radarBuffers.putFloat((binStart + (radarBuffers.binSize * Double(levelCount))) * angleVCos)
+                    radarBuffers.putFloat((binStart + (radarBuffers.binSize * Double(levelCount))) * angleVSin)
                     radarBuffers.putColorsByIndex(level)
                     
                     angleCos = cos(angle/k180DivPi)
                     angleSin = sin(angle/k180DivPi)
                     // 3
-                    radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleCos))
-                    radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleSin))
+                    radarBuffers.putFloat((binStart + (radarBuffers.binSize * Double(levelCount))) * angleCos)
+                    radarBuffers.putFloat((binStart + (radarBuffers.binSize * Double(levelCount))) * angleSin)
                     radarBuffers.putColorsByIndex(level)
                     
                     // 1
-                    radarBuffers.putFloat((binStart * angleVCos))
-                    radarBuffers.putFloat((binStart * angleVSin))
+                    radarBuffers.putFloat(binStart * angleVCos)
+                    radarBuffers.putFloat(binStart * angleVSin)
                     radarBuffers.putColorsByIndex(level)
                     // 3
-                    radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleCos))
-                    radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleSin))
+                    radarBuffers.putFloat((binStart + (radarBuffers.binSize * Double(levelCount))) * angleCos)
+                    radarBuffers.putFloat((binStart + (radarBuffers.binSize * Double(levelCount))) * angleSin)
                     radarBuffers.putColorsByIndex(level)
                     // 4
-                    radarBuffers.putFloat((binStart * angleCos))
-                    radarBuffers.putFloat((binStart * angleSin))
+                    radarBuffers.putFloat(binStart * angleCos)
+                    radarBuffers.putFloat(binStart * angleSin)
                     radarBuffers.putColorsByIndex(level)
                     
                     totalBins += 1
                     level = curLevel
-                    binStart = Double(bin) * radarBuffers.rd.binSize
+                    binStart = Double(bin) * radarBuffers.binSize
                     levelCount = 1
                 }
             }
         }
+        print("AAA total bins ", totalBins)
         return totalBins
     }
     

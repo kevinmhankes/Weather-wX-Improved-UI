@@ -80,8 +80,11 @@ final class WXMetalRender {
     var fileStorage = FileStorage()
     // need a copy of this list here in addition to WXGLNexrad
     var radarProductList = [
+        // Feb 22
         "N0Q: Base Reflectivity",
         "N0U: Base Velocity",
+        "N0B: Base Reflectivity super-res",
+        "N0G: Base Velocity super-res",
         "L2REF: Level 2 Reflectivity",
         "L2VEL: Level 2 Velocity",
         "EET: Enhanced Echo Tops",

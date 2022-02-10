@@ -9,7 +9,8 @@ import UIKit
 final class UtilityIO {
 
     static func uncompress(_ disFirst: MemoryBuffer) -> MemoryBuffer {
-        var retSize: UInt32 = 1000000
+        // was 1 not 2, Feb 22
+        var retSize: UInt32 = 2000000
         let oBuff = [UInt8](repeating: 1, count: Int(retSize))
         let compressedFileSize: CLong = disFirst.capacity - disFirst.position
         BZ2_bzBuffToBuffDecompress(

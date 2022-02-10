@@ -15,12 +15,16 @@ final class ColorPalettes {
         ObjectColorPalette.colorMap[94] = cm94
         ObjectColorPalette.colorMap[94]!.initialize()
         ObjectColorPalette.colorMap[153] = cm94
+        // Feb 22
+        ObjectColorPalette.colorMap[2153] = cm94
         ObjectColorPalette.colorMap[180] = cm94
         ObjectColorPalette.colorMap[186] = cm94
         let cm99 = ObjectColorPalette(99)
         ObjectColorPalette.colorMap[99] = cm99
         ObjectColorPalette.colorMap[99]!.initialize()
         ObjectColorPalette.colorMap[154] = cm99
+        // Feb 22
+        ObjectColorPalette.colorMap[2154] = cm99
         ObjectColorPalette.colorMap[182] = cm99
         let cm172 = ObjectColorPalette(172)
         ObjectColorPalette.colorMap[172] = cm172

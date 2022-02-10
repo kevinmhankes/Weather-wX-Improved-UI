@@ -1,10 +1,21 @@
 
-56143 2021_12_10
+56143 2021_12_10 (release should not be used for production yet due to N0B/N0G integration)
 * [ADD] Models NCEP NAM, add sector "CONUS"
 * [FIX] remove observation point KSTF (Starkville, MS) as it's impacting users.
 * [FIX] remove decomissioned text products
   - "mimpac: Marine Weather disc for N PAC Ocean"
   - "mimatn: Marine disc for N Atlantic Ocean"
+* [ADD] NXB and NXG framework, Level3 super-res
+  - https://www.weather.gov/media/notification/pdf2/scn21-96_sbn_super-res.pdf
+  - only at KRAX so far https://tgftp.nws.noaa.gov/SL.us008001/DF.of/DC.radar/DS.00n1b/ missing lowest tilt
+  - changes in the following to accommodate: 
+	modified:   ../wX/global/ColorPalettes.swift
+	modified:   ../wX/global/GlobalDictionaries.swift
+	modified:   ../wX/radar/ObjectMetalRadarBuffers.swift
+	modified:   ../wX/radar/UtilityWXMetalPerf.swift
+	modified:   ../wX/radar/WXGLNexrad.swift
+	modified:   ../wX/radar/WXMetalNexradLevelData.swift
+	modified:   ../wX/radar/WXMetalRender.swift
 
 56142 2021_11_27
 * [FIX] GOES Viewer, eep Eastern East Pacific image was not working after NOAA changed image resolution
