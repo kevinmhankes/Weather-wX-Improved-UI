@@ -161,8 +161,8 @@ final class UtilityWXMetalPerf {
                 if curLevel == level {
                     levelCount += 1
                 } else {
-                    angleVCos = cos((angleV) / k180DivPi)
-                    angleVSin = sin((angleV) / k180DivPi)
+                    angleVCos = cos(angleV / k180DivPi)
+                    angleVSin = sin(angleV / k180DivPi)
                     // 1
                     radarBuffers.putFloat(binStart * angleVCos)
                     radarBuffers.putFloat(binStart * angleVSin)
@@ -179,12 +179,12 @@ final class UtilityWXMetalPerf {
                     radarBuffers.putFloat((binStart + radarBuffers.rd.binSize * Double(levelCount)) * angleSin)
                     radarBuffers.putColorsByIndex(level)
                     // 1
-                    radarBuffers.putFloat((binStart * angleVCos))
-                    radarBuffers.putFloat((binStart * angleVSin))
+                    radarBuffers.putFloat(binStart * angleVCos)
+                    radarBuffers.putFloat(binStart * angleVSin)
                     radarBuffers.putColorsByIndex(level)
                     // 3
-                    radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleCos))
-                    radarBuffers.putFloat(((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleSin))
+                    radarBuffers.putFloat((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleCos)
+                    radarBuffers.putFloat((binStart + (radarBuffers.rd.binSize * Double(levelCount))) * angleSin)
                     radarBuffers.putColorsByIndex(level)
                     // 4
                     radarBuffers.putFloat(binStart * angleCos)
