@@ -1,4 +1,6 @@
 * [FIX] spc meson fix from wx
+* [REF] move LatLon to coreobjects and use less direct String conversion
+* [REF] remove unused imports
 * [ADD] use more func in to.
 * [REF] rename to to To and func to lowercase
 * [FIX] GOES GLM for new sectors res is to low
