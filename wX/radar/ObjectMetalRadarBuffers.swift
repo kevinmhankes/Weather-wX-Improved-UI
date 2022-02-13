@@ -22,7 +22,6 @@ final class ObjectMetalRadarBuffers: ObjectMetalBuffers {
     var colorMap: ObjectColorPalette { ObjectColorPalette.colorMap[Int(rd.productCode)]! }
     
     func initialize() {
-        // print("AAA init buffer ", rd.numberOfRadials, rd.numberOfRangeBins)
         if !RadarPreferences.showRadarWhenPan {
             honorDisplayHold = true
         }

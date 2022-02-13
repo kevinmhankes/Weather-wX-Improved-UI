@@ -23,7 +23,6 @@ final class UtilityWXMetalPerf {
         while disFirst.getShort() != -1 {}
         disFirst.skipBytes(100)
         let dis2 = UtilityIO.uncompress(disFirst)
-        print("AAA mem buf size ", dis2.capacity)
         dis2.skipBytes(30)
         var numberOfRleHalfWords: UInt16 = 0
         radarBuffers.colorMap.redValues.put(0, Color.red(radarBuffers.bgColor))
@@ -113,7 +112,6 @@ final class UtilityWXMetalPerf {
                 }
             }
         }
-        print("AAA total bins ", totalBins)
         return totalBins
     }
     
