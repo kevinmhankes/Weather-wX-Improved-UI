@@ -1,4 +1,5 @@
 * [FIX] spc meson fix from wx
+* [REF] wXColor -> WXColor
 * [REF] move LatLon to coreobjects and use less direct String conversion
 * [REF] remove unused imports
 * [ADD] use more func in to.
