@@ -35,15 +35,18 @@ final class UtilityHourly {
     
     static func get(_ locationNumber: Int) -> [String] {
         if UIPreferences.useNwsApiForHourly {
-            let dataList: [String] = UtilityHourly.getHourlyString1(locationNumber)
+            let dataList: [String] = UtilityHourly.getHourlyString(locationNumber)
             return dataList
         }
         let data = UtilityHourlyOldApi.getHourlyString(locationNumber)
         return [data, data]
     }
 
-    static func getHourlyString1(_ locationNumber: Int) -> [String] {
-        let html = UtilityDownloadNws.getHourlyData(Location.getLatLon(locationNumber))
+    static func getHourlyString(_ locationNumber: Int) -> [String] {
+        var html = UtilityDownloadNws.getHourlyData(Location.getLatLon(locationNumber))
+        if html == "" {
+            html = UtilityDownloadNws.getHourlyData(Location.getLatLon(locationNumber))
+        }
         let header = "Time".fixedLengthString(7)
             + "T".fixedLengthString(4)
             + "Wind".fixedLengthString(8)

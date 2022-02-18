@@ -66,20 +66,20 @@ final class CapAlert {
     }
 
     // used by usAlerts
-    convenience init(eventText: String) {
+    convenience init(eventText s: String) {
         self.init()
-        url = eventText.parse("<id>(.*?)</id>")
-        title = eventText.parse("<title>(.*?)</title>")
-        summary = eventText.parse("<summary>(.*?)</summary>")
-        instructions = eventText.parse("</description>.*?<instruction>(.*?)</instruction>.*?<areaDesc>")
-        area = eventText.parse("<cap:areaDesc>(.*?)</cap:areaDesc>")
+        url = s.parse("<id>(.*?)</id>")
+        title = s.parse("<title>(.*?)</title>")
+        summary = s.parse("<summary>(.*?)</summary>")
+        instructions = s.parse("</description>.*?<instruction>(.*?)</instruction>.*?<areaDesc>")
+        area = s.parse("<cap:areaDesc>(.*?)</cap:areaDesc>")
         area = area.replace("&apos;", "'")
-        effective = eventText.parse("<cap:effective>(.*?)</cap:effective>")
-        expires = eventText.parse("<cap:expires>(.*?)</cap:expires>")
-        event = eventText.parse("<cap:event>(.*?)</cap:event>")
-        vtec = eventText.parse("<valueName>VTEC</valueName>.*?<value>(.*?)</value>")
-        zones = eventText.parse("<valueName>UGC</valueName>.*?<value>(.*?)</value>")
-        polygon = UtilityString.parse(eventText, "<cap:polygon>(.*?)</cap:polygon>")
+        effective = s.parse("<cap:effective>(.*?)</cap:effective>")
+        expires = s.parse("<cap:expires>(.*?)</cap:expires>")
+        event = s.parse("<cap:event>(.*?)</cap:event>")
+        vtec = s.parse("<valueName>VTEC</valueName>.*?<value>(.*?)</value>")
+        zones = s.parse("<valueName>UGC</valueName>.*?<value>(.*?)</value>")
+        polygon = UtilityString.parse(s, "<cap:polygon>(.*?)</cap:polygon>")
         text = ""
         text += title
         text += GlobalVariables.newline

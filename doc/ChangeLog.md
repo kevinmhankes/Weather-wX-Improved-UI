@@ -1,5 +1,6 @@
 
 56143 2021_12_10 (release should not be used for production yet due to N0B/N0G integration)
+* [ADD] utilHourly - add manual retry for API hourly which often needs it
 * [ADD] Models NCEP NAM, add sector "CONUS"
 * [FIX] remove observation point KSTF (Starkville, MS) as it's impacting users.
 * [FIX] remove decomissioned text products
