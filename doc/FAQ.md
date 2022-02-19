@@ -3,7 +3,7 @@
 
 Last updated: 2022-02-19
 
-**Feb 19 4pm EST: Nexrad radar not updating for all sites. You can monitor status here: [https://www.nco.ncep.noaa.gov/status/messages/](https://www.nco.ncep.noaa.gov/status/messages/)** 
+**Feb 19 4pm EST: Nexrad radar not updating for all sites. You can monitor status here: [https://radar3pub.ncep.noaa.gov/](https://radar3pub.ncep.noaa.gov/)** 
 
 Helpful Links to check status from NWS if I am on vacation or not able to respond quickly to update the FAQ:
 * [https://radar3pub.ncep.noaa.gov/](https://radar3pub.ncep.noaa.gov/)
