@@ -41,7 +41,9 @@ final class ScrollStackView {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         uiv.view.addSubview(scrollView)
         let topSpace = UtilityUI.getTopPadding() + UIPreferences.toolbarHeight
-        fragmentHeightAnchor1 = scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: -UIPreferences.tabBarHeight)
+        let bottomSpace = -1.0 * (UIPreferences.tabBarHeight + UtilityUI.getBottomPadding())
+        // prior to feb 22, the constant was -1.0 * (UIPreferences.tabBarHeight)
+        fragmentHeightAnchor1 = scrollView.bottomAnchor.constraint(equalTo: uiv.view.bottomAnchor, constant: bottomSpace)
         fragmentHeightAnchor2 = scrollView.topAnchor.constraint(equalTo: uiv.view.topAnchor, constant: topSpace)
         fragmentWidthAnchor1 = scrollView.leadingAnchor.constraint(equalTo: uiv.view.leadingAnchor)
         fragmentWidthAnchor2 = scrollView.widthAnchor.constraint(equalTo: uiv.view.widthAnchor)

@@ -2,6 +2,10 @@
 56143 2021_12_10 (release should not be used for production yet due to N0B/N0G integration)
 * [ADD] utilHourly - add manual retry for API hourly which often needs it
 * [ADD] Models NCEP NAM, add sector "CONUS"
+* [FIX] bottom tab bar layout issue on larger devices
+  - modified bottom padding on anchor in two files
+  - wX/fragments/VcTabLocation.swift
+  - wX/ui/ScrollStackView.swift
 * [FIX] remove observation point KSTF (Starkville, MS) as it's impacting users.
 * [FIX] remove decomissioned text products
   - "mimpac: Marine Weather disc for N PAC Ocean"
