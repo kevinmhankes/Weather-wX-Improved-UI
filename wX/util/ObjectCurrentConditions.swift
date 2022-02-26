@@ -110,7 +110,8 @@ final class ObjectCurrentConditions {
         let currentTime = ObjectDateTime.getCurrentTimeInUTC()
         print("ZZZ obs time: ", obsTime.dateTime)
         print("ZZZ cur time: ", currentTime)
-        // var isTimeCurrent = ObjectDateTime.timeDifference(currentTime, obsTime.dateTime, 120)
+        let isTimeCurrent = ObjectDateTime.timeDifference(currentTime, obsTime.dateTime, 120)
+        print("ZZZ isTimeCurrent: ", isTimeCurrent)
         //if (!isTimeCurrent) {
             // process(1)
         //}

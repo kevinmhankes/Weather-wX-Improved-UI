@@ -38,4 +38,11 @@ final class ObjectDateTime {
         return Date()
     }
 
+    // is difference between t1 and t2 less then 20min
+    static func timeDifference(_ t1: Date, _ t2: Date, _ m: Int) -> Bool {
+        let date = t2.addingTimeInterval(Double(m) * 60)
+        return date > t1
+        //return (t1.difference(t2) / 60000000.0) < m;
+    }
+
 }
