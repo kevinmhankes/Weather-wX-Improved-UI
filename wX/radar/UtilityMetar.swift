@@ -181,24 +181,31 @@ final class UtilityMetar {
         }
     }
 
-    static func findClosestObservation(_ location: LatLon) -> RID {
+    static func findClosestObservation(_ location: LatLon, _ index: Int = 0) -> RID {
         readMetarData()
-        var shortestDistance = 1000.00
-        var currentDistance = 0.0
-        var bestIndex = -1
-        metarSites.indices.forEach { index in
-            currentDistance = LatLon.distance(location, metarSites[index].location, .K)
-            if currentDistance < shortestDistance {
-                shortestDistance = currentDistance
-                bestIndex = index
-                metarSites[index].distance = Int(currentDistance)
-            }
+        var localMetarSites = metarSites
+        localMetarSites.indices.forEach { index in
+            localMetarSites[index].distance = Int(LatLon.distance(location, localMetarSites[index].location, .MILES))
         }
-        if bestIndex == -1 {
-            return metarSites[0]
-        } else {
-            return metarSites[bestIndex]
-        }
+        localMetarSites = localMetarSites.sorted { $0.distance < $1.distance }
+        return localMetarSites[index]
+
+//        var shortestDistance = 1000.00
+//        var currentDistance = 0.0
+//        var bestIndex = -1
+//        metarSites.indices.forEach { index in
+//            currentDistance = LatLon.distance(location, metarSites[index].location, .K)
+//            if currentDistance < shortestDistance {
+//                shortestDistance = currentDistance
+//                bestIndex = index
+//                metarSites[index].distance = Int(currentDistance)
+//            }
+//        }
+//        if bestIndex == -1 {
+//            return metarSites[0]
+//        } else {
+//            return metarSites[bestIndex]
+//        }
     }
 
     static func getObservationSites(_ radarSite: String) -> String {

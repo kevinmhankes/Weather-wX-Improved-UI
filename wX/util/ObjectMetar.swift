@@ -27,8 +27,8 @@ final class ObjectMetar {
     private let metarSkyCondition: String
     private let metarWeatherCondition: String
 
-    init(_ location: LatLon) {
-        let obsClosest = UtilityMetar.findClosestObservation(location)
+    init(_ location: LatLon, _ index: Int = 0) {
+        let obsClosest = UtilityMetar.findClosestObservation(location, index)
         UtilityObs.obsClosestClass = obsClosest.name
         if !decodeIcon {
             let observationData = ("https://api.weather.gov/stations/" + obsClosest.name + "/observations/current").getNwsHtml()

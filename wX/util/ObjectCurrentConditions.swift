@@ -25,36 +25,37 @@ final class ObjectCurrentConditions {
     private var condition = ""
     var spokenText = ""
     var timeStringUtc = ""
+    var latLon = LatLon()
+    var isUS = true
 
     convenience init(_ locNum: Int) {
         self.init()
         if Location.isUS(locNum) {
             self.init(Location.getLatLon(locNum))
         } else {
+            isUS = false
             let html = UtilityCanada.getLocationHtml(Location.getLatLon(locNum))
             data = UtilityCanada.getConditions(html)
             status = UtilityCanada.getStatus(html)
+            formatCurrentConditions()
         }
-        formatCurrentConditions()
+//        formatCurrentConditions()
     }
 
     // US via LAT LON (called from adhoc location and from other init)
     convenience init(_ location: LatLon) {
         self.init()
-        let conditions = getConditionsViaMetar(location)
-        data = conditions[0]
-        iconUrl = conditions[1]
-//        data = conditions.conditionAsString
-//        iconUrl = conditions.iconUrl
-        // rawMetar = conditions.metar
-        status = UtilityObs.getStatusViaMetar(conditionsTimeString)
-        formatCurrentConditions()
+        latLon = location
+        process()
+//        data = conditions[0]
+//        iconUrl = conditions[1]
+//        status = UtilityObs.getStatusViaMetar(conditionsTimeString)
+//        formatCurrentConditions()
     }
 
-    // func getConditionsViaMetar(_ location: LatLon) -> (conditionAsString: String, iconUrl: String, metar: String) {
-    func getConditionsViaMetar(_ location: LatLon) -> [String] {
+    func process(_ index: Int = 0) {
         var s = ""
-        let objectMetar = ObjectMetar(location)
+        let objectMetar = ObjectMetar(latLon, index)
         conditionsTimeString = objectMetar.conditionsTimeString
         temperature = objectMetar.temperature + GlobalVariables.degreeSymbol
         windChill = objectMetar.windChill + GlobalVariables.degreeSymbol
@@ -80,8 +81,13 @@ final class ObjectCurrentConditions {
             s += " G "
         }
         s += windGust + " mph" + " - " + visibility + " mi - " + condition
-        return [s, objectMetar.icon]
-        // return (s, objectMetar.icon, objectMetar.rawMetar)
+
+        data = s
+        iconUrl = objectMetar.icon
+        status = UtilityObs.getStatusViaMetar(conditionsTimeString)
+        formatCurrentConditions()
+
+        // return [s, objectMetar.icon]
         // sb String "NA° / 22°(NA%) - 1016 mb - W 13 mph - 10 mi - Mostly Cloudy"
     }
 
@@ -106,14 +112,16 @@ final class ObjectCurrentConditions {
     }
 
     func timeCheck() {
-        let obsTime = ObjectDateTime.fromObs(timeStringUtc)
-        let currentTime = ObjectDateTime.getCurrentTimeInUTC()
-        print("ZZZ obs time: ", obsTime.dateTime)
-        print("ZZZ cur time: ", currentTime)
-        let isTimeCurrent = ObjectDateTime.timeDifference(currentTime, obsTime.dateTime, 120)
-        print("ZZZ isTimeCurrent: ", isTimeCurrent)
-        //if (!isTimeCurrent) {
-            // process(1)
-        //}
+        if isUS {
+            let obsTime = ObjectDateTime.fromObs(timeStringUtc)
+            let currentTime = ObjectDateTime.getCurrentTimeInUTC()
+            print("ZZZ obs time: ", obsTime.dateTime)
+            print("ZZZ cur time: ", currentTime)
+            let isTimeCurrent = ObjectDateTime.timeDifference(currentTime, obsTime.dateTime, 120)
+            print("ZZZ isTimeCurrent: ", isTimeCurrent)
+            if (!isTimeCurrent) {
+                 process(1)
+            }
+        }
     }
 }
