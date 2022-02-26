@@ -93,6 +93,7 @@
 		0340423E23F16FC3003AB242 /* VcLsrByWfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340422C23F16FC3003AB242 /* VcLsrByWfo.swift */; };
 		0340423F23F16FC3003AB242 /* VcMapKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340422D23F16FC3003AB242 /* VcMapKitView.swift */; };
 		0343972725E1AAF600F3C0F1 /* UtilityUS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0343972625E1AAF600F3C0F1 /* UtilityUS.swift */; };
+		0344844127CA8311003ACE4F /* ObjectDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344844027CA8311003ACE4F /* ObjectDateTime.swift */; };
 		0347B63621CE43E500594F50 /* ObjectCardSevenDayCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0347B63521CE43E500594F50 /* ObjectCardSevenDayCollection.swift */; };
 		0348D35723FFD5C5001375C5 /* NhcOceanEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0348D35623FFD5C5001375C5 /* NhcOceanEnum.swift */; };
 		0348D35923FFD5CE001375C5 /* ObjectNhcRegionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0348D35823FFD5CE001375C5 /* ObjectNhcRegionSummary.swift */; };
@@ -490,6 +491,7 @@
 		0340422C23F16FC3003AB242 /* VcLsrByWfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VcLsrByWfo.swift; sourceTree = "<group>"; };
 		0340422D23F16FC3003AB242 /* VcMapKitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VcMapKitView.swift; sourceTree = "<group>"; };
 		0343972625E1AAF600F3C0F1 /* UtilityUS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityUS.swift; sourceTree = "<group>"; };
+		0344844027CA8311003ACE4F /* ObjectDateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDateTime.swift; sourceTree = "<group>"; };
 		0347B63521CE43E500594F50 /* ObjectCardSevenDayCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCardSevenDayCollection.swift; sourceTree = "<group>"; };
 		0348D35623FFD5C5001375C5 /* NhcOceanEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NhcOceanEnum.swift; sourceTree = "<group>"; };
 		0348D35823FFD5CE001375C5 /* ObjectNhcRegionSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectNhcRegionSummary.swift; sourceTree = "<group>"; };
@@ -1183,7 +1185,6 @@
 		F09504B21E153452008A966E /* coreobjects */ = {
 			isa = PBXGroup;
 			children = (
-				0354ED5726A75DA900E8957A /* LocationManager.swift */,
 				F0B3353B1DA3FD450035BD36 /* AnimationDrawable.swift */,
 				F0B334F71DA3FBCE0035BD36 /* Bitmap.swift */,
 				F0B3353D1DA3FD510035BD36 /* Color.swift */,
@@ -1198,7 +1199,9 @@
 				036102D1269CCE8E0072EEC4 /* FutureText.swift */,
 				036E9B9F269DC5180009A47B /* FutureText2.swift */,
 				036102CF269CCD020072EEC4 /* FutureVoid.swift */,
+				0354ED5726A75DA900E8957A /* LocationManager.swift */,
 				034DDC941FCB45CD00A769DA /* MemoryBuffer.swift */,
+				0344844027CA8311003ACE4F /* ObjectDateTime.swift */,
 				0379672D227B8C990067920C /* ObjectPolygonWarning.swift */,
 				03ED2BAA269E68AE00B1A34C /* ObjectPolygonWatch.swift */,
 				030DCDC9260BE1D8007BE259 /* ObjectWarning.swift */,
@@ -1898,6 +1901,7 @@
 				0340420223F16A4D003AB242 /* VcSettingsHomescreen.swift in Sources */,
 				03F3EB83229945D10056A56D /* UtilityModelGlcfsInterface.swift in Sources */,
 				037162DE21C1013800B815BB /* UtilityWatch.swift in Sources */,
+				0344844127CA8311003ACE4F /* ObjectDateTime.swift in Sources */,
 				03C4BA9421AE883E00C355BD /* WXMetalSurfaceView.swift in Sources */,
 				F0B335561DA3FD510035BD36 /* ExternalGeodeticCalculator.swift in Sources */,
 				F011E6111DB03D78006531FD /* UtilityObservations.swift in Sources */,

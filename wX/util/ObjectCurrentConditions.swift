@@ -24,6 +24,7 @@ final class ObjectCurrentConditions {
     private var visibility = ""
     private var condition = ""
     var spokenText = ""
+    var timeStringUtc = ""
 
     convenience init(_ locNum: Int) {
         self.init()
@@ -66,6 +67,7 @@ final class ObjectCurrentConditions {
         windGust = objectMetar.windGust
         visibility = objectMetar.visibility
         condition = objectMetar.condition
+        timeStringUtc = objectMetar.timeStringUtc
         s += temperature
         if objectMetar.windChill != "NA" {
             s += "(" + windChill + ")"
@@ -101,5 +103,16 @@ final class ObjectCurrentConditions {
             " dew point is " + dewPoint + ", relative humidity is "
             + relativeHumidity + ", pressure in milli-bars is "
             + seaLevelPressure + ", visibility is " + visibility + " miles" + status
+    }
+
+    func timeCheck() {
+        let obsTime = ObjectDateTime.fromObs(timeStringUtc)
+        let currentTime = ObjectDateTime.getCurrentTimeInUTC()
+        print("ZZZ obs time: ", obsTime.dateTime)
+        print("ZZZ cur time: ", currentTime)
+        // var isTimeCurrent = ObjectDateTime.timeDifference(currentTime, obsTime.dateTime, 120)
+        //if (!isTimeCurrent) {
+            // process(1)
+        //}
     }
 }

@@ -21,6 +21,7 @@ final class ObjectMetar {
     var windChill: String
     var heatIndex: String
     var conditionsTimeString = ""
+    var timeStringUtc = ""
     var icon = ""
     // let rawMetar: String
     private let metarSkyCondition: String
@@ -105,6 +106,7 @@ final class ObjectMetar {
             let localStatus = metarDataList[1].split("/")
             if localStatus.count > 1 {
                 conditionsTimeString = UtilityTime.convertFromUTCForMetar(localStatus[1].replace(" UTC", ""))
+                timeStringUtc = localStatus[1].strip()
             }
         }
         seaLevelPressure = changePressureUnits(seaLevelPressure)

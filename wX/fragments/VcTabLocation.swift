@@ -139,7 +139,10 @@ final class VcTabLocation: VcTabParent {
     }
 
     func getForecastData() {
-        _ = FutureVoid({ self.objectCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation()) }, { self.getCurrentConditionCards() })
+        _ = FutureVoid({
+            self.objectCurrentConditions = ObjectCurrentConditions(Location.getCurrentLocation())
+            self.objectCurrentConditions.timeCheck()
+        }, { self.getCurrentConditionCards() })
         _ = FutureVoid(downloadSevenDay, updateSevenDay)
         _ = FutureVoid(downloadHazards, updateHazards)
         if fab != nil {
