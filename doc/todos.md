@@ -1,4 +1,5 @@
-* [FIX] spc meson fix from wx
+* [ADD] detect if primary OBS is reporting bad data (but still with timely timestamp), if so, fallover to next closest
+* [FIX] spc meso fix from wx
 * [REF] wXColor -> WXColor
 * [REF] move LatLon to coreobjects and use less direct String conversion
 * [REF] remove unused imports
