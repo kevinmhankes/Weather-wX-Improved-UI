@@ -6,7 +6,7 @@
 
 final class UtilityLocation {
 
-    static func getLatLonAsDouble() -> [Double] {
+    static func latLonAsDouble() -> [Double] {
         var latLonList = [Double]()
         var tmpX = ""
         var tmpY = ""

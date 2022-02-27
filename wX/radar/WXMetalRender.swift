@@ -642,7 +642,7 @@ final class WXMetalRender {
         var locationMarkers = [Double]()
         locdotBuffers.lenInit = PolygonType.LOCDOT.size
         if PolygonType.LOCDOT.display {
-            locationMarkers = UtilityLocation.getLatLonAsDouble()
+            locationMarkers = UtilityLocation.latLonAsDouble()
         }
         if RadarPreferences.locdotFollowsGps {
             locationMarkers.append(gpsLocation.lat)
