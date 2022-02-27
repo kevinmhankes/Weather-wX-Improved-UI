@@ -110,23 +110,5 @@ final class UtilityLocation {
         }
         sites.sort { $0.distance < $1.distance }
         return sites[0].name
-
-//        var shortestDistance = 1000.00
-//        var currentDistance = 0.0
-//        var bestIndex = -1
-//        GlobalArrays.soundingSites.indices.forEach {
-//            currentDistance = LatLon.distance(location, sites[$0].location, .K)
-//            if currentDistance < shortestDistance {
-//                shortestDistance = currentDistance
-//                bestIndex = $0
-//            }
-//        }
-//        if bestIndex == -1 {
-//            return "BLAH"
-//        }
-//        if sites[bestIndex].name == "MFX" {
-//            return "MFL"
-//        }
-//        return sites[bestIndex].name
     }
 }
