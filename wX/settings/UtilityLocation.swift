@@ -46,17 +46,11 @@ final class UtilityLocation {
             let labelArr = $0.split(":")
             sites.append(RID(labelArr[0], getSiteLocation(site: labelArr[0], officeType: prefToken)))
         }
-        var shortestDistance = 30000.00
-        var currentDistance = 0.0
-        var bestIndex = -1
         sites.enumerated().forEach { index, site in
-            currentDistance = LatLon.distance(location, site.location, .K)
-            if currentDistance < shortestDistance {
-                shortestDistance = currentDistance
-                bestIndex = index
-            }
+            sites[index].distance = Int(LatLon.distance(location, site.location, .K))
         }
-        return sites[bestIndex].name
+        sites.sort { $0.distance < $1.distance }
+        return sites[0].name
     }
 
     static func getSiteLocation(site: String, officeType: String = "RID") -> LatLon {
