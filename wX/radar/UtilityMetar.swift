@@ -162,23 +162,14 @@ final class UtilityMetar {
 
     static func findClosestMetar(_ location: LatLon) -> String {
         readMetarData()
-        var shortestDistance = 1000.00
-        var currentDistance = 0.0
-        var bestIndex = -1
-        metarSites.indices.forEach { index in
-            currentDistance = LatLon.distance(location, metarSites[index].location, .K)
-            if currentDistance < shortestDistance {
-                shortestDistance = currentDistance
-                bestIndex = index
-            }
+        var localMetarSites = metarSites
+        localMetarSites.indices.forEach { index in
+            localMetarSites[index].distance = Int(LatLon.distance(location, localMetarSites[index].location, .MILES))
         }
-        if bestIndex == -1 {
-            return "Please select a location in the United States."
-        } else {
-            let url = (GlobalVariables.tgftpSitePrefix + "/data/observations/metar/decoded/" + metarSites[bestIndex].name + ".TXT")
-            let html = url.getHtmlSep()
-            return html.replace("<br>", GlobalVariables.newline)
-        }
+        localMetarSites.sort { $0.distance < $1.distance }
+        let url = (GlobalVariables.tgftpSitePrefix + "/data/observations/metar/decoded/" + localMetarSites[0].name + ".TXT")
+        let html = url.getHtmlSep()
+        return html.replace("<br>", GlobalVariables.newline)
     }
 
     static func findClosestObservation(_ location: LatLon, _ index: Int = 0) -> RID {
