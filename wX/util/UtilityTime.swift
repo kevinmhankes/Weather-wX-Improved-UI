@@ -32,21 +32,6 @@ final class UtilityTime {
         return "GMT: " + formatter.string(from: UTCDate)
     }
     
-//    static func convertFromUTC(_ time: String) -> String {
-//        // time comes in as follows 2017-02-17 06:53:00+00:00
-//        var returnTime = ""
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
-//        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-//        let date = dateFormatter.date(from: time.replace("+00:00", ""))
-//        dateFormatter.dateFormat = "yyyy-MM-dd h:mm a"
-//        dateFormatter.timeZone = TimeZone.current
-//        if let goodDate = date {
-//            returnTime = dateFormatter.string(from: goodDate)
-//        }
-//        return returnTime
-//    }
-    
     static func convertFromUTCForMetar(_ time: String) -> String {
         // time comes in as follows 2018.02.11 2353 UTC
         var returnTime = ""
@@ -94,30 +79,9 @@ final class UtilityTime {
         Calendar.current.component(.year, from: Date())
     }
     
-//    static func getMonth() -> Int {
-//        Calendar.current.component(.month, from: Date())
-//    }
-//
-//    static func getDay() -> Int {
-//        Calendar.current.component(.day, from: Date())
-//    }
-    
     static func secondsFromUTC() -> Int {
         TimeZone.current.secondsFromGMT()
     }
-    
-//    static func genModelRuns(_ time: String, _ hours: Int) -> [String] {
-//        let dateFmt = DateFormatter()
-//        dateFmt.timeZone = TimeZone(secondsFromGMT: 0)
-//        dateFmt.dateFormat = "yyyyMMddHH"
-//        let date = dateFmt.date(from: time)
-//        var runs = [String]()
-//        (1...4).forEach {
-//            let timeChange = 60.0 * 60.0 * Double(hours) * Double($0)
-//            runs.append(dateFmt.string(from: (date! - timeChange) as Date))
-//        }
-//        return runs
-//    }
     
     static func genModelRuns(_ time: String, _ hours: Int, _ dateStr: String) -> [String] {
         let dateFmt = DateFormatter()
@@ -138,16 +102,6 @@ final class UtilityTime {
         return dateFormatter.string(from: Date())
     }
     
-//    static func getDateAsString(_ date: Date, _ format: String) -> String {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = format
-//        return dateFormatter.string(from: date)
-//    }
-    
-//    static func currentTimeMillis64() -> Int64 {
-//        Int64(Date().timeIntervalSince1970 * 1000)
-//    }
-    
     static func currentTimeMillis() -> Int {
         Int((Date().timeIntervalSince1970 * 1000.0).rounded())
     }
@@ -159,18 +113,6 @@ final class UtilityTime {
         let components = calendar.dateComponents([.hour], from: date)
         return components.hour ?? 0
     }
-    
-//    static func getCurrentHour() -> Int {
-//        let date = Date()
-//        var calendar = Calendar.current
-//        calendar.timeZone = .current
-//        let components = calendar.dateComponents([.hour], from: date)
-//        return components.hour ?? 0
-//    }
-    
-//    static func getCurrentLocalTimeAsString() -> String {
-//        getDateAsString("yyyy-MM-dd HH:mm:ss")
-//    }
     
     static func getLocalTimeAsString() -> String {
         getDateAsString("yyyy-MM-dd HH:mm:ss")
@@ -184,38 +126,7 @@ final class UtilityTime {
         }
         return false
     }
-    
-//    static func isRadarTimeOldNOTUSED(_ radarTime: String) -> Bool {
-//        let radarTimeComponents = radarTime.split(":")
-//        if radarTimeComponents.count < 3 {
-//            // something went wrong
-//            return false
-//        }
-//        let radarTimeHours = to.Int(radarTimeComponents[0])
-//        let radarTimeMinutes = to.Int(radarTimeComponents[1])
-//        let radarTimeTotalMinutes = radarTimeHours * 60 + radarTimeMinutes
-//        let currentTime = Utility.safeGet(getCurrentLocalTimeAsString().split(" "), 1)
-//        let currentTimeComponents = currentTime.split(":")
-//        if currentTimeComponents.count < 3 {
-//            // something went wrong
-//            return false
-//        }
-//        let currentTimeHours = to.Int(currentTimeComponents[0])
-//        let currentTimeMinutes = to.Int(currentTimeComponents[1])
-//        let currentTimeTotalMinutes = currentTimeHours * 60 + currentTimeMinutes
-//        if currentTimeTotalMinutes < 30 {
-//            return false
-//        }
-//        if radarTimeTotalMinutes > currentTimeTotalMinutes {
-//            // radar time should not be in the future, radar is down
-//            return true
-//        }
-//        if radarTimeTotalMinutes < (currentTimeTotalMinutes - 20) {
-//            return true
-//        }
-//        return false
-//    }
-    
+        
     static func isVtecCurrent(_ vtec: String ) -> Bool {
          // example 190512T1252Z-190512T1545Z
          let timeRange = vtec.parse("-([0-9]{6}T[0-9]{4})Z")
@@ -227,11 +138,11 @@ final class UtilityTime {
     private static func decodeVtecTime(_ timeRangeOriginal: String) -> Date {
         // Y2K issue
         let timeRange = timeRangeOriginal.replace("T", "")
-        let year = to.Int("20" + (timeRange).parse("([0-9]{2})[0-9]{4}[0-9]{4}"))
-        let month = to.Int((timeRange).parse("[0-9]{2}([0-9]{2})[0-9]{2}[0-9]{4}"))
-        let day = to.Int((timeRange).parse("[0-9]{4}([0-9]{2})[0-9]{4}"))
-        let hour = to.Int((timeRange).parse("[0-9]{6}([0-9]{2})[0-9]{2}"))
-        let minute = to.Int((timeRange).parse("[0-9]{6}[0-9]{2}([0-9]{2})"))
+        let year = to.Int("20" + timeRange.parse("([0-9]{2})[0-9]{4}[0-9]{4}"))
+        let month = to.Int(timeRange.parse("[0-9]{2}([0-9]{2})[0-9]{2}[0-9]{4}"))
+        let day = to.Int(timeRange.parse("[0-9]{4}([0-9]{2})[0-9]{4}"))
+        let hour = to.Int(timeRange.parse("[0-9]{6}([0-9]{2})[0-9]{2}"))
+        let minute = to.Int(timeRange.parse("[0-9]{6}[0-9]{2}([0-9]{2})"))
         var dateComponents = DateComponents()
         dateComponents.year = year
         dateComponents.month = month
