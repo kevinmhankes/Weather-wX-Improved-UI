@@ -197,6 +197,10 @@ final class UtilityTime {
         default:
             dayOfTheWeek = ""
         }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE"
+        let dayString = dateFormatter.string(from: futureDate)
+        // print("ZZZ " + dayOfTheWeek + " " + dayString)
         return dayOfTheWeek + " " + hourString
     }
 }
