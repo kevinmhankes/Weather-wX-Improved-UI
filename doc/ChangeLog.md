@@ -1,8 +1,9 @@
 
-56143 2021_02_26 (release should not be used for production yet due to N0B/N0G integration)
+56143 2021_03_05 (release should not be used for production yet due to N0B/N0G integration)
 * [ADD] ObjectDateTime and detect if location obs is more then 2 hours out of date, if so , show next closest
 * [ADD] utilHourly - add manual retry for API hourly which often needs it
 * [ADD] Models NCEP NAM, add sector "CONUS"
+* [FIX] GOES GLM (lightning) animation was not working
 * [FIX] bottom tab bar layout issue on larger devices
   - modified bottom padding on anchor in two files
   - wX/fragments/VcTabLocation.swift
